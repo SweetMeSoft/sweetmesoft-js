@@ -1,0 +1,12 @@
+{
+  "name": "sweetmesoft-js",
+  "version": "1.00.001",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Erick Velasco <erickvelasco11@gmail.com>",
+  "license": "MIT"
+}
