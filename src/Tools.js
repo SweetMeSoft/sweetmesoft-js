@@ -27,6 +27,7 @@
     /**
      *
      * @param date
+     * @param format
      * @param withTime
      */
     function getFormatedDate(date, format, withTime) {
@@ -81,8 +82,14 @@
                 allowOutsideClick: false,
                 html: '<img id="imgUploadedImage" src="" style="width: 100%; height: 100%;"/>',
                 onOpen: () => {
-                    $('#imgUploadedImage').attr('src', URL.createObjectURL(event.target.files[0]));
-                    cropper = new Cropper($('#imgUploadedImage')[0], { initialAspectRatio: 1, aspectRatio: 1, modal: true, autoCropArea: 1 });
+                    const upl = $('#imgUploadedImage');
+                    upl.attr('src', URL.createObjectURL(event.target.files[0]));
+                    cropper = new Cropper(upl[0], {
+                        initialAspectRatio: 1,
+                        aspectRatio: 1,
+                        modal: true,
+                        autoCropArea: 1
+                    });
                 },
                 onClose: () => {
                     options.imgControl.attr('src', cropper.getCroppedCanvas().toDataURL());
@@ -99,6 +106,7 @@
         const modal = new bootstrap.Modal(document.getElementById('modal'), { backdrop: true });
         const body = $('#divModalBody');
         const title = $('#txtModalTitle');
+        const modalDialog = $('.modal-dialog');
         const btnModalPrimary = $('#btnModalPrimary');
         const btnModalSecondary = $('#btnModalCancel');
         btnModalPrimary.text(options.primaryText);
@@ -145,13 +153,13 @@
         }
         switch (options.size) {
             case 'big':
-                $('.modal-dialog').css('max-width', '80%');
+                modalDialog.css('max-width', '80%');
                 break;
             case 'small':
-                $('.modal-dialog').css('max-width', '500px');
+                modalDialog.css('max-width', '500px');
                 break;
         }
-        $('.modal-dialog').css('height', options.height);
+        modalDialog.css('height', options.height);
         modal.show();
     }
     SweetMeSoft.generateModal = generateModal;
@@ -163,7 +171,7 @@
             data: options.dataParams,
             showSuccess: false,
             successCallback: data => {
-                const id = options.table.attr('id');
+                const tableId = options.table.attr('id');
                 options.hiddenColumns.forEach((column, index) => {
                     options.hiddenColumns[index] = column.toLowerCase();
                 });
@@ -222,7 +230,7 @@
                                             }
                                             return '<img src="' + data + '" class="rounded-circle" style="height:40px; width: 40px;"/>';
                                         case 'percentaje':
-                                            if (data == null || data == undefined) {
+                                            if (data == null) {
                                                 return '0.00%';
                                             }
                                             if (data.toString().indexOf('%') == -1) {
@@ -278,7 +286,6 @@
                         className: 'action-row',
                         render: (data, type, row) => {
                             let htmlButtons = '';
-                            const tableId = options.table.attr('id');
                             for (let button of options.buttons) {
                                 const showButton = button.showButton == undefined ? true : button.showButton(row);
                                 if (showButton) {
@@ -325,7 +332,7 @@
                         buttons.off('click');
                         buttons.each((index, button) => {
                             $(button).on('click', () => {
-                                const id = $(button).attr('id').replace('btnTable', '');
+                                const id = $(button).attr('id').replace('btn' + tableId, '');
                                 const callback = callbacks.find(model => model.id == id);
                                 if (callback.button.type == 'delete') {
                                     swal.fire({
@@ -367,30 +374,9 @@
                 });
                 options.table.off('dblclick');
                 options.table.on('dblclick', 'tr', function () {
-                    var data = table.row(this).data();
-                    options.onDblClick(data);
+                    options.onDblClick(table.row(this).data());
                 });
-                $("[name='" + id + "_length']").removeClass('form-select');
-                //for (const callback of callbacks) {
-                //    $('#btnTable' + callback.id).on('click', event => {
-                //        if (callback.button.type == 'delete') {
-                //            swal.fire({
-                //                title: 'Delete item',
-                //                text: 'Are you sure you want to delete this item? This action cannot be undone',
-                //                icon: 'warning',
-                //                showCancelButton: true,
-                //                cancelButtonText: 'No',
-                //                confirmButtonText: 'Yes'
-                //            }).then(result => {
-                //                if (result.value) {
-                //                    callback.button.callback(callback.row);
-                //                }
-                //            });
-                //        } else {
-                //            callback.button.callback(callback.row);
-                //        }
-                //    });
-                //}
+                $("[name='" + tableId + "_length']").removeClass('form-select');
             }
         });
     }

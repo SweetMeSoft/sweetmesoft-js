@@ -6,7 +6,25 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SweetMeSoft/sweetmesoft-js.git"
+  },
   "keywords": [],
   "author": "Erick Velasco <erickvelasco11@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SweetMeSoft/sweetmesoft-js/issues"
+  },
+  "bin": {
+    "sweetmesoft-js": "./src/Ajax.js"
+  },
+  "preferGlobal": true,
+  "devDependencies": {
+    "@types/bootstrap": "^5.2.6",
+    "@types/bootstrap-select": "^1.13.4",
+    "@types/datatables.net": "^1.10.24",
+    "@types/jquery": "^3.5.16",
+    "cropperjs": "^1.5.13"
+  }
 }

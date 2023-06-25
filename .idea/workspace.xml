@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="47be978f-e6af-4827-9bb2-e827ca58498b" name="Changes" comment="Added config files">
+      <change beforePath="$PROJECT_DIR$/lib/bootstrap-select/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/bootstrap/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/bootstrap/js/dist/alert.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/bootstrap/js/dist/base-component.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/bootstrap/js/dist/button.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/bootstrap/js/dist/carousel.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/bootstrap/js/dist/collapse.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/bootstrap/js/dist/dropdown.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/bootstrap/js/dist/modal.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/bootstrap/js/dist/offcanvas.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/bootstrap/js/dist/popover.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/bootstrap/js/dist/scrollspy.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/bootstrap/js/dist/tab.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/bootstrap/js/dist/toast.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/bootstrap/js/dist/tooltip.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/cropper/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/datatables/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/datatables/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jquery/JQuery.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jquery/JQueryStatic.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jquery/dist/jquery.slim.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jquery/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jquery/legacy.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jquery/misc.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/select2/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Ajax.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ajax.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Ajax.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ajax.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Ajax.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ajax.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Classes.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Classes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Classes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Common.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Common.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Common.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Common.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Common.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Common.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/JQueryAddOns.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/JQueryAddOns.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/JQueryAddOns.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/JQueryAddOns.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/JQueryAddOns.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/JQueryAddOns.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Tools.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tools.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Tools.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tools.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Tools.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tools.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2Rf0M8ZUUN0tqVDXKIeRa9g0eth" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/erick/source/repos/Erick/sweetmesoft-js&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2023.1.3\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\erick\source\repos\Erick\sweetmesoft-js\lib" />
+      <recent name="C:\Users\erick\source\repos\Erick\sweetmesoft-js\source" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\erick\source\repos\Erick\sweetmesoft-js" />
+      <recent name="C:\Users\erick\source\repos\Erick\sweetmesoft-js\source" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="47be978f-e6af-4827-9bb2-e827ca58498b" name="Changes" comment="" />
+      <created>1687625778634</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1687625778634</updated>
+      <workItem from="1687625780286" duration="22000" />
+      <workItem from="1687625813794" duration="9803000" />
+      <workItem from="1687664288831" duration="376000" />
+    </task>
+    <task id="LOCAL-00001" summary="Repo Web moved from SweetMeSoft Library">
+      <option name="closed" value="true" />
+      <created>1687657447401</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1687657447401</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added config files">
+      <option name="closed" value="true" />
+      <created>1687657532400</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1687657532400</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Repo Web moved from SweetMeSoft Library" />
+    <MESSAGE value="Added config files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added config files" />
+  </component>
+</project>

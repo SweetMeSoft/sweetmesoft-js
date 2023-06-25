@@ -1,9 +1,7 @@
 ﻿declare namespace SweetMeSoft {
     /**
      *
-     * @param url
      * @param options
-     * @param dropDowns
      */
     function getOptions(options: OptionsSelect): void;
     /**

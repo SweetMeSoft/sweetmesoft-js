@@ -5,6 +5,7 @@
     /**
      *
      * @param date
+     * @param format
      * @param withTime
      */
     function getFormatedDate(date: Date, format: string, withTime?: boolean): string;

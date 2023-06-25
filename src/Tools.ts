@@ -27,6 +27,7 @@ namespace SweetMeSoft {
     /**
      *
      * @param date
+     * @param format
      * @param withTime
      */
     export function getFormatedDate(date: Date, format: string, withTime?: boolean): string {
@@ -92,8 +93,9 @@ namespace SweetMeSoft {
                 allowOutsideClick: false,
                 html: '<img id="imgUploadedImage" src="" style="width: 100%; height: 100%;"/>',
                 onOpen: () => {
-                    $('#imgUploadedImage').attr('src', URL.createObjectURL((event.target as HTMLInputElement).files[0]));
-                    cropper = new Cropper(($('#imgUploadedImage')[0] as HTMLImageElement), {
+                    const upl = $('#imgUploadedImage');
+                    upl.attr('src', URL.createObjectURL((event.target as HTMLInputElement).files[0]));
+                    cropper = new Cropper((upl[0] as HTMLImageElement), {
                         initialAspectRatio: 1,
                         aspectRatio: 1,
                         modal: true,
@@ -116,6 +118,7 @@ namespace SweetMeSoft {
         const modal = new bootstrap.Modal(document.getElementById('modal'), {backdrop: true})
         const body = $('#divModalBody');
         const title = $('#txtModalTitle');
+        const modalDialog = $('.modal-dialog');
         const btnModalPrimary = $('#btnModalPrimary');
         const btnModalSecondary = $('#btnModalCancel');
         btnModalPrimary.text(options.primaryText);
@@ -163,14 +166,14 @@ namespace SweetMeSoft {
 
         switch (options.size) {
             case 'big':
-                $('.modal-dialog').css('max-width', '80%');
+                modalDialog.css('max-width', '80%');
                 break;
             case 'small':
-                $('.modal-dialog').css('max-width', '500px');
+                modalDialog.css('max-width', '500px');
                 break;
         }
 
-        $('.modal-dialog').css('height', options.height);
+        modalDialog.css('height', options.height);
 
         modal.show();
     }

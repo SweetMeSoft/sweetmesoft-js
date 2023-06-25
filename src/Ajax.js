@@ -1,12 +1,11 @@
-namespace SweetMeSoft {
+﻿var SweetMeSoft;
+(function (SweetMeSoft) {
     /**
      *
-     * @param url
      * @param options
-     * @param dropDowns
      */
-    export function getOptions(options: OptionsSelect) {
-        options = <OptionsSelect>(setDefaults(options, defaultsSelect));
+    function getOptions(options) {
+        options = (SweetMeSoft.setDefaults(options, SweetMeSoft.defaultsSelect));
         let extraText = '';
         get({
             url: options.url,
@@ -24,53 +23,46 @@ namespace SweetMeSoft {
                     if (dropDown.attr('multiple') === undefined) {
                         dropDown.append('<option value="" disabled selected>' + firstText + '</option>');
                         closeOnSelect = true;
-                    } else {
+                    }
+                    else {
                         dropDown.append('<option value="" disabled>' + firstText + '</option>');
                         allowClear = true;
                     }
-
-                    $.each(data,
-                        (key, val) => {
-                            extraText = '';
-                            if (!options.extraOption.isNullOrEmpty()) {
-                                extraText += ' data-' + options.extraOption + '="' + val[options.extraOption] + '"';
-                            }
-
-                            if (!options.extraOption2.isNullOrEmpty()) {
-                                extraText += ' data-' + options.extraOption2 + '="' + val[options.extraOption2] + '"';
-                            }
-
-                            if (!options.extraOption3.isNullOrEmpty()) {
-                                extraText += ' data-' + options.extraOption3 + '="' + val[options.extraOption3] + '"';
-                            }
-
-                            if (!options.subTextOption.isNullOrEmpty()) {
-                                extraText += ' data-subtext="' + val[options.subTextOption].slice(0, options.limitSubTextOption) + '"';
-                            }
-
-                            if (val != null && options.text == '') {
-                                dropDown.append('<option value="' + val + '"' + extraText + '>' + val + '</option>');
-                            } else {
-                                if (val != null && options.text != undefined) {
-                                    const route = options.text.split('.');
-                                    let text = '';
-                                    let copy = val;
-                                    for (let item of route) {
-                                        text = copy[item]
-                                        copy = val[item]
-                                    }
-
-                                    let smallText = '';
-                                    if (!options.subTextOption.isNullOrEmpty()) {
-                                        smallText = '<small class=\'text-muted\'>' + val[options.subTextOption].slice(0, options.limitSubTextOption) + '</small>';
-                                    }
-
-                                    let flag = options.isCountries ? 'data-content="<img src=\'https://flagsapi.com/' + val.code + '/flat/24.png\' style=\'margin-right: .7rem;\'>' + text + " " + smallText + ' "' : '';
-
-                                    dropDown.append('<option ' + flag + ' value="' + val[options.internal] + '"' + extraText + '>' + text + '</option>');
+                    $.each(data, (key, val) => {
+                        extraText = '';
+                        if (!options.extraOption.isNullOrEmpty()) {
+                            extraText += ' data-' + options.extraOption + '="' + val[options.extraOption] + '"';
+                        }
+                        if (!options.extraOption2.isNullOrEmpty()) {
+                            extraText += ' data-' + options.extraOption2 + '="' + val[options.extraOption2] + '"';
+                        }
+                        if (!options.extraOption3.isNullOrEmpty()) {
+                            extraText += ' data-' + options.extraOption3 + '="' + val[options.extraOption3] + '"';
+                        }
+                        if (!options.subTextOption.isNullOrEmpty()) {
+                            extraText += ' data-subtext="' + val[options.subTextOption].slice(0, options.limitSubTextOption) + '"';
+                        }
+                        if (val != null && options.text == '') {
+                            dropDown.append('<option value="' + val + '"' + extraText + '>' + val + '</option>');
+                        }
+                        else {
+                            if (val != null && options.text != undefined) {
+                                const route = options.text.split('.');
+                                let text = '';
+                                let copy = val;
+                                for (let item of route) {
+                                    text = copy[item];
+                                    copy = val[item];
                                 }
+                                let smallText = '';
+                                if (!options.subTextOption.isNullOrEmpty()) {
+                                    smallText = '<small class=\'text-muted\'>' + val[options.subTextOption].slice(0, options.limitSubTextOption) + '</small>';
+                                }
+                                let flag = options.isCountries ? 'data-content="<img src=\'https://flagsapi.com/' + val.code + '/flat/24.png\' style=\'margin-right: .7rem;\'>' + text + " " + smallText + ' "' : '';
+                                dropDown.append('<option ' + flag + ' value="' + val[options.internal] + '"' + extraText + '>' + text + '</option>');
                             }
-                        });
+                        }
+                    });
                     if (options.urlValues != undefined && options.urlValues !== '') {
                         get({
                             url: options.urlValues,
@@ -83,12 +75,14 @@ namespace SweetMeSoft {
                                 }
                                 dropDown.val(array);
                             }
-                        })
-                    } else {
+                        });
+                    }
+                    else {
                         if (options.value != null && options.value !== 0 &&
                             options.value !== '') {
                             dropDown.val(options.value);
-                        } else {
+                        }
+                        else {
                             if (data.length === 1 && options.autoSelect) {
                                 let uniqueOption = dropDown.find(':not([disabled]):first').val();
                                 // @ts-ignore
@@ -100,27 +94,25 @@ namespace SweetMeSoft {
                             dropDown.val(options.value);
                         }
                     }
-
                     dropDown.selectpicker({
                         width: 'auto'
                     });
                     dropDown.selectpicker('refresh');
                 }
-
                 if (options.callback != undefined) {
                     options.callback(data);
                 }
             }
-        })
+        });
     }
-
+    SweetMeSoft.getOptions = getOptions;
     /**
      *
      * @param options
      */
-    export function get(options: OptionsRequest) {
-        on();
-        options = <OptionsRequest>(setDefaults(options, defaultsRequest));
+    function get(options) {
+        SweetMeSoft.on();
+        options = (SweetMeSoft.setDefaults(options, SweetMeSoft.defaultsRequest));
         $.ajax({
             url: options.url,
             data: options.data,
@@ -130,18 +122,18 @@ namespace SweetMeSoft {
                 handleAjaxSuccess(options, response);
             },
             error: (jqXhr) => {
-                handleAjaxError(options, jqXhr)
+                handleAjaxError(options, jqXhr);
             }
         });
     }
-
+    SweetMeSoft.get = get;
     /**
      *
      * @param options
      */
-    export function post(options: OptionsRequest) {
-        on();
-        options = <OptionsRequest>(setDefaults(options, defaultsRequest));
+    function post(options) {
+        SweetMeSoft.on();
+        options = (SweetMeSoft.setDefaults(options, SweetMeSoft.defaultsRequest));
         $.ajax({
             url: options.url,
             data: options.data,
@@ -150,14 +142,14 @@ namespace SweetMeSoft {
                 handleAjaxSuccess(options, response);
             },
             error: (jqXhr) => {
-                handleAjaxError(options, jqXhr)
+                handleAjaxError(options, jqXhr);
             }
         });
     }
-
-    export function downloadFile(options: OptionsRequest) {
-        on();
-        options = <OptionsRequest>(setDefaults(options, defaultsRequest));
+    SweetMeSoft.post = post;
+    function downloadFile(options) {
+        SweetMeSoft.on();
+        options = (SweetMeSoft.setDefaults(options, SweetMeSoft.defaultsRequest));
         var form = new FormData();
         for (let item of Object.keys(options.data)) {
             form.append(item, options.data[item]);
@@ -178,40 +170,39 @@ namespace SweetMeSoft {
                 a.download = options.filename;
                 a.click();
                 window.URL.revokeObjectURL(url);
-
                 handleAjaxSuccess(options, data);
             },
             error: (jqXhr) => {
-                handleAjaxError(options, jqXhr)
+                handleAjaxError(options, jqXhr);
             }
         });
     }
-
-    export function uploadFile(options: OptionsRequest) {
-        on();
-        options = <OptionsRequest>(setDefaults(options, defaultsRequest));
+    SweetMeSoft.downloadFile = downloadFile;
+    function uploadFile(options) {
+        SweetMeSoft.on();
+        options = (SweetMeSoft.setDefaults(options, SweetMeSoft.defaultsRequest));
         var form = new FormData();
-        if (options.uploadControl != null && options.uploadControl != undefined) {
-            const files = (options.uploadControl.get(0) as HTMLInputElement).files;
+        if (options.uploadControl != null) {
+            const files = options.uploadControl.get(0).files;
             if (files != null) {
                 for (let i = 0; i < files.length; i++) {
                     form.append('files', files[i]);
                 }
-            } else {
-                swal.fire('Error', 'There is no files selected.', 'error')
+            }
+            else {
+                swal.fire('Error', 'There is no files selected.', 'error');
             }
         }
-
         for (const item of Object.keys(options.data)) {
             if (Array.isArray(options.data[item])) {
                 for (const item2 of options.data[item]) {
                     form.append(item, item2);
                 }
-            } else {
+            }
+            else {
                 form.append(item, options.data[item]);
             }
         }
-
         $.ajax({
             type: 'POST',
             url: options.url,
@@ -227,25 +218,24 @@ namespace SweetMeSoft {
             }
         });
     }
-
-    function handleAjaxError(options: OptionsRequest, jqXhr) {
-        off()
+    SweetMeSoft.uploadFile = uploadFile;
+    function handleAjaxError(options, jqXhr) {
+        SweetMeSoft.off();
         if (options.showError) {
             if (options.errorMessage === undefined || options.errorMessage === null || options.errorMessage === '') {
-                console.error(jqXhr.responseJSON != undefined ? jqXhr.responseJSON.Detail : jqXhr.responseText)
+                console.error(jqXhr.responseJSON != undefined ? jqXhr.responseJSON.Detail : jqXhr.responseText);
                 swal.fire('Error', jqXhr.responseJSON != undefined ? jqXhr.responseJSON.Title : jqXhr.responseText, 'error');
-            } else {
-                console.error(options.errorMessage)
+            }
+            else {
+                console.error(options.errorMessage);
                 swal.fire('Error', options.errorMessage, 'error');
             }
         }
-
-        if (options.errorCallback != undefined && options.errorCallback != null) {
+        if (options.errorCallback != undefined) {
             options.errorCallback(jqXhr);
         }
     }
-
-    function handleAjaxSuccess(options: OptionsRequest, response: any) {
+    function handleAjaxSuccess(options, response) {
         if (options.showSuccess) {
             swal.fire({
                 title: 'Great!',
@@ -257,12 +247,12 @@ namespace SweetMeSoft {
                     }
                 }
             });
-        } else {
+        }
+        else {
             if (options.successCallback != undefined) {
                 options.successCallback(response);
             }
         }
-
-        off();
+        SweetMeSoft.off();
     }
-}
+})(SweetMeSoft || (SweetMeSoft = {}));
