@@ -80,6 +80,7 @@
         customColumns: [],
         buttons: [],
         height: 'auto',
+        canOrder: true,
         onDblClick: (rowData) => { }
     };
     SweetMeSoft.defaultsConsecutive = {

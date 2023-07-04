@@ -260,6 +260,11 @@
          */
         height?: string;
         /**
+         * Enable or disable the ordering in table
+         * @default bool
+         */
+        canOrder?: boolean;
+        /**
          * Allow you define the buttons to show at last column of table
          * @default []
          */
@@ -281,7 +286,7 @@
          * @delete is predefined delete button
          * @custom is for a customized button
          */
-        type: 'update' | 'delete' | 'custom';
+        type: 'update' | 'delete' | 'custom' | 'download';
         /**
          * Icon for button. You can use bootstrap icons. See more info at https://icons.getbootstrap.com/
          * @default ''
@@ -467,6 +472,7 @@
         customColumns: any[];
         buttons: any[];
         height: string;
+        canOrder: boolean;
         onDblClick: (rowData: any) => void;
     };
     export const defaultsConsecutive: {
