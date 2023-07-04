@@ -311,6 +311,12 @@ namespace SweetMeSoft {
         height?: string;
 
         /**
+         * Enable or disable the ordering in table
+         * @default bool
+         */
+        canOrder?: boolean;
+
+        /**
          * Allow you define the buttons to show at last column of table
          * @default []
          */
@@ -568,6 +574,7 @@ namespace SweetMeSoft {
         customColumns: [],
         buttons: [],
         height: 'auto',
+        canOrder: true,
         onDblClick: (rowData) => { }
     };
 

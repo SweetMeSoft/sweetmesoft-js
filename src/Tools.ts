@@ -361,6 +361,7 @@ namespace SweetMeSoft {
                     scrollX: true,
                     scrollY: options.height,
                     retrieve: true,
+                    ordering: options.canOrder,
                     paging: options.showFooter,
                     info: options.showFooter,
                     drawCallback: settings => {
