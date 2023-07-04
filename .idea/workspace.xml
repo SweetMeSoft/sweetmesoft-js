@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47be978f-e6af-4827-9bb2-e827ca58498b" name="Changes" comment="Added NPM dependencies">
+    <list default="true" id="47be978f-e6af-4827-9bb2-e827ca58498b" name="Changes" comment="Update NPM version">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Classes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tools.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tools.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +70,8 @@
       <updated>1687625778634</updated>
       <workItem from="1687625780286" duration="22000" />
       <workItem from="1687625813794" duration="9803000" />
-      <workItem from="1687664288831" duration="511000" />
+      <workItem from="1687664288831" duration="1357000" />
+      <workItem from="1688433186332" duration="1406000" />
     </task>
     <task id="LOCAL-00001" summary="Repo Web moved from SweetMeSoft Library">
       <option name="closed" value="true" />
@@ -93,7 +97,15 @@
       <option name="project" value="LOCAL" />
       <updated>1687664783196</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Update NPM version">
+      <option name="closed" value="true" />
+      <created>1687665062692</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1687665062692</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -114,6 +126,7 @@
     <MESSAGE value="Repo Web moved from SweetMeSoft Library" />
     <MESSAGE value="Added config files" />
     <MESSAGE value="Added NPM dependencies" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added NPM dependencies" />
+    <MESSAGE value="Update NPM version" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update NPM version" />
   </component>
 </project>

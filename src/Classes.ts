@@ -334,7 +334,7 @@ namespace SweetMeSoft {
          * @delete is predefined delete button
          * @custom is for a customized button
          */
-        type: 'update' | 'delete' | 'custom';
+        type: 'update' | 'delete' | 'custom' | 'download';
 
         /**
          * Icon for button. You can use bootstrap icons. See more info at https://icons.getbootstrap.com/

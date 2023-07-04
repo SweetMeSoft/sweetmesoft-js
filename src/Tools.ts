@@ -322,6 +322,9 @@ namespace SweetMeSoft {
                                         case 'delete':
                                             htmlButtons += '<a id="btn' + tableId + indexButton + '" class="btn btn-danger btn-table"><i class="bi-trash3-fill icn-table"></i></a>';
                                             break;
+                                        case 'download':
+                                            htmlButtons += '<a id="btn' + tableId + indexButton + '" class="btn btn-primary btn-table"><i class="bi-download icn-table"></i></a>';
+                                            break;
                                         case 'custom':
                                             htmlButtons += '<a id="btn' + tableId + indexButton + '" class="btn btn-table" style="background-color: ' + button.color + '"><i class="bi-' + button.icon + ' icn-table"></i></a>';
                                             break;
