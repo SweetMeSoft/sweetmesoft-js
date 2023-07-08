@@ -66,11 +66,12 @@
                     if (options.urlValues != undefined && options.urlValues !== '') {
                         get({
                             url: options.urlValues,
+                            showSuccess: false,
                             successCallback: response => {
                                 const array = [];
                                 if (response != null) {
                                     for (let i = 0; i < response.length; i++) {
-                                        array.push(response[i]['Id']);
+                                        array.push(response[i]['id']);
                                     }
                                 }
                                 dropDown.val(array);
