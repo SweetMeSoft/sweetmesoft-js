@@ -31,9 +31,6 @@ namespace SweetMeSoft {
      * @param withTime
      */
     export function getFormatedDate(date: Date, format: string, withTime?: boolean): string {
-        const offset = new Date().getTimezoneOffset();
-        date.setTime(date.getTime() - (offset * 60 * 1000));
-
         const year = date.getFullYear().toString();
         let month = (date.getMonth() + 1).toString();
         let day = date.getDate().toString();
@@ -86,30 +83,30 @@ namespace SweetMeSoft {
     }
 
     export function generateCropper(options: OptionsCropper) {
-        let cropper: Cropper;
-        options.uploadControl.on('change', event => {
-            swal.fire({
-                title: 'Crop image',
-                allowOutsideClick: false,
-                html: '<img id="imgUploadedImage" src="" style="width: 100%; height: 100%;"/>',
-                onOpen: () => {
-                    const upl = $('#imgUploadedImage');
-                    upl.attr('src', URL.createObjectURL((event.target as HTMLInputElement).files[0]));
-                    cropper = new Cropper((upl[0] as HTMLImageElement), {
-                        initialAspectRatio: 1,
-                        aspectRatio: 1,
-                        modal: true,
-                        autoCropArea: 1
-                    })
-                },
-                onClose: () => {
-                    options.imgControl.attr('src', cropper.getCroppedCanvas().toDataURL());
-                    cropper.getCroppedCanvas().toBlob(blob => {
-                        options.callback(blob);
-                    })
-                }
-            });
-        });
+       let cropper: Cropper;
+       options.uploadControl.on('change', event => {
+           swal.fire({
+               title: 'Crop image',
+               allowOutsideClick: false,
+               html: '<img id="imgUploadedImage" src="" style="width: 100%; height: 100%;"/>',
+               onOpen: () => {
+                   const upl = $('#imgUploadedImage');
+                   upl.attr('src', URL.createObjectURL((event.target as HTMLInputElement).files[0]));
+                   cropper = new Cropper((upl[0] as HTMLImageElement), {
+                       initialAspectRatio: 1,
+                       aspectRatio: 1,
+                       modal: true,
+                       autoCropArea: 1
+                   })
+               },
+               onClose: () => {
+                   options.imgControl.attr('src', cropper.getCroppedCanvas().toDataURL());
+                   cropper.getCroppedCanvas().toBlob(blob => {
+                       options.callback(blob);
+                   })
+               }
+           });
+       });
     }
 
     export function generateModal(options: OptionsModal) {
@@ -196,11 +193,12 @@ namespace SweetMeSoft {
                     const keys = Object.keys(data[0]);
                     for (const key of keys) {
                         const customFormat = options.customColumns.find(model => model.originalTitle.toLowerCase() == key.toLowerCase());
+                        let showColumn = customFormat != undefined && customFormat.show != undefined ? customFormat.show(data) : true;
                         columns.push({
                             targets: index,
                             data: key,
                             title: customFormat != undefined ? customFormat.title == undefined ? customFormat.originalTitle : customFormat.title : capitalizeFirstLetter(key),
-                            visible: !options.hiddenColumns.includes(key.toLowerCase()),
+                            visible: !options.hiddenColumns.includes(key.toLowerCase()) && showColumn,
                             className: customFormat != undefined && (customFormat.format == 'currency' || customFormat.format == 'right' || customFormat.format == 'percentaje') ? 'dt-body-right' : '',
                             createdCell: (cell, cellData, rowData, rowIndex, colIndex) => {
                                 if (customFormat != undefined) {

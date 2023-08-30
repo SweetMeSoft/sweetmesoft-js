@@ -31,8 +31,6 @@
      * @param withTime
      */
     function getFormatedDate(date, format, withTime) {
-        const offset = new Date().getTimezoneOffset();
-        date.setTime(date.getTime() - (offset * 60 * 1000));
         const year = date.getFullYear().toString();
         let month = (date.getMonth() + 1).toString();
         let day = date.getDate().toString();
@@ -181,11 +179,12 @@
                     const keys = Object.keys(data[0]);
                     for (const key of keys) {
                         const customFormat = options.customColumns.find(model => model.originalTitle.toLowerCase() == key.toLowerCase());
+                        let showColumn = customFormat != undefined && customFormat.show != undefined ? customFormat.show(data) : true;
                         columns.push({
                             targets: index,
                             data: key,
                             title: customFormat != undefined ? customFormat.title == undefined ? customFormat.originalTitle : customFormat.title : capitalizeFirstLetter(key),
-                            visible: !options.hiddenColumns.includes(key.toLowerCase()),
+                            visible: !options.hiddenColumns.includes(key.toLowerCase()) && showColumn,
                             className: customFormat != undefined && (customFormat.format == 'currency' || customFormat.format == 'right' || customFormat.format == 'percentaje') ? 'dt-body-right' : '',
                             createdCell: (cell, cellData, rowData, rowIndex, colIndex) => {
                                 if (customFormat != undefined) {

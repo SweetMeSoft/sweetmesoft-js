@@ -403,6 +403,13 @@ namespace SweetMeSoft {
          * @default '' You can use HTML color name or hex color. 
          */
         backgroundColor?: string;
+        /**
+         * Function to show or hide the button
+         * @param rowData row data where the button was clicked
+         * @default return true
+         * @returns boolean
+         */
+        show?: (data: any) => boolean;
     }
 
     export interface OptionsRequest {

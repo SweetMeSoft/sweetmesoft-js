@@ -75,6 +75,7 @@
                                     }
                                 }
                                 dropDown.val(array);
+                                dropDown.initializeSelect();
                             }
                         });
                     }
@@ -95,10 +96,7 @@
                             dropDown.val(options.value);
                         }
                     }
-                    dropDown.selectpicker({
-                        width: 'auto'
-                    });
-                    dropDown.selectpicker('refresh');
+                    dropDown.initializeSelect();
                 }
                 if (options.callback != undefined) {
                     options.callback(data);

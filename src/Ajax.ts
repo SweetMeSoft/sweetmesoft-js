@@ -81,6 +81,7 @@ namespace SweetMeSoft {
                                     }
                                 }
                                 dropDown.val(array);
+                                dropDown.initializeSelect();
                             }
                         })
                     } else {
@@ -100,10 +101,7 @@ namespace SweetMeSoft {
                         }
                     }
 
-                    dropDown.selectpicker({
-                        width: 'auto'
-                    });
-                    dropDown.selectpicker('refresh');
+                    dropDown.initializeSelect();
                 }
 
                 if (options.callback != undefined) {
