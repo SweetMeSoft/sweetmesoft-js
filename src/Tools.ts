@@ -202,6 +202,10 @@ namespace SweetMeSoft {
                             className: customFormat != undefined && (customFormat.format == 'currency' || customFormat.format == 'right' || customFormat.format == 'percentaje') ? 'dt-body-right' : '',
                             createdCell: (cell, cellData, rowData, rowIndex, colIndex) => {
                                 if (customFormat != undefined) {
+                                    if(customFormat.popover){
+                                        $(cell).attr('data-bs-toggle', 'popover').attr('data-bs-container', 'body').attr('data-bs-placement', 'top').attr('tabindex', '0').attr('data-bs-trigger', 'focus').attr('data-bs-content', cellData)
+                                    }
+
                                     if (customFormat.backgroundColor != undefined) {
                                         $(cell).css('background-color', customFormat.backgroundColor);
                                     }
@@ -387,6 +391,11 @@ namespace SweetMeSoft {
                                 }
                             })
                         });
+
+                        const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+                        const popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+                            return new bootstrap.Popover(popoverTriggerEl)
+                        })
                     },
                     searching: options.showHeader,
                     pageLength: options.rowsPerPage,

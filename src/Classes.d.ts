@@ -323,6 +323,7 @@
         /**
          * Format for the data in the column
          * @mandatory
+         * @text is the default format.
          * @currency is for format the data as currency (ex: $ 1,000.00) and align to right
          * @percentage is for format the data as percentage (ex: 10.00%) and align to right
          * @right is for align to right the data
@@ -330,7 +331,7 @@
          * @date is for format the data as date (ex: yyyy-MM-dd HH:mm)
          * @boolean is for format the data as disabled checkbox. See more info at https://getbootstrap.com/docs/5.3/forms/checks-radios/#switches
          */
-        format: 'currency' | 'percentaje' | 'right' | 'image' | 'date' | 'boolean';
+        format?: 'text' | 'currency' | 'percentaje' | 'right' | 'image' | 'date' | 'boolean';
         /**
          * New title for the column
          * @default ''
@@ -348,6 +349,10 @@
          * @returns boolean
          */
         show?: (data: any) => boolean;
+        /**
+         * Enable or disable the popover in each cell
+         */
+        popover?: boolean;
     }
     export interface OptionsRequest {
         url: string;

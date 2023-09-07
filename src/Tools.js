@@ -188,6 +188,9 @@
                             className: customFormat != undefined && (customFormat.format == 'currency' || customFormat.format == 'right' || customFormat.format == 'percentaje') ? 'dt-body-right' : '',
                             createdCell: (cell, cellData, rowData, rowIndex, colIndex) => {
                                 if (customFormat != undefined) {
+                                    if (customFormat.popover) {
+                                        $(cell).html('<span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover focus" data-bs-content="' + cellData + '">' + cellData + '</span>');
+                                    }
                                     if (customFormat.backgroundColor != undefined) {
                                         $(cell).css('background-color', customFormat.backgroundColor);
                                     }
@@ -355,6 +358,10 @@
                                     callback.button.callback(callback.row);
                                 }
                             });
+                        });
+                        const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+                        const popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+                            return new bootstrap.Popover(popoverTriggerEl);
                         });
                     },
                     searching: options.showHeader,
