@@ -177,7 +177,7 @@ namespace SweetMeSoft {
          * Event fired when the primary button is clicked. If undefined the primary button is not showed.
          * @default undefined
          */
-        primaryCallback?: Function;
+        primaryCallback<T>(): Promise<T>;
 
         /**
          * Event fired when the secondary button is clicked. If undefined, the secondary button is not showed.
@@ -312,9 +312,15 @@ namespace SweetMeSoft {
 
         /**
          * Enable or disable the ordering in table
-         * @default bool
+         * @default true
          */
         canOrder?: boolean;
+
+        /**
+         * Enable or disable the checkbox at the first column
+         * @default false
+         */
+        showCheckbox?: boolean;
 
         /**
          * Allow you define the buttons to show at last column of table
@@ -587,6 +593,7 @@ namespace SweetMeSoft {
         buttons: [],
         height: 'auto',
         canOrder: true,
+        showCheckbox: false,
         onDblClick: (rowData) => { }
     };
 

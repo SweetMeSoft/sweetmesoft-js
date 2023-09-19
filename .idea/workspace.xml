@@ -4,18 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47be978f-e6af-4827-9bb2-e827ca58498b" name="Changes" comment="Added show button in table">
+    <list default="true" id="47be978f-e6af-4827-9bb2-e827ca58498b" name="Changes" comment="Added default format to datatable">
+      <change afterPath="$PROJECT_DIR$/src/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Classes.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Classes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tools.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tools.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Tools.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tools.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -29,29 +35,32 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2Rf0M8ZUUN0tqVDXKIeRa9g0eth" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Echostar Operating L.L.C/South America - Billing Project/Documentation/Anthony Handover/Desarrollo web - Puntos de pago/Codigo Fuente app Web/sftp-file-loader/Wxlt-sftp-file-loader-98107ccf45d1&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2023.1.3\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "D:/Echostar Operating L.L.C/South America - Billing Project/Documentation/Anthony Handover/Desarrollo web - Puntos de pago/Codigo Fuente app Web/sftp-file-loader/Wxlt-sftp-file-loader-98107ccf45d1",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2023.1.3\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\erick\source\repos\Erick\sweetmesoft-js\lib" />
@@ -87,7 +96,10 @@
       <workItem from="1693251694596" duration="2437000" />
       <workItem from="1693409859590" duration="6366000" />
       <workItem from="1693860137960" duration="1035000" />
-      <workItem from="1694100546107" duration="1567000" />
+      <workItem from="1694100546107" duration="2439000" />
+      <workItem from="1694461206459" duration="5658000" />
+      <workItem from="1694748654329" duration="2255000" />
+      <workItem from="1695166771285" duration="647000" />
     </task>
     <task id="LOCAL-00001" summary="Repo Web moved from SweetMeSoft Library">
       <option name="closed" value="true" />
@@ -161,7 +173,15 @@
       <option name="project" value="LOCAL" />
       <updated>1693409989990</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added default format to datatable">
+      <option name="closed" value="true" />
+      <created>1694102569315</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1694102569315</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,6 +210,7 @@
     <MESSAGE value="Added canOrder option to generateTable" />
     <MESSAGE value="Fix get Url values in getOptions" />
     <MESSAGE value="Added show button in table" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added show button in table" />
+    <MESSAGE value="Added default format to datatable" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added default format to datatable" />
   </component>
 </project>

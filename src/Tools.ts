@@ -84,6 +84,8 @@ namespace SweetMeSoft {
 
     export function generateCropper(options: OptionsCropper) {
        let cropper: Cropper;
+       options.uploadControl.hide();
+       options.imgControl.addClass('animated-cropper')
        options.uploadControl.on('change', event => {
            swal.fire({
                title: 'Crop image',
@@ -144,8 +146,9 @@ namespace SweetMeSoft {
             btnModalPrimary.show();
             btnModalPrimary.off('click')
             btnModalPrimary.on('click', event => {
-                options.primaryCallback()
-                modal.hide()
+                options.primaryCallback().then(value => {
+                    modal.hide();
+                });
             });
         } else {
             btnModalPrimary.hide();
@@ -188,6 +191,15 @@ namespace SweetMeSoft {
                     options.hiddenColumns[index] = column.toLowerCase();
                 })
                 let columns: DataTables.ColumnDefsSettings[] = []
+                if (options.showCheckbox) {
+                    columns.push({
+                        targets: 0,
+                        data: '',
+                        defaultContent: '',
+                        orderable: false,
+                        className: 'select-checkbox'
+                    })
+                }
                 let index = 0;
                 if (data.length > 0) {
                     const keys = Object.keys(data[0]);
@@ -202,8 +214,8 @@ namespace SweetMeSoft {
                             className: customFormat != undefined && (customFormat.format == 'currency' || customFormat.format == 'right' || customFormat.format == 'percentaje') ? 'dt-body-right' : '',
                             createdCell: (cell, cellData, rowData, rowIndex, colIndex) => {
                                 if (customFormat != undefined) {
-                                    if(customFormat.popover){
-                                        $(cell).attr('data-bs-toggle', 'popover').attr('data-bs-container', 'body').attr('data-bs-placement', 'top').attr('tabindex', '0').attr('data-bs-trigger', 'focus').attr('data-bs-content', cellData)
+                                    if (customFormat.popover) {
+                                        $(cell).addClass('popoverclass').attr('data-bs-toggle', 'popover').attr('data-bs-container', 'body').attr('data-bs-placement', 'top').attr('tabindex', '0').attr('data-bs-trigger', 'focus').attr('data-bs-content', cellData)
                                     }
 
                                     if (customFormat.backgroundColor != undefined) {
@@ -366,6 +378,10 @@ namespace SweetMeSoft {
                     ordering: options.canOrder,
                     paging: options.showFooter,
                     info: options.showFooter,
+                    select: options.showCheckbox ? {
+                        style: 'multi',
+                        selector: 'td:first-child'
+                    } : false,
                     drawCallback: settings => {
                         const buttons = options.table.find('.btn-table');
                         buttons.off('click');
@@ -424,5 +440,9 @@ namespace SweetMeSoft {
                 $("[name='" + tableId + "_length']").removeClass('form-select');
             }
         })
+    }
+
+    export function getSelectedRows(table: JQuery): any[] {
+        return table.DataTable().rows({ selected: true }).data().toArray()
     }
 }
