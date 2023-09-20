@@ -83,18 +83,21 @@
             swal.fire({
                 title: 'Crop image',
                 allowOutsideClick: false,
-                html: '<img id="imgUploadedImage" src="" style="width: 100%; height: 100%;"/>',
+                html: '<img id="imgUploadedImage" alt="" src="" style="width: 100%; height: 100%;"/>',
+                showCancelButton: true,
+                cancelButtonText: 'Cancel',
                 onOpen: () => {
                     const upl = $('#imgUploadedImage');
                     upl.attr('src', URL.createObjectURL(event.target.files[0]));
                     cropper = new Cropper(upl[0], {
-                        initialAspectRatio: options.aspectRatio == 'square' ? 1 : +options.aspectRatio,
-                        aspectRatio: options.aspectRatio == 'square' ? 1 : +options.aspectRatio,
+                        initialAspectRatio: getAspectRatio(options.aspectRatio),
+                        aspectRatio: getAspectRatio(options.aspectRatio),
                         modal: true,
                         autoCropArea: 1
                     });
                 },
-                onClose: () => {
+            }).then(value => {
+                if (value == true) {
                     options.imgControl.attr('src', cropper.getCroppedCanvas().toDataURL());
                     cropper.getCroppedCanvas().toBlob(blob => {
                         options.callback(blob);
@@ -136,7 +139,7 @@
         if (options.primaryCallback != undefined) {
             btnModalPrimary.show();
             btnModalPrimary.off('click');
-            btnModalPrimary.on('click', event => {
+            btnModalPrimary.on('click', () => {
                 options.primaryCallback().then((success) => {
                     if (success) {
                         modal.hide();
@@ -150,7 +153,7 @@
         if (options.cancelCallback != undefined) {
             btnModalSecondary.show();
             btnModalSecondary.off('click');
-            btnModalSecondary.on('click', event => {
+            btnModalSecondary.on('click', () => {
                 options.cancelCallback();
             });
         }
@@ -230,6 +233,10 @@
                             render: (data, type, row, meta) => {
                                 if (customFormat != undefined) {
                                     switch (customFormat.format) {
+                                        case "text":
+                                            break;
+                                        case "right":
+                                            break;
                                         case 'currency':
                                             const dollar = new Intl.NumberFormat('en-US', {
                                                 style: 'currency',
@@ -245,9 +252,9 @@
                                             return dollar.format(data);
                                         case 'image':
                                             if (data == null || data == '') {
-                                                return '<img src="/images/default-product.png" class="rounded-circle" style="height:40px; width: 40px;"/>';
+                                                return '<img src="/images/default-product.png" class="rounded-circle" style="height:40px; width: 40px;" alt=""/>';
                                             }
-                                            return '<img src="' + data + '" class="rounded-circle" style="height:40px; width: 40px;"/>';
+                                            return '<img src="' + data + '" class="rounded-circle" style="height:40px; width: 40px;" alt=""/>';
                                         case 'percentaje':
                                             if (data == null) {
                                                 return '0.00%';
@@ -354,7 +361,7 @@
                         style: 'multi',
                         selector: 'td:first-child'
                     } : false,
-                    drawCallback: settings => {
+                    drawCallback: () => {
                         const buttons = options.table.find('.btn-table');
                         buttons.off('click');
                         buttons.each((index, button) => {
@@ -381,7 +388,7 @@
                             });
                         });
                         const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
-                        const popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+                        popoverTriggerList.map(function (popoverTriggerEl) {
                             return new bootstrap.Popover(popoverTriggerEl);
                         });
                     },
@@ -416,4 +423,11 @@
         return table.DataTable().rows({ selected: true }).data().toArray();
     }
     SweetMeSoft.getSelectedRows = getSelectedRows;
+    function getAspectRatio(aspectRatio) {
+        if (aspectRatio == 'square') {
+            return 1;
+        }
+        const [numerador, denominador] = aspectRatio.split('/').map(parseFloat);
+        return (isNaN(numerador) || isNaN(denominador) || denominador === 0) ? undefined : numerador / denominador;
+    }
 })(SweetMeSoft || (SweetMeSoft = {}));
