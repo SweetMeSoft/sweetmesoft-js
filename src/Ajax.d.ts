@@ -3,17 +3,17 @@
      *
      * @param options
      */
-    function getOptions(options: OptionsSelect): void;
+    function getOptions(options: OptionsSelect): Promise<boolean>;
     /**
      *
      * @param options
      */
-    function get(options: OptionsRequest): void;
+    function get(options: OptionsRequest): Promise<boolean>;
     /**
      *
      * @param options
      */
-    function post(options: OptionsRequest): void;
-    function downloadFile(options: OptionsRequest): void;
-    function uploadFile(options: OptionsRequest): void;
+    function post(options: OptionsRequest): Promise<boolean>;
+    function downloadFile(options: OptionsRequest): Promise<boolean>;
+    function uploadFile(options: OptionsRequest): Promise<boolean>;
 }

@@ -137,8 +137,10 @@
             btnModalPrimary.show();
             btnModalPrimary.off('click');
             btnModalPrimary.on('click', event => {
-                options.primaryCallback().then(value => {
-                    modal.hide();
+                options.primaryCallback().then((success) => {
+                    if (success) {
+                        modal.hide();
+                    }
                 });
             });
         }

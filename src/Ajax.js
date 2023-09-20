@@ -4,10 +4,10 @@
      *
      * @param options
      */
-    function getOptions(options) {
+    async function getOptions(options) {
         options = (SweetMeSoft.setDefaults(options, SweetMeSoft.defaultsSelect));
         let extraText = '';
-        get({
+        return get({
             url: options.url,
             data: options.data,
             showSuccess: false,
@@ -80,8 +80,7 @@
                         });
                     }
                     else {
-                        if (options.value != null && options.value !== 0 &&
-                            options.value !== '') {
+                        if (options.value != null && options.value !== 0 && options.value !== '') {
                             dropDown.val(options.value);
                         }
                         else {
@@ -91,8 +90,7 @@
                                 dropDown.val(uniqueOption);
                             }
                         }
-                        if (options.value != null && options.value !== 0 &&
-                            options.value !== '') {
+                        if (options.value != null && options.value !== 0 && options.value !== '') {
                             dropDown.val(options.value);
                         }
                     }
@@ -109,20 +107,20 @@
      *
      * @param options
      */
-    function get(options) {
+    async function get(options) {
         SweetMeSoft.on();
         options = (SweetMeSoft.setDefaults(options, SweetMeSoft.defaultsRequest));
-        $.ajax({
+        return $.ajax({
             url: options.url,
             data: options.data,
             traditional: true,
-            type: 'GET',
-            success: (response) => {
-                handleAjaxSuccess(options, response);
-            },
-            error: (jqXhr) => {
-                handleAjaxError(options, jqXhr);
-            }
+            type: 'GET'
+        }).then((response) => {
+            handleAjaxSuccess(options, response);
+            return true;
+        }).catch((jqXhr) => {
+            handleAjaxError(options, jqXhr);
+            return false;
         });
     }
     SweetMeSoft.get = get;
@@ -130,30 +128,30 @@
      *
      * @param options
      */
-    function post(options) {
+    async function post(options) {
         SweetMeSoft.on();
         options = (SweetMeSoft.setDefaults(options, SweetMeSoft.defaultsRequest));
-        $.ajax({
+        return $.ajax({
             url: options.url,
             data: options.data,
-            type: 'POST',
-            success: response => {
-                handleAjaxSuccess(options, response);
-            },
-            error: (jqXhr) => {
-                handleAjaxError(options, jqXhr);
-            }
+            type: 'POST'
+        }).then((response) => {
+            handleAjaxSuccess(options, response);
+            return true;
+        }).catch((jqXhr) => {
+            handleAjaxError(options, jqXhr);
+            return false;
         });
     }
     SweetMeSoft.post = post;
-    function downloadFile(options) {
+    async function downloadFile(options) {
         SweetMeSoft.on();
         options = (SweetMeSoft.setDefaults(options, SweetMeSoft.defaultsRequest));
         var form = new FormData();
         for (let item of Object.keys(options.data)) {
             form.append(item, options.data[item]);
         }
-        $.ajax({
+        return $.ajax({
             type: 'POST',
             url: options.url,
             processData: false,
@@ -161,23 +159,23 @@
             data: form,
             xhrFields: {
                 responseType: 'blob'
-            },
-            success: (data) => {
-                var a = document.createElement('a');
-                var url = window.URL.createObjectURL(data);
-                a.href = url;
-                a.download = options.filename;
-                a.click();
-                window.URL.revokeObjectURL(url);
-                handleAjaxSuccess(options, data);
-            },
-            error: (jqXhr) => {
-                handleAjaxError(options, jqXhr);
             }
+        }).then((response) => {
+            const a = document.createElement('a');
+            const url = window.URL.createObjectURL(response);
+            a.href = url;
+            a.download = options.filename;
+            a.click();
+            window.URL.revokeObjectURL(url);
+            handleAjaxSuccess(options, response);
+            return true;
+        }).catch((jqXhr) => {
+            handleAjaxError(options, jqXhr);
+            return false;
         });
     }
     SweetMeSoft.downloadFile = downloadFile;
-    function uploadFile(options) {
+    async function uploadFile(options) {
         SweetMeSoft.on();
         options = (SweetMeSoft.setDefaults(options, SweetMeSoft.defaultsRequest));
         var form = new FormData();
@@ -202,19 +200,19 @@
                 form.append(item, options.data[item]);
             }
         }
-        $.ajax({
+        return $.ajax({
             type: 'POST',
             url: options.url,
             dataType: 'json',
             contentType: false,
             processData: false,
-            data: form,
-            success: (response) => {
-                handleAjaxSuccess(options, response);
-            },
-            error: (jqXhr) => {
-                handleAjaxError(options, jqXhr);
-            }
+            data: form
+        }).then((response) => {
+            handleAjaxSuccess(options, response);
+            return true;
+        }).catch((jqXhr) => {
+            handleAjaxError(options, jqXhr);
+            return false;
         });
     }
     SweetMeSoft.uploadFile = uploadFile;

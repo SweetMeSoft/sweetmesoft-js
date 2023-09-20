@@ -159,7 +159,7 @@
          * Event fired when the primary button is clicked. If undefined the primary button is not showed.
          * @default undefined
          */
-        primaryCallback<T>(): Promise<T>;
+        primaryCallback?(): Promise<boolean>;
         /**
          * Event fired when the secondary button is clicked. If undefined, the secondary button is not showed.
          */

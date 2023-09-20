@@ -3,10 +3,10 @@ namespace SweetMeSoft {
      *
      * @param options
      */
-    export function getOptions(options: OptionsSelect) {
+    export async function getOptions(options: OptionsSelect): Promise<boolean> {
         options = <OptionsSelect>(setDefaults(options, defaultsSelect));
         let extraText = '';
-        get({
+        return get({
             url: options.url,
             data: options.data,
             showSuccess: false,
@@ -27,48 +27,47 @@ namespace SweetMeSoft {
                         allowClear = true;
                     }
 
-                    $.each(data,
-                        (key, val) => {
-                            extraText = '';
-                            if (!options.extraOption.isNullOrEmpty()) {
-                                extraText += ' data-' + options.extraOption + '="' + val[options.extraOption] + '"';
-                            }
+                    $.each(data, (key, val) => {
+                        extraText = '';
+                        if (!options.extraOption.isNullOrEmpty()) {
+                            extraText += ' data-' + options.extraOption + '="' + val[options.extraOption] + '"';
+                        }
 
-                            if (!options.extraOption2.isNullOrEmpty()) {
-                                extraText += ' data-' + options.extraOption2 + '="' + val[options.extraOption2] + '"';
-                            }
+                        if (!options.extraOption2.isNullOrEmpty()) {
+                            extraText += ' data-' + options.extraOption2 + '="' + val[options.extraOption2] + '"';
+                        }
 
-                            if (!options.extraOption3.isNullOrEmpty()) {
-                                extraText += ' data-' + options.extraOption3 + '="' + val[options.extraOption3] + '"';
-                            }
+                        if (!options.extraOption3.isNullOrEmpty()) {
+                            extraText += ' data-' + options.extraOption3 + '="' + val[options.extraOption3] + '"';
+                        }
 
-                            if (!options.subTextOption.isNullOrEmpty()) {
-                                extraText += ' data-subtext="' + val[options.subTextOption].slice(0, options.limitSubTextOption) + '"';
-                            }
+                        if (!options.subTextOption.isNullOrEmpty()) {
+                            extraText += ' data-subtext="' + val[options.subTextOption].slice(0, options.limitSubTextOption) + '"';
+                        }
 
-                            if (val != null && options.text == '') {
-                                dropDown.append('<option value="' + val + '"' + extraText + '>' + val + '</option>');
-                            } else {
-                                if (val != null && options.text != undefined) {
-                                    const route = options.text.split('.');
-                                    let text = '';
-                                    let copy = val;
-                                    for (let item of route) {
-                                        text = copy[item]
-                                        copy = val[item]
-                                    }
-
-                                    let smallText = '';
-                                    if (!options.subTextOption.isNullOrEmpty()) {
-                                        smallText = '<small class=\'text-muted\'>' + val[options.subTextOption].slice(0, options.limitSubTextOption) + '</small>';
-                                    }
-
-                                    let flag = options.isCountries ? 'data-content="<img src=\'https://flagsapi.com/' + val.code + '/flat/24.png\' style=\'margin-right: .7rem;\'>' + text + " " + smallText + ' "' : '';
-
-                                    dropDown.append('<option ' + flag + ' value="' + val[options.internal] + '"' + extraText + '>' + text + '</option>');
+                        if (val != null && options.text == '') {
+                            dropDown.append('<option value="' + val + '"' + extraText + '>' + val + '</option>');
+                        } else {
+                            if (val != null && options.text != undefined) {
+                                const route = options.text.split('.');
+                                let text = '';
+                                let copy = val;
+                                for (let item of route) {
+                                    text = copy[item]
+                                    copy = val[item]
                                 }
+
+                                let smallText = '';
+                                if (!options.subTextOption.isNullOrEmpty()) {
+                                    smallText = '<small class=\'text-muted\'>' + val[options.subTextOption].slice(0, options.limitSubTextOption) + '</small>';
+                                }
+
+                                let flag = options.isCountries ? 'data-content="<img src=\'https://flagsapi.com/' + val.code + '/flat/24.png\' style=\'margin-right: .7rem;\'>' + text + " " + smallText + ' "' : '';
+
+                                dropDown.append('<option ' + flag + ' value="' + val[options.internal] + '"' + extraText + '>' + text + '</option>');
                             }
-                        });
+                        }
+                    });
                     if (options.urlValues != undefined && options.urlValues !== '') {
                         get({
                             url: options.urlValues,
@@ -85,8 +84,7 @@ namespace SweetMeSoft {
                             }
                         })
                     } else {
-                        if (options.value != null && options.value !== 0 &&
-                            options.value !== '') {
+                        if (options.value != null && options.value !== 0 && options.value !== '') {
                             dropDown.val(options.value);
                         } else {
                             if (data.length === 1 && options.autoSelect) {
@@ -95,8 +93,7 @@ namespace SweetMeSoft {
                                 dropDown.val(uniqueOption);
                             }
                         }
-                        if (options.value != null && options.value !== 0 &&
-                            options.value !== '') {
+                        if (options.value != null && options.value !== 0 && options.value !== '') {
                             dropDown.val(options.value);
                         }
                     }
@@ -115,20 +112,20 @@ namespace SweetMeSoft {
      *
      * @param options
      */
-    export function get(options: OptionsRequest) {
+    export async function get(options: OptionsRequest): Promise<boolean> {
         on();
         options = <OptionsRequest>(setDefaults(options, defaultsRequest));
-        $.ajax({
+        return $.ajax({
             url: options.url,
             data: options.data,
             traditional: true,
-            type: 'GET',
-            success: (response) => {
-                handleAjaxSuccess(options, response);
-            },
-            error: (jqXhr) => {
-                handleAjaxError(options, jqXhr)
-            }
+            type: 'GET'
+        }).then((response) => {
+            handleAjaxSuccess(options, response);
+            return true;
+        }).catch((jqXhr) => {
+            handleAjaxError(options, jqXhr)
+            return false;
         });
     }
 
@@ -136,30 +133,30 @@ namespace SweetMeSoft {
      *
      * @param options
      */
-    export function post(options: OptionsRequest) {
+    export async function post(options: OptionsRequest): Promise<boolean> {
         on();
         options = <OptionsRequest>(setDefaults(options, defaultsRequest));
-        $.ajax({
+        return $.ajax({
             url: options.url,
             data: options.data,
-            type: 'POST',
-            success: response => {
-                handleAjaxSuccess(options, response);
-            },
-            error: (jqXhr) => {
-                handleAjaxError(options, jqXhr)
-            }
+            type: 'POST'
+        }).then((response) => {
+            handleAjaxSuccess(options, response);
+            return true;
+        }).catch((jqXhr) => {
+            handleAjaxError(options, jqXhr)
+            return false;
         });
     }
 
-    export function downloadFile(options: OptionsRequest) {
+    export async function downloadFile(options: OptionsRequest): Promise<boolean> {
         on();
         options = <OptionsRequest>(setDefaults(options, defaultsRequest));
         var form = new FormData();
         for (let item of Object.keys(options.data)) {
             form.append(item, options.data[item]);
         }
-        $.ajax({
+        return $.ajax({
             type: 'POST',
             url: options.url,
             processData: false,
@@ -167,24 +164,23 @@ namespace SweetMeSoft {
             data: form,
             xhrFields: {
                 responseType: 'blob'
-            },
-            success: (data) => {
-                var a = document.createElement('a');
-                var url = window.URL.createObjectURL(data);
-                a.href = url;
-                a.download = options.filename;
-                a.click();
-                window.URL.revokeObjectURL(url);
-
-                handleAjaxSuccess(options, data);
-            },
-            error: (jqXhr) => {
-                handleAjaxError(options, jqXhr)
             }
+        }).then((response) => {
+            const a = document.createElement('a');
+            const url = window.URL.createObjectURL(response);
+            a.href = url;
+            a.download = options.filename;
+            a.click();
+            window.URL.revokeObjectURL(url);
+            handleAjaxSuccess(options, response);
+            return true;
+        }).catch((jqXhr) => {
+            handleAjaxError(options, jqXhr)
+            return false;
         });
     }
 
-    export function uploadFile(options: OptionsRequest) {
+    export async function uploadFile(options: OptionsRequest): Promise<boolean> {
         on();
         options = <OptionsRequest>(setDefaults(options, defaultsRequest));
         var form = new FormData();
@@ -209,19 +205,19 @@ namespace SweetMeSoft {
             }
         }
 
-        $.ajax({
+        return $.ajax({
             type: 'POST',
             url: options.url,
             dataType: 'json',
             contentType: false,
             processData: false,
-            data: form,
-            success: (response) => {
-                handleAjaxSuccess(options, response);
-            },
-            error: (jqXhr) => {
-                handleAjaxError(options, jqXhr);
-            }
+            data: form
+        }).then((response) => {
+            handleAjaxSuccess(options, response);
+            return true;
+        }).catch((jqXhr) => {
+            handleAjaxError(options, jqXhr)
+            return false;
         });
     }
 

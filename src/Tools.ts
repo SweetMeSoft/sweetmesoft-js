@@ -149,8 +149,10 @@ namespace SweetMeSoft {
             btnModalPrimary.show();
             btnModalPrimary.off('click')
             btnModalPrimary.on('click', event => {
-                options.primaryCallback().then(value => {
-                    modal.hide();
+                options.primaryCallback().then((success: boolean) => {
+                    if (success) {
+                        modal.hide();
+                    }
                 });
             });
         } else {
@@ -177,7 +179,6 @@ namespace SweetMeSoft {
         }
 
         modalDialog.css('height', options.height);
-
         modal.show();
     }
 
