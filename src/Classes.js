@@ -47,6 +47,8 @@
         isCountries: false
     };
     SweetMeSoft.defaultCropper = {
+        circleCrop: false,
+        aspectRatio: 'square',
         callback: (blob) => { }
     };
     SweetMeSoft.defaultsModal = {
@@ -81,6 +83,7 @@
         buttons: [],
         height: 'auto',
         canOrder: true,
+        showCheckbox: false,
         onDblClick: (rowData) => { }
     };
     SweetMeSoft.defaultsConsecutive = {

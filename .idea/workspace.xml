@@ -4,12 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47be978f-e6af-4827-9bb2-e827ca58498b" name="Changes" comment="Added default format to datatable">
-      <change afterPath="$PROJECT_DIR$/src/styles.css" afterDir="false" />
+    <list default="true" id="47be978f-e6af-4827-9bb2-e827ca58498b" name="Changes" comment="Added default animations to cropper">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Classes.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Classes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Classes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tools.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tools.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tools.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tools.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Tools.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tools.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +34,19 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="6aa56ddd-9a1f-4a1e-bb61-a8275342c258" />
+        <option name="url" value="https://github.com/SweetMeSoft/sweetmesoft-js.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -99,7 +116,7 @@
       <workItem from="1694100546107" duration="2439000" />
       <workItem from="1694461206459" duration="5658000" />
       <workItem from="1694748654329" duration="2255000" />
-      <workItem from="1695166771285" duration="647000" />
+      <workItem from="1695166771285" duration="3286000" />
     </task>
     <task id="LOCAL-00001" summary="Repo Web moved from SweetMeSoft Library">
       <option name="closed" value="true" />
@@ -181,7 +198,15 @@
       <option name="project" value="LOCAL" />
       <updated>1694102569315</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Added default animations to cropper">
+      <option name="closed" value="true" />
+      <created>1695167487529</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1695167487529</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,6 +236,7 @@
     <MESSAGE value="Fix get Url values in getOptions" />
     <MESSAGE value="Added show button in table" />
     <MESSAGE value="Added default format to datatable" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added default format to datatable" />
+    <MESSAGE value="Added default animations to cropper" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added default animations to cropper" />
   </component>
 </project>

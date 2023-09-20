@@ -83,32 +83,35 @@ namespace SweetMeSoft {
     }
 
     export function generateCropper(options: OptionsCropper) {
-       let cropper: Cropper;
-       options.uploadControl.hide();
-       options.imgControl.addClass('animated-cropper')
-       options.uploadControl.on('change', event => {
-           swal.fire({
-               title: 'Crop image',
-               allowOutsideClick: false,
-               html: '<img id="imgUploadedImage" src="" style="width: 100%; height: 100%;"/>',
-               onOpen: () => {
-                   const upl = $('#imgUploadedImage');
-                   upl.attr('src', URL.createObjectURL((event.target as HTMLInputElement).files[0]));
-                   cropper = new Cropper((upl[0] as HTMLImageElement), {
-                       initialAspectRatio: 1,
-                       aspectRatio: 1,
-                       modal: true,
-                       autoCropArea: 1
-                   })
-               },
-               onClose: () => {
-                   options.imgControl.attr('src', cropper.getCroppedCanvas().toDataURL());
-                   cropper.getCroppedCanvas().toBlob(blob => {
-                       options.callback(blob);
-                   })
-               }
-           });
-       });
+        let cropper: Cropper;
+        options.uploadControl.hide();
+        options.imgControl.addClass('animate-cropper')
+        options.imgControl.on('click', () => {
+            options.uploadControl.click()
+        })
+        options.uploadControl.on('change', event => {
+            swal.fire({
+                title: 'Crop image',
+                allowOutsideClick: false,
+                html: '<img id="imgUploadedImage" src="" style="width: 100%; height: 100%;"/>',
+                onOpen: () => {
+                    const upl = $('#imgUploadedImage');
+                    upl.attr('src', URL.createObjectURL((event.target as HTMLInputElement).files[0]));
+                    cropper = new Cropper((upl[0] as HTMLImageElement), {
+                        initialAspectRatio: options.aspectRatio == 'square' ? 1 : +options.aspectRatio,
+                        aspectRatio: options.aspectRatio == 'square' ? 1 : +options.aspectRatio,
+                        modal: true,
+                        autoCropArea: 1
+                    })
+                },
+                onClose: () => {
+                    options.imgControl.attr('src', cropper.getCroppedCanvas().toDataURL());
+                    cropper.getCroppedCanvas().toBlob(blob => {
+                        options.callback(blob);
+                    })
+                }
+            });
+        });
     }
 
     export function generateModal(options: OptionsModal) {
@@ -443,6 +446,6 @@ namespace SweetMeSoft {
     }
 
     export function getSelectedRows(table: JQuery): any[] {
-        return table.DataTable().rows({ selected: true }).data().toArray()
+        return table.DataTable().rows({selected: true}).data().toArray()
     }
 }

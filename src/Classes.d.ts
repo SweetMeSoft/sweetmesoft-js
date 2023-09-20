@@ -111,6 +111,16 @@
          */
         imgControl: JQuery;
         /**
+         * The cropper will be circle
+         * @default false
+        circleCrop?: boolean;
+         */
+        /**
+         * Callback function for execute something when the image is cropped
+         * @default square
+         */
+        aspectRatio?: 'square' | '2/3' | '3/2' | '4/3' | '3/4' | '16/9' | '9/16' | '20/9' | '9/20';
+        /**
          * Callback function for execute something when the image is cropped
          * @param blob
          * @returns
@@ -149,7 +159,7 @@
          * Event fired when the primary button is clicked. If undefined the primary button is not showed.
          * @default undefined
          */
-        primaryCallback?: Function;
+        primaryCallback<T>(): Promise<T>;
         /**
          * Event fired when the secondary button is clicked. If undefined, the secondary button is not showed.
          */
@@ -261,9 +271,14 @@
         height?: string;
         /**
          * Enable or disable the ordering in table
-         * @default bool
+         * @default true
          */
         canOrder?: boolean;
+        /**
+         * Enable or disable the checkbox at the first column
+         * @default false
+         */
+        showCheckbox?: boolean;
         /**
          * Allow you define the buttons to show at last column of table
          * @default []
@@ -451,6 +466,8 @@
         isCountries: boolean;
     };
     export const defaultCropper: {
+        circleCrop: boolean;
+        aspectRatio: string;
         callback: (blob: any) => void;
     };
     export const defaultsModal: {
@@ -485,6 +502,7 @@
         buttons: any[];
         height: string;
         canOrder: boolean;
+        showCheckbox: boolean;
         onDblClick: (rowData: any) => void;
     };
     export const defaultsConsecutive: {

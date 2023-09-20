@@ -74,6 +74,11 @@
     SweetMeSoft.getUrlParameter = getUrlParameter;
     function generateCropper(options) {
         let cropper;
+        options.uploadControl.hide();
+        options.imgControl.addClass('animate-cropper');
+        options.imgControl.on('click', () => {
+            options.uploadControl.click();
+        });
         options.uploadControl.on('change', event => {
             swal.fire({
                 title: 'Crop image',
@@ -83,8 +88,8 @@
                     const upl = $('#imgUploadedImage');
                     upl.attr('src', URL.createObjectURL(event.target.files[0]));
                     cropper = new Cropper(upl[0], {
-                        initialAspectRatio: 1,
-                        aspectRatio: 1,
+                        initialAspectRatio: options.aspectRatio == 'square' ? 1 : +options.aspectRatio,
+                        aspectRatio: options.aspectRatio == 'square' ? 1 : +options.aspectRatio,
                         modal: true,
                         autoCropArea: 1
                     });
@@ -132,8 +137,9 @@
             btnModalPrimary.show();
             btnModalPrimary.off('click');
             btnModalPrimary.on('click', event => {
-                options.primaryCallback();
-                modal.hide();
+                options.primaryCallback().then(value => {
+                    modal.hide();
+                });
             });
         }
         else {
@@ -174,6 +180,15 @@
                     options.hiddenColumns[index] = column.toLowerCase();
                 });
                 let columns = [];
+                if (options.showCheckbox) {
+                    columns.push({
+                        targets: 0,
+                        data: '',
+                        defaultContent: '',
+                        orderable: false,
+                        className: 'select-checkbox'
+                    });
+                }
                 let index = 0;
                 if (data.length > 0) {
                     const keys = Object.keys(data[0]);
@@ -189,7 +204,7 @@
                             createdCell: (cell, cellData, rowData, rowIndex, colIndex) => {
                                 if (customFormat != undefined) {
                                     if (customFormat.popover) {
-                                        $(cell).html('<span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover focus" data-bs-content="' + cellData + '">' + cellData + '</span>');
+                                        $(cell).addClass('popoverclass').attr('data-bs-toggle', 'popover').attr('data-bs-container', 'body').attr('data-bs-placement', 'top').attr('tabindex', '0').attr('data-bs-trigger', 'focus').attr('data-bs-content', cellData);
                                     }
                                     if (customFormat.backgroundColor != undefined) {
                                         $(cell).css('background-color', customFormat.backgroundColor);
@@ -333,6 +348,10 @@
                     ordering: options.canOrder,
                     paging: options.showFooter,
                     info: options.showFooter,
+                    select: options.showCheckbox ? {
+                        style: 'multi',
+                        selector: 'td:first-child'
+                    } : false,
                     drawCallback: settings => {
                         const buttons = options.table.find('.btn-table');
                         buttons.off('click');
@@ -391,4 +410,8 @@
         });
     }
     SweetMeSoft.generateTable = generateTable;
+    function getSelectedRows(table) {
+        return table.DataTable().rows({ selected: true }).data().toArray();
+    }
+    SweetMeSoft.getSelectedRows = getSelectedRows;
 })(SweetMeSoft || (SweetMeSoft = {}));

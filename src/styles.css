@@ -1,6 +1,5 @@
 .animate-cropper {
-    width: 100px;
-    height: 100px;
+    cursor: pointer;
     transition: transform 0.3s ease, opacity 0.3s ease; /* Usamos transform para cambiar el tamaño y opacity para cambiar la transparencia */
 }
 .animate-cropper:hover {

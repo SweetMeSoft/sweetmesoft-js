@@ -134,6 +134,18 @@ namespace SweetMeSoft {
         imgControl: JQuery;
 
         /**
+         * The cropper will be circle
+         * @default false
+        circleCrop?: boolean;
+         */
+
+        /**
+         * Callback function for execute something when the image is cropped
+         * @default square
+         */
+        aspectRatio?: 'square' | '2/3' | '3/2' | '4/3' | '3/4' | '16/9' | '9/16' | '20/9' | '9/20';
+
+        /**
          * Callback function for execute something when the image is cropped
          * @param blob
          * @returns
@@ -557,6 +569,8 @@ namespace SweetMeSoft {
     };
 
     export const defaultCropper = {
+        circleCrop: false,
+        aspectRatio: 'square',
         callback: (blob) => { }
     }
 

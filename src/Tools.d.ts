@@ -14,4 +14,5 @@
     function generateCropper(options: OptionsCropper): void;
     function generateModal(options: OptionsModal): void;
     function generateTable(options: OptionsTable): void;
+    function getSelectedRows(table: JQuery): any[];
 }
