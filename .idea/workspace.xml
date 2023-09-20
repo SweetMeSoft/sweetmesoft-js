@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="47be978f-e6af-4827-9bb2-e827ca58498b" name="Changes" comment="Fix aspect ratio for cropper">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tools.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tools.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Tools.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tools.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -111,7 +109,7 @@
       <workItem from="1694100546107" duration="2439000" />
       <workItem from="1694461206459" duration="5658000" />
       <workItem from="1694748654329" duration="2255000" />
-      <workItem from="1695166771285" duration="9909000" />
+      <workItem from="1695166771285" duration="9964000" />
     </task>
     <task id="LOCAL-00001" summary="Repo Web moved from SweetMeSoft Library">
       <option name="closed" value="true" />
@@ -217,7 +215,15 @@
       <option name="project" value="LOCAL" />
       <updated>1695174805925</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Fix aspect ratio for cropper">
+      <option name="closed" value="true" />
+      <created>1695176860095</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1695176860095</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

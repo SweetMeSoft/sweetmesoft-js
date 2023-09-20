@@ -107,7 +107,7 @@ namespace SweetMeSoft {
                     })
                 },
             }).then(value => {
-                if (value == true) {
+                if (value.value === true) {
                     options.imgControl.attr('src', cropper.getCroppedCanvas().toDataURL());
                     cropper.getCroppedCanvas().toBlob(blob => {
                         options.callback(blob);
