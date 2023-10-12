@@ -68,10 +68,11 @@
         cancelText: 'Cancel'
     };
     SweetMeSoft.defaultsTable = {
-        table: null,
+        type: 'url',
+        data: [],
+        url: '',
+        urlParams: {},
         rowsPerPage: 10,
-        dataUrl: '',
-        dataParams: {},
         noDataText: 'No info',
         hiddenColumns: [],
         additionalColumns: [],

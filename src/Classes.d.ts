@@ -213,22 +213,32 @@
          */
         table: JQuery;
         /**
-         * Number of rows per page
+         * Way to get information
          */
-        rowsPerPage?: number;
+        type?: 'url' | 'list';
+        /**
+         * List of objects to create the table
+         * If 'type' is list, this field is mandatory
+         */
+        data?: any[];
         /**
          * Url to get the data
+         * If 'type' is url, this field is mandatory
          */
-        dataUrl?: string;
+        url?: string;
         /**
          * Params to get the data
          */
-        dataParams?: Object;
+        urlParams?: Object;
         /**
          * Text
          * @default No info
          */
         noDataText?: string;
+        /**
+         * Number of rows per page
+         */
+        rowsPerPage?: number;
         /**
          * Name of columns to hide. These would be written at lowercase
          * @default []
@@ -346,7 +356,7 @@
          * @date is for format the data as date (ex: yyyy-MM-dd HH:mm)
          * @boolean is for format the data as disabled checkbox. See more info at https://getbootstrap.com/docs/5.3/forms/checks-radios/#switches
          */
-        format?: 'text' | 'currency' | 'percentaje' | 'right' | 'image' | 'date' | 'boolean';
+        format?: 'text' | 'currency' | 'percentaje' | 'right' | 'image' | 'date' | 'boolean' | 'link';
         /**
          * New title for the column
          * @default ''
@@ -487,10 +497,11 @@
         cancelText: string;
     };
     export const defaultsTable: {
-        table: any;
+        type: string;
+        data: any[];
+        url: string;
+        urlParams: {};
         rowsPerPage: number;
-        dataUrl: string;
-        dataParams: {};
         noDataText: string;
         hiddenColumns: any[];
         additionalColumns: any[];
