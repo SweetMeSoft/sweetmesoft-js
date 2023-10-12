@@ -220,8 +220,8 @@
         SweetMeSoft.off();
         if (options.showError) {
             if (options.errorMessage === undefined || options.errorMessage === null || options.errorMessage === '') {
-                console.error(jqXhr.responseJSON != undefined ? jqXhr.responseJSON.Detail : jqXhr.responseText);
-                swal.fire('Error', jqXhr.responseJSON != undefined ? jqXhr.responseJSON.Title : jqXhr.responseText, 'error');
+                console.error(jqXhr.responseJSON != undefined ? jqXhr.responseJSON.detail : jqXhr.responseText);
+                swal.fire('Error', jqXhr.responseJSON != undefined ? jqXhr.responseJSON.title : jqXhr.responseText, 'error');
             }
             else {
                 console.error(options.errorMessage);
