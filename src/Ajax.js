@@ -114,7 +114,8 @@
             url: options.url,
             data: options.data,
             traditional: true,
-            type: 'GET'
+            type: 'GET',
+            beforeSend: function (xhr) { xhr.setRequestHeader('timezone', Intl.DateTimeFormat().resolvedOptions().timeZone); }
         }).then((response) => {
             handleAjaxSuccess(options, response);
             return true;
@@ -134,7 +135,8 @@
         return $.ajax({
             url: options.url,
             data: options.data,
-            type: 'POST'
+            type: 'POST',
+            beforeSend: function (xhr) { xhr.setRequestHeader('timezone', Intl.DateTimeFormat().resolvedOptions().timeZone); }
         }).then((response) => {
             handleAjaxSuccess(options, response);
             return true;
@@ -157,6 +159,7 @@
             processData: false,
             contentType: false,
             data: form,
+            beforeSend: function (xhr) { xhr.setRequestHeader('timezone', Intl.DateTimeFormat().resolvedOptions().timeZone); },
             xhrFields: {
                 responseType: 'blob'
             }
@@ -206,7 +209,8 @@
             dataType: 'json',
             contentType: false,
             processData: false,
-            data: form
+            data: form,
+            beforeSend: function (xhr) { xhr.setRequestHeader('timezone', Intl.DateTimeFormat().resolvedOptions().timeZone); }
         }).then((response) => {
             handleAjaxSuccess(options, response);
             return true;

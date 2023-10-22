@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47be978f-e6af-4827-9bb2-e827ca58498b" name="Changes" comment="Added create table from local array">
+    <list default="true" id="47be978f-e6af-4827-9bb2-e827ca58498b" name="Changes" comment="Change json to lowercase">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Ajax.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ajax.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Ajax.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ajax.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -120,7 +121,8 @@
       <workItem from="1696010511814" duration="1221000" />
       <workItem from="1696384960615" duration="910000" />
       <workItem from="1697120564689" duration="1220000" />
-      <workItem from="1697146401123" duration="80000" />
+      <workItem from="1697146401123" duration="524000" />
+      <workItem from="1697941432572" duration="705000" />
     </task>
     <task id="LOCAL-00001" summary="Repo Web moved from SweetMeSoft Library">
       <option name="closed" value="true" />
@@ -250,7 +252,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697124935589</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Change json to lowercase">
+      <option name="closed" value="true" />
+      <created>1697146520428</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1697146520428</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -285,6 +295,7 @@
     <MESSAGE value="Added async await and promises to Ajax" />
     <MESSAGE value="Fix aspect ratio for cropper" />
     <MESSAGE value="Added create table from local array" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added create table from local array" />
+    <MESSAGE value="Change json to lowercase" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change json to lowercase" />
   </component>
 </project>
