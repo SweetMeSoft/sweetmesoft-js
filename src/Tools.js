@@ -179,11 +179,11 @@
                 url: options.url,
                 data: options.urlParams,
                 showSuccess: false,
-                successCallback: data => this.createTable(options, data)
+                successCallback: data => createTable(options, data)
             });
         }
         else {
-            this.createTable(options, options.data);
+            createTable(options, options.data);
         }
     }
     SweetMeSoft.generateTable = generateTable;
@@ -217,7 +217,7 @@
                     data: key,
                     title: customFormat != undefined ? customFormat.title == undefined ? customFormat.originalTitle : customFormat.title : capitalizeFirstLetter(key),
                     visible: !options.hiddenColumns.includes(key.toLowerCase()) && showColumn,
-                    className: customFormat != undefined && (customFormat.format == 'currency' || customFormat.format == 'right' || customFormat.format == 'percentaje') ? 'dt-body-right' : '',
+                    className: customFormat != undefined && (customFormat.format == 'currency' || customFormat.format == 'right' || customFormat.format == 'percentage') ? 'dt-body-right' : '',
                     createdCell: (cell, cellData, rowData, rowIndex, colIndex) => {
                         if (customFormat != undefined) {
                             if (customFormat.popover) {
@@ -228,7 +228,7 @@
                             }
                             switch (customFormat.format) {
                                 case 'currency':
-                                case 'percentaje':
+                                case 'percentage':
                                     if (+cellData > 0) {
                                         $(cell).css('color', 'green');
                                     }
@@ -266,7 +266,7 @@
                                         return '<img src="/images/default-product.png" class="rounded-circle" style="height:40px; width: 40px;" alt=""/>';
                                     }
                                     return '<img src="' + data + '" class="rounded-circle" style="height:40px; width: 40px;" alt=""/>';
-                                case 'percentaje':
+                                case 'percentage':
                                     if (data == null) {
                                         return '0.00%';
                                     }
@@ -278,7 +278,9 @@
                                     const isChecked = (data == 'true' || data == 'True' || data == 'TRUE' || data == true || data == 1 || data == '1') ? 'checked' : '';
                                     return '<div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" id="chk" disabled ' + isChecked + '><label class="form-check-label" for="chk"></label></div>';
                                 case 'date':
-                                    return SweetMeSoft.getFormatedDate(new Date(data), 'yyyy-MM-dd', true);
+                                    return SweetMeSoft.getFormatedDate(new Date(data), 'yyyy-MM-dd', false);
+                                case 'datetime':
+                                    return SweetMeSoft.getFormatedDate(new Date(data), 'yyyy-MM-dd HH:mm:ss', true);
                                 case 'link':
                                     return '<a target="_blank" href="' + data + '">' + data + '</a>';
                             }
@@ -361,7 +363,7 @@
             table.destroy();
             options.table.html('');
         }
-        const indexColumn = columns.findIndex(model => model.data.toString().toLowerCase() == options.defaultOrderColumn);
+        const indexColumn = columns.findIndex(model => model.data.toString().toLowerCase() == options.defaultOrderColumn.toLowerCase());
         let table = options.table.DataTable({
             data: data,
             columns: columns,

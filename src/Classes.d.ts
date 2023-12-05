@@ -307,8 +307,9 @@
     interface TableButton {
         /**
          * Type of button
-         * @update is predefined edit button
-         * @delete is predefined delete button
+         * @update is predefined blue edit button
+         * @delete is predefined red delete button
+         * @download is predefined blue download button
          * @custom is for a customized button
          */
         type: 'update' | 'delete' | 'custom' | 'download';
@@ -356,7 +357,7 @@
          * @date is for format the data as date (ex: yyyy-MM-dd HH:mm)
          * @boolean is for format the data as disabled checkbox. See more info at https://getbootstrap.com/docs/5.3/forms/checks-radios/#switches
          */
-        format?: 'text' | 'currency' | 'percentaje' | 'right' | 'image' | 'date' | 'boolean' | 'link';
+        format?: 'text' | 'currency' | 'percentage' | 'right' | 'image' | 'date' | 'datetime' | 'boolean' | 'link';
         /**
          * New title for the column
          * @default ''
@@ -454,8 +455,32 @@
         html: string;
         item: any;
     }
-    export const defaultsSaveObject: OptionsPostObject;
-    export const defaultsDeleteObject: OptionsPostObject;
+    export interface OptionsChart {
+        /**
+         * canvas where the chart will be painted
+         * @mandatory
+         */
+        chart: JQuery;
+        /**
+         * Endpoint where the info will be got
+         * @mandatory
+         */
+        url: string;
+        /**
+         * Parameters of get request
+         * @default null
+         */
+        data?: string | Object;
+        /**
+         * @daily show a view since 1-31 in the X axis
+         * @monthly show a bar since jan-dec in the X axis
+         */
+        interval?: 'daily' | 'monthly';
+        /**
+         * Field name of data response taken to split info in same interval
+         */
+        subFilter?: string;
+    }
     export const defaultsSelect: {
         url: string;
         data: {};
@@ -525,18 +550,8 @@
         saveOp: boolean;
         successEvent: (data: any) => void;
     };
-    export const defaultsRequest: {
-        url: string;
-        filename: string;
-        data: string;
-        uploadControl: any;
-        successCallback: (response: any) => void;
-        errorCallback: (response: any) => void;
-        errorMessage: string;
-        successMessage: string;
-        showError: boolean;
-        showSuccess: boolean;
-    };
+    export const defaultsRequest: OptionsRequest;
+    export const defaultsChart: OptionsChart;
     export interface AutocompleteExtendedItem {
         id: string;
         text: string;

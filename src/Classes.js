@@ -4,28 +4,6 @@
         return Object.assign({}, defaults, options);
     }
     SweetMeSoft.setDefaults = setDefaults;
-    SweetMeSoft.defaultsSaveObject = {
-        url: '',
-        object: {},
-        callback: undefined,
-        errorCallback: undefined,
-        text: '',
-        successMessage: 'It saved successfully.',
-        errorMessage: 'We cannot save it.',
-        showConfirmMessage: true,
-        showErrorMessage: true
-    };
-    SweetMeSoft.defaultsDeleteObject = {
-        url: '',
-        object: {},
-        callback: undefined,
-        errorCallback: undefined,
-        text: 'Are you sure?',
-        successMessage: 'It was deleted successful.',
-        errorMessage: 'It could not be deleted.',
-        showConfirmMessage: true,
-        showErrorMessage: true
-    };
     SweetMeSoft.defaultsSelect = {
         url: '',
         data: {},
@@ -110,6 +88,12 @@
         successMessage: '',
         showError: true,
         showSuccess: true
+    };
+    SweetMeSoft.defaultsChart = {
+        url: "",
+        chart: undefined,
+        data: '',
+        interval: 'daily'
     };
     SweetMeSoft.defaultDateTimePickerOptions = {
         minDate: null,

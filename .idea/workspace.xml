@@ -4,11 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47be978f-e6af-4827-9bb2-e827ca58498b" name="Changes" comment="Change json to lowercase">
+    <list default="true" id="47be978f-e6af-4827-9bb2-e827ca58498b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/chartjs/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Charts.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ajax.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ajax.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ajax.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ajax.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Classes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Common.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Common.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tools.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tools.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tools.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tools.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,8 +68,9 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Echostar Operating L.L.C/South America - Billing Project/Documentation/Anthony Handover/Desarrollo web - Puntos de pago/Codigo Fuente app Web/sftp-file-loader/Wxlt-sftp-file-loader-98107ccf45d1&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/erick/source/repos/Erick/sweetmesoft-js/lib&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -79,6 +84,7 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\erick\source\repos\Erick\sweetmesoft-js\lib" />
+      <recent name="C:\Users\erick\source\repos\Erick\sweetmesoft-js\src" />
       <recent name="C:\Users\erick\source\repos\Erick\sweetmesoft-js\source" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -122,7 +128,15 @@
       <workItem from="1696384960615" duration="910000" />
       <workItem from="1697120564689" duration="1220000" />
       <workItem from="1697146401123" duration="524000" />
-      <workItem from="1697941432572" duration="705000" />
+      <workItem from="1697941432572" duration="1014000" />
+      <workItem from="1697942938505" duration="1177000" />
+      <workItem from="1699461145724" duration="612000" />
+      <workItem from="1699914336885" duration="663000" />
+      <workItem from="1700455410827" duration="59000" />
+      <workItem from="1700601464874" duration="904000" />
+      <workItem from="1701324408692" duration="236000" />
+      <workItem from="1701353542477" duration="6525000" />
+      <workItem from="1701754009130" duration="785000" />
     </task>
     <task id="LOCAL-00001" summary="Repo Web moved from SweetMeSoft Library">
       <option name="closed" value="true" />
@@ -260,7 +274,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697146520428</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Add timezone default header">
+      <option name="closed" value="true" />
+      <created>1697942445772</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1697942445772</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -296,6 +318,7 @@
     <MESSAGE value="Fix aspect ratio for cropper" />
     <MESSAGE value="Added create table from local array" />
     <MESSAGE value="Change json to lowercase" />
-    <option name="LAST_COMMIT_MESSAGE" value="Change json to lowercase" />
+    <MESSAGE value="Add timezone default header" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add timezone default header" />
   </component>
 </project>

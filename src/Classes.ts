@@ -366,8 +366,9 @@ namespace SweetMeSoft {
     interface TableButton {
         /**
          * Type of button
-         * @update is predefined edit button
-         * @delete is predefined delete button
+         * @update is predefined blue edit button
+         * @delete is predefined red delete button
+         * @download is predefined blue download button
          * @custom is for a customized button
          */
         type: 'update' | 'delete' | 'custom' | 'download';
@@ -421,7 +422,7 @@ namespace SweetMeSoft {
          * @date is for format the data as date (ex: yyyy-MM-dd HH:mm)
          * @boolean is for format the data as disabled checkbox. See more info at https://getbootstrap.com/docs/5.3/forms/checks-radios/#switches
          */
-        format?: 'text' | 'currency' | 'percentaje' | 'right' | 'image' | 'date' | 'boolean' | 'link';
+        format?: 'text' | 'currency' | 'percentage' | 'right' | 'image' | 'date' | 'datetime' | 'boolean' | 'link';
 
         /**
          * New title for the column
@@ -535,29 +536,32 @@ namespace SweetMeSoft {
         item: any;
     }
 
-    export const defaultsSaveObject: OptionsPostObject = {
-        url: '',
-        object: {},
-        callback: undefined,
-        errorCallback: undefined,
-        text: '',
-        successMessage: 'It saved successfully.',
-        errorMessage: 'We cannot save it.',
-        showConfirmMessage: true,
-        showErrorMessage: true
-    };
-
-    export const defaultsDeleteObject: OptionsPostObject = {
-        url: '',
-        object: {},
-        callback: undefined,
-        errorCallback: undefined,
-        text: 'Are you sure?',
-        successMessage: 'It was deleted successful.',
-        errorMessage: 'It could not be deleted.',
-        showConfirmMessage: true,
-        showErrorMessage: true
-    };
+    export interface OptionsChart{
+        /**
+         * canvas where the chart will be painted
+         * @mandatory
+         */
+        chart: JQuery;
+        /**
+         * Endpoint where the info will be got
+         * @mandatory
+         */
+        url: string;
+        /**
+         * Parameters of get request
+         * @default null
+         */
+        data?: string | Object;
+        /**
+         * @daily show a view since 1-31 in the X axis
+         * @monthly show a bar since jan-dec in the X axis
+         */
+        interval?: 'daily' | 'monthly';
+        /**
+         * Field name of data response taken to split info in same interval
+         */
+        subFilter?: string;
+    }
 
     export const defaultsSelect = {
         url: '',
@@ -635,7 +639,7 @@ namespace SweetMeSoft {
         }
     };
 
-    export const defaultsRequest = {
+    export const defaultsRequest: OptionsRequest = {
         url: '',
         filename: '',
         data: '',
@@ -649,6 +653,13 @@ namespace SweetMeSoft {
         showError: true,
         showSuccess: true
     };
+
+    export const defaultsChart: OptionsChart = {
+        url: "",
+        chart: undefined,
+        data: '',
+        interval: 'daily'
+    }
 
     export interface AutocompleteExtendedItem {
         id: string,
