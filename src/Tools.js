@@ -47,13 +47,17 @@
         else {
             let hour = date.getHours().toString();
             let minutes = date.getMinutes().toString();
+            let seconds = date.getSeconds().toString();
             if (date.getHours() < 10) {
                 hour = '0' + hour;
             }
             if (date.getMinutes() < 10) {
                 minutes = '0' + minutes;
             }
-            return format.replace('yyyy', year).replace('MM', month).replace('dd', day).replace('HH', hour).replace('mm', minutes);
+            if (date.getSeconds() < 10) {
+                seconds = '0' + seconds;
+            }
+            return format.replace('yyyy', year).replace('MM', month).replace('dd', day).replace('HH', hour).replace('mm', minutes).replace('ss', seconds);
         }
     }
     SweetMeSoft.getFormatedDate = getFormatedDate;
@@ -278,9 +282,9 @@
                                     const isChecked = (data == 'true' || data == 'True' || data == 'TRUE' || data == true || data == 1 || data == '1') ? 'checked' : '';
                                     return '<div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" id="chk" disabled ' + isChecked + '><label class="form-check-label" for="chk"></label></div>';
                                 case 'date':
-                                    return SweetMeSoft.getFormatedDate(new Date(data), 'yyyy-MM-dd', false);
+                                    return SweetMeSoft.getFormatedDate(new Date(data.replace('Z', '')), 'yyyy-MM-dd', false);
                                 case 'datetime':
-                                    return SweetMeSoft.getFormatedDate(new Date(data), 'yyyy-MM-dd HH:mm:ss', true);
+                                    return SweetMeSoft.getFormatedDate(new Date(data.replace('Z', '')), 'yyyy-MM-dd HH:mm:ss', true);
                                 case 'link':
                                     return '<a target="_blank" href="' + data + '">' + data + '</a>';
                             }

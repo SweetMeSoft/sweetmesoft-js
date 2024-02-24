@@ -89,8 +89,8 @@ namespace SweetMeSoft {
                         } else {
                             if (data.length === 1 && options.autoSelect) {
                                 let uniqueOption = dropDown.find(':not([disabled]):first').val();
-                                // @ts-ignore
                                 dropDown.val(uniqueOption);
+                                dropDown.trigger('change');
                             }
                         }
                         if (options.value != null && options.value !== 0 && options.value !== '') {
