@@ -283,7 +283,7 @@ namespace SweetMeSoft {
                                     return dollar.format(data);
                                 case 'image':
                                     if (data == null || data == '') {
-                                        return '<img src="/images/default-product.png" class="rounded-circle" style="height:40px; width: 40px;" alt=""/>';
+                                        return '<img src="https://cdn.jsdelivr.net/npm/sweetmesoft-js@latest/src/images/default.png" class="rounded-circle" style="height:40px; width: 40px;" alt=""/>';
                                     }
 
                                     return '<img src="' + data + '" class="rounded-circle" style="height:40px; width: 40px;" alt=""/>';
@@ -397,7 +397,7 @@ namespace SweetMeSoft {
         }
 
         const indexColumn = columns.findIndex(model => model.data.toString().toLowerCase() == options.defaultOrderColumn.toLowerCase());
-
+        const lang = window.navigator.languages[0].substring(0, 2);
         let table = options.table.DataTable({
             data: data,
             columns: columns,
@@ -446,18 +446,7 @@ namespace SweetMeSoft {
             pageLength: options.rowsPerPage,
             order: [[indexColumn == -1 ? 0 : indexColumn, options.defaultOrderType]],
             language: {
-                lengthMenu: 'Show _MENU_ registers per page',
-                zeroRecords: 'Nothing found',
-                info: 'Page _PAGE_ of _PAGES_',
-                infoEmpty: 'No available info',
-                infoFiltered: '(filtrado desde _MAX_ total registros)',
-                search: 'Search',
-                paginate: {
-                    first: 'First',
-                    last: 'Last',
-                    next: 'Next',
-                    previous: 'Previous'
-                },
+                url: 'https://cdn.jsdelivr.net/npm/sweetmesoft-js@latest/src/i18n/' + lang + '.json'
             }
         })
 

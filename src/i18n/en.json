@@ -1,0 +1,14 @@
+{
+  "lengthMenu": "Show _MENU_ registers per page",
+  "zeroRecords": "Nothing found",
+  "info": "Page _PAGE_ of _PAGES_",
+  "infoEmpty": "No available info",
+  "infoFiltered": "(Filtered since _MAX_ registers)",
+  "search": "Search",
+  "paginate": {
+    "first": "First",
+    "last": "Last",
+    "next": "Next",
+    "previous": "Previous"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "lengthMenu": "Afficher les enregistrements _MENU_ par page",
+  "zeroRecords": "Aucun résultat trouvé",
+  "info": "Page _PAGE_ de _PAGES_",
+  "infoEmpty": "Aucune information disponible",
+  "infoFiltered": "(Filtrage à partir de _MAX_ enregistrements)",
+  "search": "Recherche",
+  "paginate": {
+    "first": "Première",
+    "last": "Dernière",
+    "next": "Suivant",
+    "previous": "Précédent"
+  }
+}
