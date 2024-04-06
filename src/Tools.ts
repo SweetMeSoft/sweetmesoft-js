@@ -1,5 +1,4 @@
 namespace SweetMeSoft {
-
     export function on() {
         const overlay = document.getElementById('overlay');
         if (overlay != null) {
@@ -125,7 +124,7 @@ namespace SweetMeSoft {
     export function generateModal(options: OptionsModal) {
         options = ((setDefaults(options, defaultsModal)) as OptionsModal);
 
-        const modal = new bootstrap.Modal(document.getElementById('modal'), {backdrop: true})
+        const modal = new bootstrap.Modal(document.getElementById('modal'), { backdrop: true })
         const body = $('#divModalBody');
         const title = $('#txtModalTitle');
         const modalDialog = $('.modal-dialog');
@@ -205,7 +204,7 @@ namespace SweetMeSoft {
     }
 
     export function getSelectedRows(table: JQuery): any[] {
-        return table.DataTable().rows({selected: true}).data().toArray()
+        return table.DataTable().rows({ selected: true }).data().toArray()
     }
 
     function createTable(options: OptionsTable, data) {
@@ -411,6 +410,28 @@ namespace SweetMeSoft {
                 style: 'multi',
                 selector: 'td:first-child'
             } : false,
+            initComplete: function () {
+                if (options.filterColumns) {
+                    this.api()
+                        .columns()
+                        .every(function () {
+                            let column = this;
+                            let title = column.header().textContent;
+
+                            // Create input element
+                            let input = document.createElement('input');
+                            input.placeholder = title;
+                            column.header().replaceChildren(input);
+
+                            // Event listener for user input
+                            input.addEventListener('keyup', () => {
+                                if (column.search() !== this.value) {
+                                    column.search(input.value).draw();
+                                }
+                            });
+                        });
+                }
+            },
             drawCallback: () => {
                 const buttons = options.table.find('.btn-table');
                 buttons.off('click');
@@ -455,6 +476,10 @@ namespace SweetMeSoft {
             options.onDblClick(table.row(this).data());
         });
 
+        delay(500).then(() => {
+            table.page(1).draw(true)
+            table.page(0).draw(true)
+        });
         $("[name='" + tableId + "_length']").removeClass('form-select');
     }
 
@@ -465,5 +490,9 @@ namespace SweetMeSoft {
 
         const [numerador, denominador] = aspectRatio.split('/').map(parseFloat);
         return (isNaN(numerador) || isNaN(denominador) || denominador === 0) ? undefined : numerador / denominador;
+    }
+
+    function delay(ms: number) {
+        return new Promise(resolve => setTimeout(resolve, ms));
     }
 }

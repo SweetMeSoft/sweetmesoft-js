@@ -267,7 +267,7 @@
                                     return dollar.format(data);
                                 case 'image':
                                     if (data == null || data == '') {
-                                        return '<img src="https://cdn.jsdelivr.net/npm/sweetmesoft-js@latest/images/default.png" class="rounded-circle" style="height:40px; width: 40px;" alt=""/>';
+                                        return '<img src="https://cdn.jsdelivr.net/npm/sweetmesoft-js@latest/src/images/default.png" class="rounded-circle" style="height:40px; width: 40px;" alt=""/>';
                                     }
                                     return '<img src="' + data + '" class="rounded-circle" style="height:40px; width: 40px;" alt=""/>';
                                 case 'percentage':
@@ -382,6 +382,26 @@
                 style: 'multi',
                 selector: 'td:first-child'
             } : false,
+            initComplete: function () {
+                if (options.filterColumns) {
+                    this.api()
+                        .columns()
+                        .every(function () {
+                        let column = this;
+                        let title = column.header().textContent;
+                        // Create input element
+                        let input = document.createElement('input');
+                        input.placeholder = title;
+                        column.header().replaceChildren(input);
+                        // Event listener for user input
+                        input.addEventListener('keyup', () => {
+                            if (column.search() !== this.value) {
+                                column.search(input.value).draw();
+                            }
+                        });
+                    });
+                }
+            },
             drawCallback: () => {
                 const buttons = options.table.find('.btn-table');
                 buttons.off('click');
@@ -424,6 +444,10 @@
         options.table.on('dblclick', 'tr', function () {
             options.onDblClick(table.row(this).data());
         });
+        delay(500).then(() => {
+            table.page(1).draw(true);
+            table.page(0).draw(true);
+        });
         $("[name='" + tableId + "_length']").removeClass('form-select');
     }
     function getAspectRatio(aspectRatio) {
@@ -432,5 +456,8 @@
         }
         const [numerador, denominador] = aspectRatio.split('/').map(parseFloat);
         return (isNaN(numerador) || isNaN(denominador) || denominador === 0) ? undefined : numerador / denominador;
+    }
+    function delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
     }
 })(SweetMeSoft || (SweetMeSoft = {}));

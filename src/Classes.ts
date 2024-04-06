@@ -323,6 +323,12 @@ namespace SweetMeSoft {
         showFooter?: boolean;
 
         /**
+         * Allow you enable the filters in all columns
+         * @default false
+         */
+        filterColumns?: boolean;
+
+        /**
          * Edit the format for specific columns
          * @default true
          */
@@ -620,6 +626,7 @@ namespace SweetMeSoft {
         defaultOrderType: 'asc',
         showHeader: true,
         showFooter: true,
+        filterColumns: false,
         customColumns: [],
         buttons: [],
         height: 'auto',

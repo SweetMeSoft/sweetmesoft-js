@@ -58,6 +58,7 @@
         defaultOrderType: 'asc',
         showHeader: true,
         showFooter: true,
+        filterColumns: false,
         customColumns: [],
         buttons: [],
         height: 'auto',

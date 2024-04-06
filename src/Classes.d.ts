@@ -270,6 +270,11 @@
          */
         showFooter?: boolean;
         /**
+         * Allow you enable the filters in all columns
+         * @default false
+         */
+        filterColumns?: boolean;
+        /**
          * Edit the format for specific columns
          * @default true
          */
@@ -534,6 +539,7 @@
         defaultOrderType: string;
         showHeader: boolean;
         showFooter: boolean;
+        filterColumns: boolean;
         customColumns: any[];
         buttons: any[];
         height: string;
