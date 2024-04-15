@@ -200,6 +200,9 @@
         options.hiddenColumns.forEach((column, index) => {
             options.hiddenColumns[index] = column.toLowerCase();
         });
+        options.filterColumns.forEach((column, index) => {
+            options.filterColumns[index] = column.toLowerCase();
+        });
         let columns = [];
         if (options.showCheckbox) {
             columns.push({
@@ -374,6 +377,7 @@
             columns: columns,
             scrollX: true,
             scrollY: options.height,
+            stateSave: true,
             retrieve: true,
             ordering: options.canOrder,
             paging: options.showFooter,
@@ -383,23 +387,31 @@
                 selector: 'td:first-child'
             } : false,
             initComplete: function () {
-                if (options.filterColumns) {
-                    this.api()
-                        .columns()
-                        .every(function () {
-                        let column = this;
-                        let title = column.header().textContent;
-                        // Create input element
+                this.api()
+                    .columns()
+                    .every(function () {
+                    let column = this;
+                    let title = column.header().textContent;
+                    if (options.filterColumns.indexOf(title.toLowerCase()) != -1) {
                         let input = document.createElement('input');
                         input.placeholder = title;
                         column.header().replaceChildren(input);
-                        // Event listener for user input
                         input.addEventListener('keyup', () => {
                             if (column.search() !== this.value) {
                                 column.search(input.value).draw();
                             }
                         });
+                    }
+                });
+                const state = table.state.loaded();
+                if (state) {
+                    this.api().columns().eq(0).each(function (colIdx) {
+                        const colSearch = state.columns[colIdx].search;
+                        if (colSearch.search) {
+                            $('input', table.column(colIdx).header()).val(colSearch.search);
+                        }
                     });
+                    table.draw();
                 }
             },
             drawCallback: () => {

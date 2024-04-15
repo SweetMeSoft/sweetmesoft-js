@@ -240,7 +240,7 @@
          */
         rowsPerPage?: number;
         /**
-         * Name of columns to hide. These would be written at lowercase
+         * Name of columns to hide.
          * @default []
          */
         hiddenColumns?: string[];
@@ -270,10 +270,10 @@
          */
         showFooter?: boolean;
         /**
-         * Allow you enable the filters in all columns
-         * @default false
+         * Name of columns to filter by column.
+         * @default true
          */
-        filterColumns?: boolean;
+        filterColumns?: string[];
         /**
          * Edit the format for specific columns
          * @default true
@@ -539,7 +539,7 @@
         defaultOrderType: string;
         showHeader: boolean;
         showFooter: boolean;
-        filterColumns: boolean;
+        filterColumns: any[];
         customColumns: any[];
         buttons: any[];
         height: string;

@@ -287,7 +287,7 @@ namespace SweetMeSoft {
         rowsPerPage?: number;
 
         /**
-         * Name of columns to hide. These would be written at lowercase
+         * Name of columns to hide.
          * @default []
          */
         hiddenColumns?: string[];
@@ -323,10 +323,10 @@ namespace SweetMeSoft {
         showFooter?: boolean;
 
         /**
-         * Allow you enable the filters in all columns
-         * @default false
+         * Name of columns to filter by column.
+         * @default true
          */
-        filterColumns?: boolean;
+        filterColumns?: string[];
 
         /**
          * Edit the format for specific columns
@@ -626,7 +626,7 @@ namespace SweetMeSoft {
         defaultOrderType: 'asc',
         showHeader: true,
         showFooter: true,
-        filterColumns: false,
+        filterColumns: [],
         customColumns: [],
         buttons: [],
         height: 'auto',
