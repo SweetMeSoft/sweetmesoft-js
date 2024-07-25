@@ -477,6 +477,12 @@
          */
         data?: string | Object;
         /**
+         * List of datasets to show in chart
+         * @default []
+         * @mandatory if url is empty or null
+         */
+        lists?: ChartDataset[];
+        /**
          * @daily show a view since 1-31 in the X axis
          * @monthly show a bar since jan-dec in the X axis
          */
@@ -485,6 +491,33 @@
          * Field name of data response taken to split info in same interval
          */
         subFilter?: string;
+    }
+    export interface ChartDataset {
+        /**
+         * Data with the info that will be painted in the chart
+         * @default []
+         */
+        data: any[];
+        /**
+         * Field name of data response taken to split info in same interval
+         * @default ''
+         */
+        fieldToFilter: string;
+        /**
+         * Field name of data response taken to show in the chart
+         * @default ''
+         */
+        fieldToShow: string;
+        /**
+         * Kind of chart to show
+         * @default 'line'
+         */
+        kindChart: 'bar' | 'line' | 'pie' | 'doughnut' | 'polarArea' | 'radar';
+        /**
+         * If you want to show the chart stacked
+         * @default false
+         */
+        stacked: boolean;
     }
     export const defaultsSelect: {
         url: string;

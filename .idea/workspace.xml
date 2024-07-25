@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47be978f-e6af-4827-9bb2-e827ca58498b" name="Changes" comment="Added internatiolanization for Table">
+    <list default="true" id="47be978f-e6af-4827-9bb2-e827ca58498b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Classes.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Classes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Classes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Tools.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tools.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Tools.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tools.ts" afterDir="false" />
@@ -70,7 +69,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/erick/source/repos/Erick/sweetmesoft-js/i18n&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/erick/source/repos/Erick/FirebaseRTC&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -146,7 +145,13 @@
       <workItem from="1711819157022" duration="5406000" />
       <workItem from="1712290223856" duration="2174000" />
       <workItem from="1712375704334" duration="532000" />
-      <workItem from="1713152805627" duration="2286000" />
+      <workItem from="1713152805627" duration="2336000" />
+      <workItem from="1717526359697" duration="668000" />
+      <workItem from="1719681103399" duration="253000" />
+      <workItem from="1720540982750" duration="603000" />
+      <workItem from="1720575128845" duration="1183000" />
+      <workItem from="1720645179710" duration="721000" />
+      <workItem from="1721942692668" duration="1542000" />
     </task>
     <task id="LOCAL-00001" summary="Repo Web moved from SweetMeSoft Library">
       <option name="closed" value="true" />
