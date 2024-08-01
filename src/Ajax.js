@@ -115,7 +115,9 @@
             data: options.data,
             traditional: true,
             type: 'GET',
-            beforeSend: function (xhr) { xhr.setRequestHeader('timezone', Intl.DateTimeFormat().resolvedOptions().timeZone); }
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('timezone', Intl.DateTimeFormat().resolvedOptions().timeZone);
+            }
         }).then((response) => {
             handleAjaxSuccess(options, response);
             return true;
@@ -136,7 +138,9 @@
             url: options.url,
             data: options.data,
             type: 'POST',
-            beforeSend: function (xhr) { xhr.setRequestHeader('timezone', Intl.DateTimeFormat().resolvedOptions().timeZone); }
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('timezone', Intl.DateTimeFormat().resolvedOptions().timeZone);
+            }
         }).then((response) => {
             handleAjaxSuccess(options, response);
             return true;
@@ -149,9 +153,16 @@
     async function downloadFile(options) {
         SweetMeSoft.on();
         options = (SweetMeSoft.setDefaults(options, SweetMeSoft.defaultsRequest));
-        var form = new FormData();
-        for (let item of Object.keys(options.data)) {
-            form.append(item, options.data[item]);
+        let form = new FormData();
+        for (let key of Object.keys(options.data)) {
+            if (Object.prototype.toString.call(options.data[key]) === '[object Array]') {
+                for (let obj of options.data[key]) {
+                    form.append(key, obj);
+                }
+            }
+            else {
+                form.append(key, options.data[key]);
+            }
         }
         return $.ajax({
             type: 'POST',
@@ -159,7 +170,9 @@
             processData: false,
             contentType: false,
             data: form,
-            beforeSend: function (xhr) { xhr.setRequestHeader('timezone', Intl.DateTimeFormat().resolvedOptions().timeZone); },
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('timezone', Intl.DateTimeFormat().resolvedOptions().timeZone);
+            },
             xhrFields: {
                 responseType: 'blob'
             }
@@ -210,7 +223,9 @@
             contentType: false,
             processData: false,
             data: form,
-            beforeSend: function (xhr) { xhr.setRequestHeader('timezone', Intl.DateTimeFormat().resolvedOptions().timeZone); }
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('timezone', Intl.DateTimeFormat().resolvedOptions().timeZone);
+            }
         }).then((response) => {
             handleAjaxSuccess(options, response);
             return true;

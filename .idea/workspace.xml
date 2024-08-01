@@ -7,10 +7,8 @@
     <list default="true" id="47be978f-e6af-4827-9bb2-e827ca58498b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Classes.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Classes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tools.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tools.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tools.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tools.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Ajax.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ajax.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Ajax.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ajax.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +149,9 @@
       <workItem from="1720540982750" duration="603000" />
       <workItem from="1720575128845" duration="1183000" />
       <workItem from="1720645179710" duration="721000" />
-      <workItem from="1721942692668" duration="1542000" />
+      <workItem from="1721942692668" duration="2189000" />
+      <workItem from="1722528985362" duration="1014000" />
+      <workItem from="1722530686680" duration="1254000" />
     </task>
     <task id="LOCAL-00001" summary="Repo Web moved from SweetMeSoft Library">
       <option name="closed" value="true" />
