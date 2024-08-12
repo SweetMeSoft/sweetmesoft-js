@@ -124,7 +124,7 @@ namespace SweetMeSoft {
     export function generateModal(options: OptionsModal) {
         options = ((setDefaults(options, defaultsModal)) as OptionsModal);
 
-        const modal = new bootstrap.Modal(document.getElementById('modal'), { backdrop: true })
+        const modal = new bootstrap.Modal(document.getElementById('modal'), {backdrop: true})
         const body = $('#divModalBody');
         const title = $('#txtModalTitle');
         const modalDialog = $('.modal-dialog');
@@ -149,6 +149,9 @@ namespace SweetMeSoft {
                 break;
             case 'html':
                 body.html(options.html);
+                if (options.loadCallback != undefined) {
+                    options.loadCallback()
+                }
                 break;
         }
 
@@ -204,7 +207,7 @@ namespace SweetMeSoft {
     }
 
     export function getSelectedRows(table: JQuery): any[] {
-        return table.DataTable().rows({ selected: true }).data().toArray()
+        return table.DataTable().rows({selected: true}).data().toArray()
     }
 
     function createTable(options: OptionsTable, data) {

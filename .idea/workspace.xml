@@ -5,10 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47be978f-e6af-4827-9bb2-e827ca58498b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/google-maps/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Maps.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ajax.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ajax.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ajax.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ajax.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Classes.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Classes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tools.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tools.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tools.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tools.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +23,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -151,7 +156,10 @@
       <workItem from="1720645179710" duration="721000" />
       <workItem from="1721942692668" duration="2189000" />
       <workItem from="1722528985362" duration="1014000" />
-      <workItem from="1722530686680" duration="1254000" />
+      <workItem from="1722530686680" duration="1887000" />
+      <workItem from="1722827075709" duration="487000" />
+      <workItem from="1722830915082" duration="5000" />
+      <workItem from="1723479174588" duration="2604000" />
     </task>
     <task id="LOCAL-00001" summary="Repo Web moved from SweetMeSoft Library">
       <option name="closed" value="true" />
@@ -330,6 +338,8 @@
       <list>
         <option value="$PROJECT_DIR$/src/Charts.d.ts" />
         <option value="$PROJECT_DIR$/src/Charts.js" />
+        <option value="$PROJECT_DIR$/src/Maps.js" />
+        <option value="$PROJECT_DIR$/src/Maps.d.ts" />
       </list>
     </option>
   </component>

@@ -138,6 +138,9 @@
                 break;
             case 'html':
                 body.html(options.html);
+                if (options.loadCallback != undefined) {
+                    options.loadCallback();
+                }
                 break;
         }
         if (options.primaryCallback != undefined) {

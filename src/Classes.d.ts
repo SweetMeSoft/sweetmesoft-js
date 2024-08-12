@@ -492,6 +492,10 @@
          */
         subFilter?: string;
     }
+    export interface OptionsMap {
+        edtLatitude: JQuery;
+        edtLongitude: JQuery;
+    }
     export interface ChartDataset {
         /**
          * Data with the info that will be painted in the chart
