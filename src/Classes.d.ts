@@ -502,6 +502,25 @@
          */
         edtLongitude: JQuery;
         /**
+         * Show the current location in the map
+         * @default true
+         */
+        showCurrentLocation?: boolean;
+        /**
+         * Initial latitude where the map will be centered with a marker.
+         * If ShowCurrentLocation is true, this property will be ignored
+         * If initialLongitude is not define, this property will be ignored
+         * @default 0.0
+         */
+        initialLatitude: number;
+        /**
+         * Initial longitude where the map will be centered with a marker
+         * If ShowCurrentLocation is true, this property will be ignored
+         * If initialLongitude is not define, this property will be ignored
+         * @default 0.0
+         */
+        initialLongitude: number;
+        /**
          * If the map must show in a modal. If this is @true the property divId will be ignored
          * @default true
          */

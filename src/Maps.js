@@ -30,7 +30,7 @@
         return $("#lat").text() != null && $("#lng").text() != null;
     }
     function initMap(options, divId) {
-        if (navigator.geolocation) {
+        if (navigator.geolocation && options.showCurrentLocation) {
             navigator.geolocation.getCurrentPosition((position) => {
                 const userLocation = {
                     lat: position.coords.latitude,
@@ -39,15 +39,22 @@
                 initializeMap(options, userLocation, divId);
                 updateLocation(userLocation);
             }, () => {
-                const defaultLocation = { lat: 4.72, lng: -74.07 }; // Bogota
+                const defaultLocation = { lat: 4.72, lng: -74.07 };
                 initializeMap(options, defaultLocation, divId);
                 updateLocation(defaultLocation);
             });
         }
         else {
-            const defaultLocation = { lat: 4.72, lng: -74.07 }; // Bogota
-            initializeMap(options, defaultLocation, divId);
-            updateLocation(defaultLocation);
+            if (options.initialLatitude != 0.0 && options.initialLongitude != 0.0) {
+                const defaultLocation = { lat: options.initialLatitude, lng: options.initialLongitude };
+                initializeMap(options, defaultLocation, divId);
+                updateLocation(defaultLocation);
+            }
+            else {
+                const defaultLocation = { lat: 4.72, lng: -74.07 };
+                initializeMap(options, defaultLocation, divId);
+                updateLocation(defaultLocation);
+            }
         }
     }
     function initializeMap(options, location, divId) {

@@ -97,9 +97,12 @@
         interval: 'daily'
     };
     SweetMeSoft.defaultMap = {
+        showCurrentLocation: true,
         divId: "",
         modal: true,
         showAutocomplete: false,
+        initialLatitude: 0.0,
+        initialLongitude: 0.0,
         edtLatitude: undefined,
         edtLongitude: undefined
     };
