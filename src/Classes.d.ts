@@ -113,7 +113,7 @@
         /**
          * The cropper will be circle
          * @default false
-        circleCrop?: boolean;
+         circleCrop?: boolean;
          */
         /**
          * Callback function for execute something when the image is cropped
@@ -507,19 +507,10 @@
          */
         showCurrentLocation?: boolean;
         /**
-         * Initial latitude where the map will be centered with a marker.
-         * If ShowCurrentLocation is true, this property will be ignored
-         * If initialLongitude is not define, this property will be ignored
-         * @default 0.0
+         * Lista de coordenadas a mostrar en el mapa como markers
+         * @default []
          */
-        initialLatitude: number;
-        /**
-         * Initial longitude where the map will be centered with a marker
-         * If ShowCurrentLocation is true, this property will be ignored
-         * If initialLongitude is not define, this property will be ignored
-         * @default 0.0
-         */
-        initialLongitude: number;
+        coordinates?: GeoPosition[];
         /**
          * If the map must show in a modal. If this is @true the property divId will be ignored
          * @default true
@@ -534,6 +525,12 @@
          * divId where the map will be shown. If modal is @true this property will be ignored. If modal is @false this property is mandatory
          */
         divId?: string;
+    }
+    export interface GeoPosition {
+        latitude: number;
+        longitude: number;
+        color?: string;
+        title?: string;
     }
     export interface ChartDataset {
         /**
@@ -561,6 +558,23 @@
          * @default false
          */
         stacked: boolean;
+    }
+    export interface AutocompleteExtendedItem {
+        id: string;
+        text: string;
+        img?: string;
+    }
+    export interface DateTimePickerOptions {
+        /**
+         * Min date to allow select
+         * @default null
+         */
+        minDate?: Date;
+        /**
+         * Max date to allow select
+         * @default null
+         */
+        maxDate?: Date;
     }
     export const defaultsSelect: {
         url: string;
@@ -635,23 +649,6 @@
     export const defaultsRequest: OptionsRequest;
     export const defaultsChart: OptionsChart;
     export const defaultMap: OptionsMap;
-    export interface AutocompleteExtendedItem {
-        id: string;
-        text: string;
-        img?: string;
-    }
-    export interface DateTimePickerOptions {
-        /**
-         * Min date to allow select
-         * @default null
-         */
-        minDate?: Date;
-        /**
-         * Max date to allow select
-         * @default null
-         */
-        maxDate?: Date;
-    }
     export const defaultDateTimePickerOptions: DateTimePickerOptions;
     export {};
 }

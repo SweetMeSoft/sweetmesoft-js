@@ -1,5 +1,9 @@
 namespace SweetMeSoft {
 
+    import LatLng = google.maps.LatLng;
+    import AdvancedMarkerElement = google.maps.marker.AdvancedMarkerElement;
+    import Coordinates = JQuery.Coordinates;
+
     export function setDefaults(options: any, defaults: any) {
         return (<any>Object).assign({}, defaults, options);
     }
@@ -136,7 +140,7 @@ namespace SweetMeSoft {
         /**
          * The cropper will be circle
          * @default false
-        circleCrop?: boolean;
+         circleCrop?: boolean;
          */
 
         /**
@@ -276,7 +280,7 @@ namespace SweetMeSoft {
         urlParams?: Object;
 
         /**
-         * Text 
+         * Text
          * @default No info
          */
         noDataText?: string;
@@ -386,7 +390,7 @@ namespace SweetMeSoft {
         icon?: string;
 
         /**
-         * Color for button. You can use HTML color name or hex color. 
+         * Color for button. You can use HTML color name or hex color.
          * @default for @update button is btn-primary, for @delete button is btn-danger, for @custom button is ''
          */
         color?: string;
@@ -438,7 +442,7 @@ namespace SweetMeSoft {
 
         /**
          * Background color for the cells in the column
-         * @default '' You can use HTML color name or hex color. 
+         * @default '' You can use HTML color name or hex color.
          */
         backgroundColor?: string;
         /**
@@ -542,7 +546,7 @@ namespace SweetMeSoft {
         item: any;
     }
 
-    export interface OptionsChart{
+    export interface OptionsChart {
         /**
          * canvas where the chart will be painted
          * @mandatory
@@ -575,7 +579,7 @@ namespace SweetMeSoft {
         subFilter?: string;
     }
 
-    export interface OptionsMap{
+    export interface OptionsMap {
         /**
          * Current latitude
          */
@@ -590,19 +594,10 @@ namespace SweetMeSoft {
          */
         showCurrentLocation?: boolean;
         /**
-         * Initial latitude where the map will be centered with a marker.
-         * If ShowCurrentLocation is true, this property will be ignored
-         * If initialLongitude is not define, this property will be ignored
-         * @default 0.0
+         * Lista de coordenadas a mostrar en el mapa como markers
+         * @default []
          */
-        initialLatitude: number;
-        /**
-         * Initial longitude where the map will be centered with a marker
-         * If ShowCurrentLocation is true, this property will be ignored
-         * If initialLongitude is not define, this property will be ignored
-         * @default 0.0
-         */
-        initialLongitude: number;
+        coordinates?: GeoPosition[];
         /**
          * If the map must show in a modal. If this is @true the property divId will be ignored
          * @default true
@@ -617,6 +612,13 @@ namespace SweetMeSoft {
          * divId where the map will be shown. If modal is @true this property will be ignored. If modal is @false this property is mandatory
          */
         divId?: string;
+    }
+
+    export interface GeoPosition{
+        latitude: number;
+        longitude: number;
+        color?: string;
+        title?: string;
     }
 
     export interface ChartDataset {
@@ -647,6 +649,25 @@ namespace SweetMeSoft {
         stacked: boolean;
     }
 
+    export interface AutocompleteExtendedItem {
+        id: string,
+        text: string,
+        img?: string
+    }
+
+    export interface DateTimePickerOptions {
+        /**
+         * Min date to allow select
+         * @default null
+         */
+        minDate?: Date;
+        /**
+         * Max date to allow select
+         * @default null
+         */
+        maxDate?: Date;
+    }
+
     export const defaultsSelect = {
         url: '',
         data: {},
@@ -671,7 +692,8 @@ namespace SweetMeSoft {
     export const defaultCropper = {
         circleCrop: false,
         aspectRatio: 'square',
-        callback: (blob) => { }
+        callback: (blob) => {
+        }
     }
 
     export const defaultsModal = {
@@ -710,7 +732,8 @@ namespace SweetMeSoft {
         height: 'auto',
         canOrder: true,
         showCheckbox: false,
-        onDblClick: (rowData) => { }
+        onDblClick: (rowData) => {
+        }
     };
 
     export const defaultsConsecutive = {
@@ -751,33 +774,13 @@ namespace SweetMeSoft {
         divId: "",
         modal: true,
         showAutocomplete: false,
-        initialLatitude: 0.0,
-        initialLongitude: 0.0,
+        coordinates: [],
         edtLatitude: undefined,
         edtLongitude: undefined
-    }
-
-    export interface AutocompleteExtendedItem {
-        id: string,
-        text: string,
-        img?: string
-    }
-
-    export interface DateTimePickerOptions {
-        /**
-         * Min date to allow select
-         * @default null
-         */
-        minDate?: Date;
-        /**
-         * Max date to allow select
-         * @default null
-         */
-        maxDate?: Date;
     }
 
     export const defaultDateTimePickerOptions: DateTimePickerOptions = {
         minDate: null,
         maxDate: null
-    };
+    }
 }

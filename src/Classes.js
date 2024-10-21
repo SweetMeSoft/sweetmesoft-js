@@ -27,7 +27,8 @@
     SweetMeSoft.defaultCropper = {
         circleCrop: false,
         aspectRatio: 'square',
-        callback: (blob) => { }
+        callback: (blob) => {
+        }
     };
     SweetMeSoft.defaultsModal = {
         title: 'Modal',
@@ -64,7 +65,8 @@
         height: 'auto',
         canOrder: true,
         showCheckbox: false,
-        onDblClick: (rowData) => { }
+        onDblClick: (rowData) => {
+        }
     };
     SweetMeSoft.defaultsConsecutive = {
         documentId: 0,
@@ -101,8 +103,7 @@
         divId: "",
         modal: true,
         showAutocomplete: false,
-        initialLatitude: 0.0,
-        initialLongitude: 0.0,
+        coordinates: [],
         edtLatitude: undefined,
         edtLongitude: undefined
     };

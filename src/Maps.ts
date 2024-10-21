@@ -1,6 +1,9 @@
 namespace SweetMeSoft {
+
     let map: google.maps.Map
-    let marker: google.maps.Marker
+    let currentMarker: google.maps.marker.AdvancedMarkerElement
+    let markers: google.maps.marker.AdvancedMarkerElement[] = []
+    let infoWindow: google.maps.InfoWindow
 
     export function generateMap(options: OptionsMap) {
         options = ((setDefaults(options, defaultMap)) as OptionsMap)
@@ -30,61 +33,81 @@ namespace SweetMeSoft {
     }
 
     function initMap(options, divId) {
+        let defaultLocation: GeoPosition = {latitude: 0.0, longitude: 0.0, color: '#03b1fc'}
         if (navigator.geolocation && options.showCurrentLocation) {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
-                    const userLocation = {
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude
-                    }
-
-                    initializeMap(options, userLocation, divId)
-                    updateLocation(userLocation)
+                    defaultLocation = {latitude: position.coords.latitude, longitude: position.coords.longitude}
                 },
                 () => {
-                    const defaultLocation = {lat: 4.72, lng: -74.07}
-                    initializeMap(options, defaultLocation, divId)
-                    updateLocation(defaultLocation)
+                    defaultLocation = {latitude: 4.72, longitude: -74.07}
                 }
             )
         } else {
-            if(options.initialLatitude != 0.0 && options.initialLongitude != 0.0){
-                const defaultLocation = {lat: options.initialLatitude, lng: options.initialLongitude}
-                initializeMap(options, defaultLocation, divId)
-                updateLocation(defaultLocation)
-            }else {
-                const defaultLocation = {lat: 4.72, lng: -74.07}
-                initializeMap(options, defaultLocation, divId)
-                updateLocation(defaultLocation)
+
+        }
+
+        initializeMap(options, divId, defaultLocation)
+        updateLocation()
+    }
+
+    function addMarkers(coordinates: GeoPosition[]) {
+        for (let location of coordinates) {
+            const pinBackground = new google.maps.marker.PinElement({
+                background: location.color == '' ? '#FBBC04' : location.color,
+                borderColor: location.color == '' ? '#FBBC04' : location.color,
+            });
+            const m = new google.maps.marker.AdvancedMarkerElement({
+                position: {lat: location.latitude, lng: location.longitude},
+                map: map,
+                content: pinBackground.element,
+                title: location.title,
+                gmpClickable: location.title != ''
+            })
+
+            if (m.title != '') {
+                m.addListener('click', ({domEvent, latLng}) => {
+                    infoWindow.close();
+                    infoWindow.setContent(m.title);
+                    infoWindow.open(m.map, m);
+                });
             }
+
+            markers.push(m)
         }
     }
 
-    function initializeMap(options, location, divId) {
+    function initializeMap(options: SweetMeSoft.OptionsMap, divId: JQuery, location: GeoPosition) {
         let div = $('#' + divId)
         if (options.showAutocomplete) {
             div.append('<input class="form-control mb-2" id="autocomplete" placeholder="Enter a location" disabled>')
         }
         div.append('<div id="sweetmesoft-map" style="height: 100%; width: 100%;"></div>')
         map = new google.maps.Map(document.getElementById('sweetmesoft-map'), {
-            center: location,
-            zoom: 8
+            zoom: 8,
+            mapId: "85124246986526912"
         })
+        infoWindow = new google.maps.InfoWindow()
+        addMarkers(options.coordinates)
 
-        marker = new google.maps.Marker({
-            position: location,
-            map: map,
-            draggable: true
-        })
+        if (location.latitude != 0 && location.longitude != 0) {
+            currentMarker = new google.maps.marker.AdvancedMarkerElement({
+                position: {lat: location.latitude, lng: location.longitude},
+                map: map,
+                content: new google.maps.marker.PinElement({
+                    background: location.color,
+                })
+            })
 
-        google.maps.event.addListener(marker, 'dragend', function () {
-            updateLocation(marker.getPosition())
-        })
+            google.maps.event.addListener(currentMarker, 'dragend', function () {
+                updateLocation()
+            })
 
-        google.maps.event.addListener(map, 'click', function (event) {
-            marker.setPosition(event.latLng)
-            updateLocation(event.latLng)
-        })
+            google.maps.event.addListener(map, 'click', function (event) {
+                currentMarker.position = event.latLng
+                updateLocation()
+            })
+        }
 
         if (options.showAutocomplete) {
             initAutocomplete()
@@ -110,9 +133,8 @@ namespace SweetMeSoft {
 
                 map.setCenter(place.geometry.location)
                 map.setZoom(15)
-                marker.setPosition(place.geometry.location)
-                marker.setVisible(true)
-                updateLocation(place.geometry.location)
+                currentMarker.position = place.geometry.location
+                updateLocation()
             } else {
                 console.log('No details available for input: ' + input.value)
             }
@@ -128,8 +150,16 @@ namespace SweetMeSoft {
         })
     }
 
-    function updateLocation(location) {
-        $("#lat").text(location.lat)
-        $("#lng").text(location.lng)
+    function updateLocation() {
+        const bounds = new google.maps.LatLngBounds();
+        markers.forEach(marker => {
+            bounds.extend(marker.position);
+        });
+        map.fitBounds(bounds);
+
+        if(currentMarker != undefined) {
+            $("#lat").text(currentMarker.position.lat)
+            $("#lng").text(currentMarker.position.lng)
+        }
     }
 }

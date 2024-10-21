@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47be978f-e6af-4827-9bb2-e827ca58498b" name="Changes" comment="">
+    <list default="true" id="47be978f-e6af-4827-9bb2-e827ca58498b" name="Changes" comment="Added internatiolanization for Table">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Classes.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Classes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Classes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Maps.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Maps.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Maps.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Maps.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,7 +162,8 @@
       <workItem from="1723665326468" duration="768000" />
       <workItem from="1726090816302" duration="6260000" />
       <workItem from="1729179224430" duration="1260000" />
-      <workItem from="1729527024186" duration="623000" />
+      <workItem from="1729527024186" duration="1993000" />
+      <workItem from="1729538996791" duration="8324000" />
     </task>
     <task id="LOCAL-00001" summary="Repo Web moved from SweetMeSoft Library">
       <option name="closed" value="true" />
