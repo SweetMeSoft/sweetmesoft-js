@@ -493,8 +493,28 @@
         subFilter?: string;
     }
     export interface OptionsMap {
+        /**
+         * Current latitude
+         */
         edtLatitude: JQuery;
+        /**
+         * Current longitude
+         */
         edtLongitude: JQuery;
+        /**
+         * If the map must show in a modal. If this is @true the property divId will be ignored
+         * @default true
+         */
+        modal?: boolean;
+        /**
+         * Show an autocomplete field above of the map
+         * @default false
+         */
+        showAutocomplete?: boolean;
+        /**
+         * divId where the map will be shown. If modal is @true this property will be ignored. If modal is @false this property is mandatory
+         */
+        divId?: string;
     }
     export interface ChartDataset {
         /**
@@ -595,6 +615,7 @@
     };
     export const defaultsRequest: OptionsRequest;
     export const defaultsChart: OptionsChart;
+    export const defaultMap: OptionsMap;
     export interface AutocompleteExtendedItem {
         id: string;
         text: string;

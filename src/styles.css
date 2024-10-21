@@ -21,3 +21,14 @@
     z-index: 10000; /* Specify a stack order in case you're using a different order for other elements */
     cursor: pointer; /* Add a pointer on hover */
 }
+
+
+/*Styles for maps*/
+#map {
+    height: 100%;
+    width: 100%;
+}
+#sweetmesoft-map {
+    height: 100%;
+    width: 100%;
+}

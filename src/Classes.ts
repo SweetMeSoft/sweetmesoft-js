@@ -576,8 +576,47 @@ namespace SweetMeSoft {
     }
 
     export interface OptionsMap{
+        /**
+         * Current latitude
+         */
         edtLatitude: JQuery;
+        /**
+         * Current longitude
+         */
         edtLongitude: JQuery;
+        /**
+         * Show the current location in the map
+         * @default true
+         */
+        showCurrentLocation?: boolean;
+        /**
+         * Initial latitude where the map will be centered with a marker.
+         * If ShowCurrentLocation is true, this property will be ignored
+         * If initialLongitude is not define, this property will be ignored
+         * @default 0.0
+         */
+        initialLatitude: number;
+        /**
+         * Initial longitude where the map will be centered with a marker
+         * If ShowCurrentLocation is true, this property will be ignored
+         * If initialLongitude is not define, this property will be ignored
+         * @default 0.0
+         */
+        initialLongitude: number;
+        /**
+         * If the map must show in a modal. If this is @true the property divId will be ignored
+         * @default true
+         */
+        modal?: boolean;
+        /**
+         * Show an autocomplete field above of the map
+         * @default false
+         */
+        showAutocomplete?: boolean;
+        /**
+         * divId where the map will be shown. If modal is @true this property will be ignored. If modal is @false this property is mandatory
+         */
+        divId?: string;
     }
 
     export interface ChartDataset {
@@ -705,6 +744,17 @@ namespace SweetMeSoft {
         chart: undefined,
         data: '',
         interval: 'daily'
+    }
+
+    export const defaultMap: OptionsMap = {
+        showCurrentLocation: true,
+        divId: "",
+        modal: true,
+        showAutocomplete: false,
+        initialLatitude: 0.0,
+        initialLongitude: 0.0,
+        edtLatitude: undefined,
+        edtLongitude: undefined
     }
 
     export interface AutocompleteExtendedItem {

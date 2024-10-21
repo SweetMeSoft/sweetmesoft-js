@@ -3,56 +3,63 @@
     let map;
     let marker;
     function generateMap(options) {
-        SweetMeSoft.generateModal({
-            title: 'Location',
-            type: 'html',
-            size: 'big',
-            primaryText: 'Set',
-            html: '<h3>Pick a Location on the Map</h3><div><input class="form-control mb-2"id=autocomplete placeholder="Enter a location"><div id=map></div><p id=info>Latitude: <span id=lat></span>, Longitude: <span id=lng></span></div>',
-            loadCallback: () => {
-                initMap();
-            },
-            primaryCallback: () => {
-                options.edtLatitude.val($("#lat").text());
-                options.edtLongitude.val($("#lng").text());
-                return checkFields();
-            }
-        });
+        options = (SweetMeSoft.setDefaults(options, SweetMeSoft.defaultMap));
+        if (options.modal) {
+            SweetMeSoft.generateModal({
+                title: 'Location',
+                type: 'html',
+                size: 'big',
+                primaryText: 'Set',
+                html: '<h3>Pick a Location on the Map</h3><div><input class="form-control mb-2" id=autocomplete placeholder="Enter a location" disabled><div id=map></div><p id=info>Latitude: <span id=lat></span>, Longitude: <span id=lng></span></div>',
+                loadCallback: () => {
+                    initMap(options, 'map');
+                },
+                primaryCallback: () => {
+                    options.edtLatitude.val($("#lat").text());
+                    options.edtLongitude.val($("#lng").text());
+                    return checkFields();
+                }
+            });
+        }
+        else {
+            initMap(options, options.divId);
+        }
     }
     SweetMeSoft.generateMap = generateMap;
     async function checkFields() {
         return $("#lat").text() != null && $("#lng").text() != null;
     }
-    function initMap() {
-        // Initialize the map
+    function initMap(options, divId) {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
                 const userLocation = {
                     lat: position.coords.latitude,
                     lng: position.coords.longitude
                 };
-                initializeMap(userLocation);
+                initializeMap(options, userLocation, divId);
                 updateLocation(userLocation);
             }, () => {
-                // Handle error or set a default location if geolocation fails
                 const defaultLocation = { lat: 4.72, lng: -74.07 }; // Bogota
-                initializeMap(defaultLocation);
+                initializeMap(options, defaultLocation, divId);
                 updateLocation(defaultLocation);
             });
         }
         else {
-            // Browser doesn't support Geolocation
             const defaultLocation = { lat: 4.72, lng: -74.07 }; // Bogota
-            initializeMap(defaultLocation);
+            initializeMap(options, defaultLocation, divId);
             updateLocation(defaultLocation);
         }
     }
-    function initializeMap(location) {
-        map = new google.maps.Map(document.getElementById('map'), {
-            center: location, // Default center (can be any location)
+    function initializeMap(options, location, divId) {
+        let div = $('#' + divId);
+        if (options.showAutocomplete) {
+            div.append('<input class="form-control mb-2" id="autocomplete" placeholder="Enter a location" disabled>');
+        }
+        div.append('<div id="sweetmesoft-map" style="height: 100%; width: 100%;"></div>');
+        map = new google.maps.Map(document.getElementById('sweetmesoft-map'), {
+            center: location,
             zoom: 8
         });
-        // Initialize the marker (without position, to be set later)
         marker = new google.maps.Marker({
             position: location,
             map: map,
@@ -65,27 +72,23 @@
             marker.setPosition(event.latLng);
             updateLocation(event.latLng);
         });
-        // Call the autocomplete initialization
-        initAutocomplete();
+        if (options.showAutocomplete) {
+            initAutocomplete();
+        }
     }
-    // Initialize Google Maps Place Autocomplete
     function initAutocomplete() {
         const input = document.getElementById('autocomplete');
-        //const select = document.getElementById('options-select');
+        document.getElementById('autocomplete').attributes.removeNamedItem("disabled");
         const autocomplete = new google.maps.places.Autocomplete(input);
-        console.log("completa", autocomplete);
         autocomplete.addListener('place_changed', () => {
             const place = autocomplete.getPlace();
             if (place.geometry) {
-                // Get latitude and longitude from place geometry
                 const latitude = place.geometry.location.lat();
                 const longitude = place.geometry.location.lng();
                 console.log('Latitude:', latitude);
                 console.log('Longitude:', longitude);
-                // You can now use latitude and longitude for further processing
                 map.setCenter(place.geometry.location);
-                map.setZoom(15); // Zoom in on the selected place
-                // Set the marker to the selected place
+                map.setZoom(15);
                 marker.setPosition(place.geometry.location);
                 marker.setVisible(true);
                 updateLocation(place.geometry.location);

@@ -96,6 +96,13 @@
         data: '',
         interval: 'daily'
     };
+    SweetMeSoft.defaultMap = {
+        divId: "",
+        modal: true,
+        showAutocomplete: false,
+        edtLatitude: undefined,
+        edtLongitude: undefined
+    };
     SweetMeSoft.defaultDateTimePickerOptions = {
         minDate: null,
         maxDate: null
