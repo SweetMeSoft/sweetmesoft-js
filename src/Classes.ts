@@ -357,6 +357,12 @@ namespace SweetMeSoft {
         showCheckbox?: boolean;
 
         /**
+         * Enable or disable full width for table
+         * @default false
+         */
+        autoWidth?: boolean;
+
+        /**
          * Allow you define the buttons to show at last column of table
          * @default []
          */

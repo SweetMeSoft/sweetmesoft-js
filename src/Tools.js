@@ -385,6 +385,7 @@
             ordering: options.canOrder,
             paging: options.showFooter,
             info: options.showFooter,
+            autoWidth: options.autoWidth,
             select: options.showCheckbox ? {
                 style: 'multi',
                 selector: 'td:first-child'
