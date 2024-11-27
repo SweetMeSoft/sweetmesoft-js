@@ -105,7 +105,10 @@
         showAutocomplete: false,
         coordinates: [],
         edtLatitude: undefined,
-        edtLongitude: undefined
+        edtLongitude: undefined,
+        isUnique: false,
+        isClickableMap: false,
+        showCoordinates: false
     };
     SweetMeSoft.defaultDateTimePickerOptions = {
         minDate: null,

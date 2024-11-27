@@ -1,20 +1,37 @@
 ﻿var SweetMeSoft;
 (function (SweetMeSoft) {
     let map;
-    let currentMarker;
     let markers = [];
     let infoWindow;
+    let showCoordinates;
     function generateMap(options) {
         options = (SweetMeSoft.setDefaults(options, SweetMeSoft.defaultMap));
+        if (options.isUnique && options.coordinates.length > 1) {
+            swal.fire('Error', 'IsUnique and Multiple coordinates can\'t be set at same time', 'error');
+            return;
+        }
+        if (options.isUnique && options.coordinates.length == 1 && options.showCurrentLocation) {
+            swal.fire('Error', 'IsUnique and showCurrentLocation block the coordinates', 'error');
+            return;
+        }
+        showCoordinates = options.showCoordinates;
+        let html = '<div id=map>';
+        if (options.showAutocomplete) {
+            html += '<input class="form-control mb-2" id="autocomplete" placeholder="Enter a location" disabled>';
+        }
+        html += '<div id="sweetmesoft-map" style="height: 100%; width: 100%;"></div>';
+        if (options.showCoordinates) {
+            html += '<p id=info>Latitude: <span id=lat></span>, Longitude: <span id=lng></span></p></div>';
+        }
         if (options.modal) {
             SweetMeSoft.generateModal({
                 title: 'Location',
                 type: 'html',
                 size: 'big',
                 primaryText: 'Set',
-                html: '<h3>Pick a Location on the Map</h3><div><input class="form-control mb-2" id=autocomplete placeholder="Enter a location" disabled><div id=map></div><p id=info>Latitude: <span id=lat></span>, Longitude: <span id=lng></span></div>',
+                html: html,
                 loadCallback: () => {
-                    initMap(options, 'map');
+                    initLocation(options);
                 },
                 primaryCallback: () => {
                     options.edtLatitude.val($("#lat").text());
@@ -24,83 +41,113 @@
             });
         }
         else {
-            initMap(options, options.divId);
+            let jquery = $('#' + options.divId);
+            jquery.html('');
+            let html = '<div id=map>';
+            if (options.showAutocomplete) {
+                html += '<input class="form-control mb-2" id="autocomplete" placeholder="Enter a location" disabled>';
+            }
+            html += '<div id="sweetmesoft-map" style="height: 100%; width: 100%;"></div>';
+            if (options.showCoordinates) {
+                html += '<p id=info>Latitude: <span id=lat></span>, Longitude: <span id=lng></span></p></div>';
+            }
+            jquery.html(html);
+            initLocation(options);
         }
     }
     SweetMeSoft.generateMap = generateMap;
     async function checkFields() {
         return $("#lat").text() != null && $("#lng").text() != null;
     }
-    function initMap(options, divId) {
-        let defaultLocation = { latitude: 0.0, longitude: 0.0, color: '#03b1fc' };
+    function initLocation(options) {
+        let defaultLocation = { latitude: 0.0, longitude: 0.0, color: '#03b1fc', draggable: false };
         if (navigator.geolocation && options.showCurrentLocation) {
             navigator.geolocation.getCurrentPosition((position) => {
-                defaultLocation = { latitude: position.coords.latitude, longitude: position.coords.longitude };
+                defaultLocation = {
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude,
+                    draggable: false
+                };
             }, () => {
                 defaultLocation = { latitude: 4.72, longitude: -74.07 };
             });
         }
-        else {
-        }
-        initializeMap(options, divId, defaultLocation);
-        updateLocation();
+        initializeMap(options, defaultLocation);
     }
-    function addMarkers(coordinates) {
-        for (let location of coordinates) {
-            const pinBackground = new google.maps.marker.PinElement({
-                background: location.color == '' ? '#FBBC04' : location.color,
-                borderColor: location.color == '' ? '#FBBC04' : location.color,
-            });
-            const m = new google.maps.marker.AdvancedMarkerElement({
-                position: { lat: location.latitude, lng: location.longitude },
-                map: map,
-                content: pinBackground.element,
-                title: location.title,
-                gmpClickable: location.title != ''
-            });
-            if (m.title != '') {
-                m.addListener('click', ({ domEvent, latLng }) => {
-                    infoWindow.close();
-                    infoWindow.setContent(m.title);
-                    infoWindow.open(m.map, m);
-                });
-            }
-            markers.push(m);
+    function addMarkers(options) {
+        for (let location of options.coordinates) {
+            addMarker(location);
         }
     }
-    function initializeMap(options, divId, location) {
-        let div = $('#' + divId);
-        if (options.showAutocomplete) {
-            div.append('<input class="form-control mb-2" id="autocomplete" placeholder="Enter a location" disabled>');
+    function addMarker(location) {
+        const pinBackground = new google.maps.marker.PinElement({
+            background: location.color == '' ? '#FBBC04' : location.color,
+            borderColor: location.color == '' ? '#FBBC04' : location.color,
+        });
+        const m = new google.maps.marker.AdvancedMarkerElement({
+            position: { lat: location.latitude, lng: location.longitude },
+            map: map,
+            content: pinBackground.element,
+            title: location.title,
+            gmpClickable: location.title != '',
+        });
+        if (location.draggable) {
+            google.maps.event.addListener(m, 'dragend', function () {
+                updateLocation();
+            });
         }
-        div.append('<div id="sweetmesoft-map" style="height: 100%; width: 100%;"></div>');
+        if (m.title != '') {
+            m.addListener('click', ({ domEvent, latLng }) => {
+                infoWindow.close();
+                infoWindow.setContent(m.title);
+                infoWindow.open(m.map, m);
+            });
+        }
+        markers.push(m);
+    }
+    function initializeMap(options, location) {
         map = new google.maps.Map(document.getElementById('sweetmesoft-map'), {
             zoom: 8,
-            mapId: "85124246986526912"
+            mapId: "85124246986526912",
+            clickableIcons: false,
         });
         infoWindow = new google.maps.InfoWindow();
-        addMarkers(options.coordinates);
+        addMarkers(options);
+        updateLocation();
         if (location.latitude != 0 && location.longitude != 0) {
-            currentMarker = new google.maps.marker.AdvancedMarkerElement({
+            let currentMarker = new google.maps.marker.AdvancedMarkerElement({
                 position: { lat: location.latitude, lng: location.longitude },
                 map: map,
                 content: new google.maps.marker.PinElement({
                     background: location.color,
                 })
             });
-            google.maps.event.addListener(currentMarker, 'dragend', function () {
-                updateLocation();
-            });
+            markers.push(currentMarker);
+        }
+        if (options.isClickableMap) {
             google.maps.event.addListener(map, 'click', function (event) {
-                currentMarker.position = event.latLng;
+                if (options.isUnique) {
+                    if (markers.length == 0) {
+                        const latLng = event.latLng;
+                        addMarker({ latitude: latLng.lat(), longitude: latLng.lng() });
+                    }
+                    else {
+                        const marker = markers[0];
+                        marker.position = event.latLng;
+                    }
+                }
+                else {
+                    const latLng = event.latLng;
+                    addMarker({ latitude: latLng.lat(), longitude: latLng.lng() });
+                }
                 updateLocation();
             });
         }
         if (options.showAutocomplete) {
-            initAutocomplete();
+            initAutocomplete(options);
         }
     }
-    function initAutocomplete() {
+    function initAutocomplete(options) {
         const input = document.getElementById('autocomplete');
         document.getElementById('autocomplete').attributes.removeNamedItem("disabled");
         const autocomplete = new google.maps.places.Autocomplete(input);
@@ -111,9 +158,18 @@
                 const longitude = place.geometry.location.lng();
                 console.log('Latitude:', latitude);
                 console.log('Longitude:', longitude);
-                map.setCenter(place.geometry.location);
-                map.setZoom(15);
-                currentMarker.position = place.geometry.location;
+                if (options.isUnique) {
+                    if (markers.length == 0) {
+                        addMarker({ latitude: latitude, longitude: longitude });
+                    }
+                    else {
+                        const marker = markers[0];
+                        marker.position = { lat: latitude, lng: longitude };
+                    }
+                }
+                else {
+                    addMarker({ latitude: latitude, longitude: longitude });
+                }
                 updateLocation();
             }
             else {
@@ -134,9 +190,16 @@
             bounds.extend(marker.position);
         });
         map.fitBounds(bounds);
-        if (currentMarker != undefined) {
-            $("#lat").text(currentMarker.position.lat);
-            $("#lng").text(currentMarker.position.lng);
+        const MIN_ZOOM = 15;
+        const listener = google.maps.event.addListener(map, 'bounds_changed', () => {
+            if (map.getZoom() > MIN_ZOOM) {
+                map.setZoom(MIN_ZOOM);
+            }
+            google.maps.event.removeListener(listener);
+        });
+        if (showCoordinates) {
+            $("#lat").text(markers[0].position.lat);
+            $("#lng").text(markers[0].position.lng);
         }
     }
 })(SweetMeSoft || (SweetMeSoft = {}));

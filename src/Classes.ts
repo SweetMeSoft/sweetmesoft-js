@@ -615,6 +615,21 @@ namespace SweetMeSoft {
          */
         showAutocomplete?: boolean;
         /**
+         * Show a label with latitude and longitude at bottom of the map
+         * @default false
+         */
+        showCoordinates?: boolean;
+        /**
+         * Allow use multiple points in coordinates. If coordinates has more than one point and isUnique is true, it shows an error
+         * @default false
+         */
+        isUnique?: boolean;
+        /**
+         * If isUnique is true, default marker will be moved, otherwise a new marker will created
+         * @default false
+         */
+        isClickableMap?: boolean;
+        /**
          * divId where the map will be shown. If modal is @true this property will be ignored. If modal is @false this property is mandatory
          */
         divId?: string;
@@ -625,6 +640,7 @@ namespace SweetMeSoft {
         longitude: number;
         color?: string;
         title?: string;
+        draggable?: boolean;
     }
 
     export interface ChartDataset {
@@ -782,7 +798,10 @@ namespace SweetMeSoft {
         showAutocomplete: false,
         coordinates: [],
         edtLatitude: undefined,
-        edtLongitude: undefined
+        edtLongitude: undefined,
+        isUnique: false,
+        isClickableMap: false,
+        showCoordinates: false
     }
 
     export const defaultDateTimePickerOptions: DateTimePickerOptions = {
