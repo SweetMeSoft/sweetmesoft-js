@@ -552,6 +552,8 @@
         color?: string;
         title?: string;
         draggable?: boolean;
+        onClick?: (geoPosition: any) => void;
+        buttonText?: string;
     }
     export interface ChartDataset {
         /**

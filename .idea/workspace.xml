@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47be978f-e6af-4827-9bb2-e827ca58498b" name="Changes" comment="Added auto width tool">
+    <list default="true" id="47be978f-e6af-4827-9bb2-e827ca58498b" name="Changes" comment="Added some options for maps">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Classes.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Classes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Classes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Maps.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Maps.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Maps.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Maps.ts" afterDir="false" />
@@ -71,7 +70,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/source/Erick/sweetmesoft-js&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Echostar Operating L.L.C/Serrano, Diego - Anthony Handover/Desarrollo web - Puntos de pago/Codigo Fuente app Web/hughesnet-backend/Wxlt-hughesnet-sls-backend-928d18a326e9&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -166,7 +165,9 @@
       <workItem from="1729538996791" duration="8435000" />
       <workItem from="1729610919814" duration="1922000" />
       <workItem from="1731774200164" duration="1649000" />
-      <workItem from="1732736309796" duration="4066000" />
+      <workItem from="1732736309796" duration="5312000" />
+      <workItem from="1733197727793" duration="1272000" />
+      <workItem from="1733624731204" duration="3289000" />
     </task>
     <task id="LOCAL-00001" summary="Repo Web moved from SweetMeSoft Library">
       <option name="closed" value="true" />
@@ -344,7 +345,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731776852589</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Added some options for maps">
+      <option name="closed" value="true" />
+      <created>1732744549162</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1732744549162</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -411,6 +420,7 @@
     <MESSAGE value="Fixed unique selected option trigger change" />
     <MESSAGE value="Added internatiolanization for Table" />
     <MESSAGE value="Added auto width tool" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added auto width tool" />
+    <MESSAGE value="Added some options for maps" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added some options for maps" />
   </component>
 </project>

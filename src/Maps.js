@@ -6,6 +6,7 @@
     let showCoordinates;
     function generateMap(options) {
         options = (SweetMeSoft.setDefaults(options, SweetMeSoft.defaultMap));
+        markers = [];
         if (options.isUnique && options.coordinates.length > 1) {
             swal.fire('Error', 'IsUnique and Multiple coordinates can\'t be set at same time', 'error');
             return;
@@ -80,6 +81,7 @@
         }
     }
     function addMarker(location) {
+        location.buttonText = location.buttonText == null || location.buttonText == '' ? 'Click here' : location.buttonText;
         const pinBackground = new google.maps.marker.PinElement({
             background: location.color == '' ? '#FBBC04' : location.color,
             borderColor: location.color == '' ? '#FBBC04' : location.color,
@@ -99,8 +101,20 @@
         if (m.title != '') {
             m.addListener('click', ({ domEvent, latLng }) => {
                 infoWindow.close();
-                infoWindow.setContent(m.title);
+                const buttonHtml = location.onClick
+                    ? '<button id="btnInfoWindowMap" class="btn btn-sm btn-primary">' + location.buttonText + '</button>'
+                    : '';
+                const content = `<div><h5>${m.title}</h5>${buttonHtml}</div>`;
+                infoWindow.setContent(content);
                 infoWindow.open(m.map, m);
+                setTimeout(() => {
+                    const button = $('#btnInfoWindowMap');
+                    if (button && location.onClick) {
+                        button.on('click', () => {
+                            location.onClick(location);
+                        });
+                    }
+                }, 300);
             });
         }
         markers.push(m);
