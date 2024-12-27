@@ -641,8 +641,10 @@ namespace SweetMeSoft {
         color?: string;
         title?: string;
         draggable?: boolean;
-        onClick?: (geoPosition) => void;
+        onClick?: (geoPosition: GeoPosition) => void;
         buttonText?: string;
+        zoomIn?: boolean;
+        addHalo?: boolean;
     }
 
     export interface ChartDataset {

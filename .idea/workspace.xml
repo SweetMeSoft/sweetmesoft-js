@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47be978f-e6af-4827-9bb2-e827ca58498b" name="Changes" comment="Added some options for maps">
+    <list default="true" id="47be978f-e6af-4827-9bb2-e827ca58498b" name="Changes" comment="Added info window click">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Classes.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Classes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Maps.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Maps.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Maps.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Maps.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,14 +39,12 @@
     &quot;state&quot;: &quot;OPEN&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="selectedUrlAndAccountId">
-      <UrlAndAccount>
-        <option name="accountId" value="6aa56ddd-9a1f-4a1e-bb61-a8275342c258" />
-        <option name="url" value="https://github.com/SweetMeSoft/sweetmesoft-js.git" />
-      </UrlAndAccount>
-    </option>
-  </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/SweetMeSoft/sweetmesoft-js.git",
+    "accountId": "d08bb341-a075-4c12-b983-ed0a279d66aa"
+  }
+}]]></component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -60,27 +59,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Echostar Operating L.L.C/Serrano, Diego - Anthony Handover/Desarrollo web - Puntos de pago/Codigo Fuente app Web/hughesnet-backend/Wxlt-hughesnet-sls-backend-928d18a326e9&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\source\\Erick\\sweetmesoft-js\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "D:/Echostar Operating L.L.C/Serrano, Diego - Anthony Handover/Desarrollo web - Puntos de pago/Codigo Fuente app Web/hughesnet-backend/Wxlt-hughesnet-sls-backend-928d18a326e9",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\source\\Erick\\sweetmesoft-js\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\erick\source\repos\Erick\sweetmesoft-js\i18n" />
@@ -93,6 +93,13 @@
       <recent name="C:\Users\erick\source\repos\Erick\sweetmesoft-js" />
       <recent name="C:\Users\erick\source\repos\Erick\sweetmesoft-js\source" />
     </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-WS-243.22562.222" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -167,7 +174,10 @@
       <workItem from="1731774200164" duration="1649000" />
       <workItem from="1732736309796" duration="5312000" />
       <workItem from="1733197727793" duration="1272000" />
-      <workItem from="1733624731204" duration="3289000" />
+      <workItem from="1733624731204" duration="3372000" />
+      <workItem from="1733630121689" duration="640000" />
+      <workItem from="1735267751234" duration="120000" />
+      <workItem from="1735268105493" duration="2985000" />
     </task>
     <task id="LOCAL-00001" summary="Repo Web moved from SweetMeSoft Library">
       <option name="closed" value="true" />
@@ -353,7 +363,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732744549162</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Added info window click">
+      <option name="closed" value="true" />
+      <created>1733630026404</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1733630026404</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -421,6 +439,7 @@
     <MESSAGE value="Added internatiolanization for Table" />
     <MESSAGE value="Added auto width tool" />
     <MESSAGE value="Added some options for maps" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added some options for maps" />
+    <MESSAGE value="Added info window click" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added info window click" />
   </component>
 </project>

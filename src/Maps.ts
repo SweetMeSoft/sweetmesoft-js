@@ -1,12 +1,14 @@
 namespace SweetMeSoft {
     let map: google.maps.Map
-    let markers: google.maps.marker.AdvancedMarkerElement[] = []
+    let markersInZoom: google.maps.marker.AdvancedMarkerElement[] = []
+    let markersOutZoom: google.maps.marker.AdvancedMarkerElement[] = []
     let infoWindow: google.maps.InfoWindow
     let showCoordinates: boolean
 
     export function generateMap(options: OptionsMap) {
         options = ((setDefaults(options, defaultMap)) as OptionsMap)
-        markers = []
+        markersInZoom = []
+        markersOutZoom = []
         if (options.isUnique && options.coordinates.length > 1) {
             swal.fire('Error', 'IsUnique and Multiple coordinates can\'t be set at same time', 'error')
             return
@@ -96,7 +98,7 @@ namespace SweetMeSoft {
             background: location.color == '' ? '#FBBC04' : location.color,
             borderColor: location.color == '' ? '#FBBC04' : location.color,
         })
-        const m = new google.maps.marker.AdvancedMarkerElement({
+        const marker = new google.maps.marker.AdvancedMarkerElement({
             position: {lat: location.latitude, lng: location.longitude},
             map: map,
             content: pinBackground.element,
@@ -105,20 +107,20 @@ namespace SweetMeSoft {
         })
 
         if (location.draggable) {
-            google.maps.event.addListener(m, 'dragend', function () {
+            google.maps.event.addListener(marker, 'dragend', function () {
                 updateLocation()
             })
         }
 
-        if (m.title != '') {
-            m.addListener('click', ({domEvent, latLng}) => {
+        if (marker.title != '') {
+            marker.addListener('click', ({domEvent, latLng}) => {
                 infoWindow.close();
                 const buttonHtml = location.onClick
                     ? '<button id="btnInfoWindowMap" class="btn btn-sm btn-primary">' + location.buttonText + '</button>'
                     : ''
-                const content = `<div><h5>${m.title}</h5>${buttonHtml}</div>`;
+                const content = `<div><h5>${marker.title}</h5>${buttonHtml}</div>`;
                 infoWindow.setContent(content);
-                infoWindow.open(m.map, m);
+                infoWindow.open(marker.map, marker);
 
                 setTimeout(() => {
                     const button = $('#btnInfoWindowMap')
@@ -131,7 +133,30 @@ namespace SweetMeSoft {
             })
         }
 
-        markers.push(m)
+        if(location.addHalo) {
+            const halo = document.createElement("div");
+            halo.className = "radar-effect";
+            const overlay = new google.maps.OverlayView();
+            overlay.onAdd = function () {
+                const layer = this.getPanes().overlayLayer;
+                layer.appendChild(halo);
+            };
+
+            overlay.draw = function () {
+                const projection = this.getProjection();
+                const positionOnMap = projection.fromLatLngToDivPixel(marker.position);
+                halo.style.left = positionOnMap.x + "px";
+                halo.style.top = positionOnMap.y + "px";
+            };
+
+            overlay.setMap(map);
+        }
+
+        if (location.zoomIn) {
+            markersInZoom.push(marker)
+        } else {
+            markersOutZoom.push(marker)
+        }
     }
 
     function initializeMap(options: SweetMeSoft.OptionsMap, location: GeoPosition) {
@@ -139,7 +164,6 @@ namespace SweetMeSoft {
             zoom: 8,
             mapId: "85124246986526912",
             clickableIcons: false,
-
         })
         infoWindow = new google.maps.InfoWindow()
         addMarkers(options)
@@ -154,17 +178,17 @@ namespace SweetMeSoft {
                 })
             })
 
-            markers.push(currentMarker)
+            markersInZoom.push(currentMarker)
         }
 
         if (options.isClickableMap) {
             google.maps.event.addListener(map, 'click', function (event) {
                 if (options.isUnique) {
-                    if (markers.length == 0) {
+                    if (markersInZoom.length == 0) {
                         const latLng = event.latLng as google.maps.LatLng
                         addMarker({latitude: latLng.lat(), longitude: latLng.lng()})
                     } else {
-                        const marker = markers[0]
+                        const marker = markersInZoom[0]
                         marker.position = event.latLng
                     }
                 } else {
@@ -199,10 +223,10 @@ namespace SweetMeSoft {
                 console.log('Longitude:', longitude)
 
                 if (options.isUnique) {
-                    if (markers.length == 0) {
+                    if (markersInZoom.length == 0) {
                         addMarker({latitude: latitude, longitude: longitude})
                     } else {
-                        const marker = markers[0]
+                        const marker = markersInZoom[0]
                         marker.position = {lat: latitude, lng: longitude}
                     }
                 } else {
@@ -227,7 +251,7 @@ namespace SweetMeSoft {
 
     function updateLocation() {
         const bounds = new google.maps.LatLngBounds();
-        markers.forEach(marker => {
+        markersInZoom.forEach(marker => {
             bounds.extend(marker.position);
         });
         map.fitBounds(bounds);
@@ -241,8 +265,8 @@ namespace SweetMeSoft {
         });
 
         if (showCoordinates) {
-            $("#lat").text(markers[0].position.lat)
-            $("#lng").text(markers[0].position.lng)
+            $("#lat").text(markersInZoom[0].position.lat)
+            $("#lng").text(markersInZoom[0].position.lng)
         }
     }
 }

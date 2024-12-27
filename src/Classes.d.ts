@@ -552,8 +552,10 @@
         color?: string;
         title?: string;
         draggable?: boolean;
-        onClick?: (geoPosition: any) => void;
+        onClick?: (geoPosition: GeoPosition) => void;
         buttonText?: string;
+        zoomIn?: boolean;
+        addHalo?: boolean;
     }
     export interface ChartDataset {
         /**
