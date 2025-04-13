@@ -362,19 +362,20 @@ namespace SweetMeSoft {
                     let htmlButtons = '';
                     for (let button of options.buttons) {
                         const showButton = button.showButton == undefined ? true : button.showButton(row);
+                        const popoverClass = button.popover == '' || button.popover == undefined ? '"' : ' popoverclass" data-bs-toggle="popover" data-bs-container="body" data-bs-placement="top" tabindex="0" data-bs-trigger="hover focus" data-bs-content="' + button.popover;
                         if (showButton) {
                             switch (button.type) {
                                 case 'update':
-                                    htmlButtons += '<a id="btn' + tableId + indexButton + '" class="btn btn-primary btn-table"><i class="bi-pencil-fill icn-table" style="color: white;"></i></a>';
+                                    htmlButtons += '<a id="btn' + tableId + indexButton + '" class="btn btn-primary btn-table'+popoverClass+'"><i class="bi-pencil-fill icn-table" style="color: white;"></i></a>';
                                     break;
                                 case 'delete':
-                                    htmlButtons += '<a id="btn' + tableId + indexButton + '" class="btn btn-danger btn-table"><i class="bi-trash3-fill icn-table" style="color: white;"></i></a>';
+                                    htmlButtons += '<a id="btn' + tableId + indexButton + '" class="btn btn-danger btn-table'+popoverClass+'"><i class="bi-trash3-fill icn-table" style="color: white;"></i></a>';
                                     break;
                                 case 'download':
-                                    htmlButtons += '<a id="btn' + tableId + indexButton + '" class="btn btn-primary btn-table"><i class="bi-download icn-table" style="color: white;"></i></a>';
+                                    htmlButtons += '<a id="btn' + tableId + indexButton + '" class="btn btn-primary btn-table'+popoverClass+'"><i class="bi-download icn-table" style="color: white;"></i></a>';
                                     break;
                                 case 'custom':
-                                    htmlButtons += '<a id="btn' + tableId + indexButton + '" class="btn btn-table" style="background-color: ' + button.color + '"><i class="bi-' + button.icon + ' icn-table" style="color: white;"></i></a>';
+                                    htmlButtons += '<a id="btn' + tableId + indexButton + '" class="btn btn-table'+popoverClass+'" style="background-color: ' + button.color + '"><i class="bi-' + button.icon + ' icn-table" style="color: white;"></i></a>';
                                     break;
                             }
 
