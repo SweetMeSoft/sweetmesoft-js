@@ -9,13 +9,17 @@
             this.disabled = false;
         });
     },
-    check: function (checked) {
-        if (checked) {
-            $(this).parent().addClass('checked');
-        } else {
+    check: function () {
+        return this.each(function () {
+            this.parent().addClass('checked');
+            return this.prop('checked', true);
+        });
+    },
+    uncheck: function () {
+        return this.each(function () {
             $(this).parent().removeClass('checked');
-        }
-        return this.prop('checked', checked);
+            return this.prop('checked', false);
+        });
     },
     checkValidity: function () {
         return this[0].checkValidity();

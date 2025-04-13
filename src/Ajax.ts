@@ -259,7 +259,7 @@ namespace SweetMeSoft {
     function handleAjaxSuccess(options: OptionsRequest, response: any) {
         if (options.showSuccess) {
             swal.fire({
-                title: 'Great!',
+                title: options.successTitle,
                 text: options.successMessage != '' ? options.successMessage : 'Request made successfully',
                 icon: 'success',
                 onAfterClose: () => {

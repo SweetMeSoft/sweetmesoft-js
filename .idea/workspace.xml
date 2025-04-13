@@ -4,14 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47be978f-e6af-4827-9bb2-e827ca58498b" name="Changes" comment="Added info window click">
+    <list default="true" id="47be978f-e6af-4827-9bb2-e827ca58498b" name="Changes" comment="Added pulse effect and zoomIn options">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Ajax.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ajax.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Ajax.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ajax.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Classes.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Classes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Classes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Maps.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Maps.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Maps.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Maps.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/JQueryAddOns.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/JQueryAddOns.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,12 +40,12 @@
     &quot;state&quot;: &quot;OPEN&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/SweetMeSoft/sweetmesoft-js.git",
-    "accountId": "d08bb341-a075-4c12-b983-ed0a279d66aa"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/SweetMeSoft/sweetmesoft-js.git&quot;,
+    &quot;accountId&quot;: &quot;d08bb341-a075-4c12-b983-ed0a279d66aa&quot;
   }
-}]]></component>
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -70,14 +71,15 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "D:/Echostar Operating L.L.C/Serrano, Diego - Anthony Handover/Desarrollo web - Puntos de pago/Codigo Fuente app Web/hughesnet-backend/Wxlt-hughesnet-sls-backend-928d18a326e9",
+    "last_opened_file_path": "D:/source/SweetMeSoft/sweetmesoft-js",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\source\\Erick\\sweetmesoft-js\\node_modules\\typescript\\lib",
+    "settings.editor.selected.configurable": "preferences.sourceCode",
+    "ts.external.directory.path": "D:\\source\\SweetMeSoft\\sweetmesoft-js\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -97,7 +99,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-WS-243.22562.222" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-WS-243.26053.12" />
       </set>
     </attachedChunks>
   </component>
@@ -177,7 +179,11 @@
       <workItem from="1733624731204" duration="3372000" />
       <workItem from="1733630121689" duration="640000" />
       <workItem from="1735267751234" duration="120000" />
-      <workItem from="1735268105493" duration="2985000" />
+      <workItem from="1735268105493" duration="3703000" />
+      <workItem from="1738082758085" duration="1134000" />
+      <workItem from="1744560223586" duration="47000" />
+      <workItem from="1744560344537" duration="240000" />
+      <workItem from="1744560818497" duration="6110000" />
     </task>
     <task id="LOCAL-00001" summary="Repo Web moved from SweetMeSoft Library">
       <option name="closed" value="true" />
@@ -371,7 +377,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733630026404</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Added pulse effect and zoomIn options">
+      <option name="closed" value="true" />
+      <created>1735275416051</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1735275416051</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -440,6 +454,7 @@
     <MESSAGE value="Added auto width tool" />
     <MESSAGE value="Added some options for maps" />
     <MESSAGE value="Added info window click" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added info window click" />
+    <MESSAGE value="Added pulse effect and zoomIn options" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added pulse effect and zoomIn options" />
   </component>
 </project>

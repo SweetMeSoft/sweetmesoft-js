@@ -89,6 +89,7 @@
         },
         errorMessage: '',
         successMessage: '',
+        successTitle: 'Great!',
         showError: true,
         showSuccess: true
     };

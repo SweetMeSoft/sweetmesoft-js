@@ -402,6 +402,12 @@ namespace SweetMeSoft {
         color?: string;
 
         /**
+         * Color for button. You can use HTML color name or hex color.
+         * @default for @update button is btn-primary, for @delete button is btn-danger, for @custom button is ''
+         */
+        popover?: string;
+
+        /**
          * Event fired when the button is clicked
          * @param rowData row data where the button was clicked
          * @returns
@@ -470,6 +476,7 @@ namespace SweetMeSoft {
         data?: string | Object;
         uploadControl?: JQuery;
         successCallback?: (response) => void;
+        successTitle?: string;
         successMessage?: string;
         errorCallback?: (response) => void;
         errorMessage?: string;
@@ -784,6 +791,7 @@ namespace SweetMeSoft {
         },
         errorMessage: '',
         successMessage: '',
+        successTitle: 'Great!',
         showError: true,
         showSuccess: true
     };
