@@ -127,7 +127,7 @@
             case 'view':
                 on();
                 body.load(options.viewUrl, options.viewData, () => {
-                    if (options.loadCallback != undefined) {
+                    if (options.loadCallback !== undefined) {
                         options.loadCallback();
                         off();
                     }
@@ -138,12 +138,12 @@
                 break;
             case 'html':
                 body.html(options.html);
-                if (options.loadCallback != undefined) {
+                if (options.loadCallback !== undefined) {
                     options.loadCallback();
                 }
                 break;
         }
-        if (options.primaryCallback != undefined) {
+        if (options.primaryCallback !== undefined) {
             btnModalPrimary.show();
             btnModalPrimary.off('click');
             btnModalPrimary.on('click', () => {
@@ -387,6 +387,9 @@
             paging: options.showFooter,
             info: options.showFooter,
             autoWidth: options.autoWidth,
+            rowCallback: (row, data, index) => {
+                options.rowStyle(row, data, index);
+            },
             select: options.showCheckbox ? {
                 style: 'multi',
                 selector: 'td:first-child'

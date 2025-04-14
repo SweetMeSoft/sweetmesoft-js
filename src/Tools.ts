@@ -415,6 +415,9 @@ namespace SweetMeSoft {
             paging: options.showFooter,
             info: options.showFooter,
             autoWidth: options.autoWidth,
+            rowCallback: (row, data, index)=> {
+                options.rowStyle(row, data, index)
+            },
             select: options.showCheckbox ? {
                 style: 'multi',
                 selector: 'td:first-child'

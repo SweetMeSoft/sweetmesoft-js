@@ -4,15 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47be978f-e6af-4827-9bb2-e827ca58498b" name="Changes" comment="Added popover to buttons in tables">
+    <list default="true" id="47be978f-e6af-4827-9bb2-e827ca58498b" name="Changes" comment="Added rowStyle function to table">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ajax.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ajax.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ajax.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ajax.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Classes.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Classes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Classes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JQueryAddOns.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/JQueryAddOns.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tools.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tools.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tools.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tools.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,7 +182,7 @@
       <workItem from="1738082758085" duration="1134000" />
       <workItem from="1744560223586" duration="47000" />
       <workItem from="1744560344537" duration="240000" />
-      <workItem from="1744560818497" duration="6551000" />
+      <workItem from="1744560818497" duration="11704000" />
     </task>
     <task id="LOCAL-00001" summary="Repo Web moved from SweetMeSoft Library">
       <option name="closed" value="true" />
@@ -393,7 +392,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744568859639</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Added popover to buttons in tables">
+      <option name="closed" value="true" />
+      <created>1744569018517</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1744569018517</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -464,6 +471,7 @@
     <MESSAGE value="Added info window click" />
     <MESSAGE value="Added pulse effect and zoomIn options" />
     <MESSAGE value="Added popover to buttons in tables" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added popover to buttons in tables" />
+    <MESSAGE value="Added rowStyle function to table" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added rowStyle function to table" />
   </component>
 </project>

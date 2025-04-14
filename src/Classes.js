@@ -65,6 +65,8 @@
         height: 'auto',
         canOrder: true,
         showCheckbox: false,
+        rowStyle: (row, rowData, index) => {
+        },
         onDblClick: (rowData) => {
         }
     };

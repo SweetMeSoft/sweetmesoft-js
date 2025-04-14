@@ -111,7 +111,7 @@
          */
         imgControl: JQuery;
         /**
-         * The cropper will be circle
+         * The cropper will be a circle
          * @default false
          circleCrop?: boolean;
          */
@@ -305,8 +305,14 @@
          */
         buttons?: TableButton[];
         /**
-         * Event fired when the user double click on a row
-         * @rowData data for row double clicked
+         * Event fired when the user double-click on a row
+         * @rowData data for row double-clicked
+         * @return
+         */
+        rowStyle?: (row: Node, rowData: any, index: number) => void;
+        /**
+         * Event fired when the user double-click on a row
+         * @rowData data for row double-clicked
          * @return
          */
         onDblClick?: (rowData: any) => void;
@@ -518,7 +524,7 @@
          */
         showCurrentLocation?: boolean;
         /**
-         * Lista de coordenadas a mostrar en el mapa como markers
+         * List of coordinates to show in the map like markers
          * @default []
          */
         coordinates?: GeoPosition[];
@@ -666,6 +672,7 @@
         height: string;
         canOrder: boolean;
         showCheckbox: boolean;
+        rowStyle: (row: Node, rowData: any, index: number) => void;
         onDblClick: (rowData: any) => void;
     };
     export const defaultsConsecutive: {

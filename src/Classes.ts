@@ -1,9 +1,5 @@
 namespace SweetMeSoft {
 
-    import LatLng = google.maps.LatLng;
-    import AdvancedMarkerElement = google.maps.marker.AdvancedMarkerElement;
-    import Coordinates = JQuery.Coordinates;
-
     export function setDefaults(options: any, defaults: any) {
         return (<any>Object).assign({}, defaults, options);
     }
@@ -138,7 +134,7 @@ namespace SweetMeSoft {
         imgControl: JQuery;
 
         /**
-         * The cropper will be circle
+         * The cropper will be a circle
          * @default false
          circleCrop?: boolean;
          */
@@ -369,11 +365,18 @@ namespace SweetMeSoft {
         buttons?: TableButton[];
 
         /**
-         * Event fired when the user double click on a row
-         * @rowData data for row double clicked
+         * Event fired when the user double-click on a row
+         * @rowData data for row double-clicked
          * @return
          */
-        onDblClick?: (rowData) => void;
+        rowStyle?: (row: Node, rowData: any, index: number) => void;
+
+        /**
+         * Event fired when the user double-click on a row
+         * @rowData data for row double-clicked
+         * @return
+         */
+        onDblClick?: (rowData: any) => void;
     }
 
     /**
@@ -475,10 +478,10 @@ namespace SweetMeSoft {
         filename?: string;
         data?: string | Object;
         uploadControl?: JQuery;
-        successCallback?: (response) => void;
+        successCallback?: (response: any) => void;
         successTitle?: string;
         successMessage?: string;
-        errorCallback?: (response) => void;
+        errorCallback?: (response: any) => void;
         errorMessage?: string;
         showError?: boolean;
         showSuccess?: boolean;
@@ -516,7 +519,7 @@ namespace SweetMeSoft {
          * Method to call in case of success. Gets the response of the service
          * @param response
          */
-        callback?: (response) => void;
+        callback?: (response: any) => void;
 
         /**
          * Method to call in case of error. Gets the response of the service in string, status and the jquery object
@@ -524,7 +527,7 @@ namespace SweetMeSoft {
          * @param status
          * @param jqXhr
          */
-        errorCallback?: (response: string, status, jqXhr) => void;
+        errorCallback?: (response: string, status: any, jqXhr: any) => void;
 
         /**
          * Custom text for the popup initial validation when deleting an object
@@ -607,7 +610,7 @@ namespace SweetMeSoft {
          */
         showCurrentLocation?: boolean;
         /**
-         * Lista de coordenadas a mostrar en el mapa como markers
+         * List of coordinates to show in the map like markers
          * @default []
          */
         coordinates?: GeoPosition[];
@@ -725,7 +728,7 @@ namespace SweetMeSoft {
     export const defaultCropper = {
         circleCrop: false,
         aspectRatio: 'square',
-        callback: (blob) => {
+        callback: (blob: any) => {
         }
     }
 
@@ -765,7 +768,9 @@ namespace SweetMeSoft {
         height: 'auto',
         canOrder: true,
         showCheckbox: false,
-        onDblClick: (rowData) => {
+        rowStyle: (row: Node, rowData: any, index: number) => {
+        },
+        onDblClick: (rowData: any) => {
         }
     };
 
