@@ -4,11 +4,15 @@ namespace SweetMeSoft {
     let markersOutZoom: google.maps.marker.AdvancedMarkerElement[] = []
     let infoWindow: google.maps.InfoWindow
     let showCoordinates: boolean
+    let edtLatitude: JQuery
+    let edtLongitude: JQuery
 
     export function generateMap(options: OptionsMap) {
         options = ((setDefaults(options, defaultMap)) as OptionsMap)
         markersInZoom = []
         markersOutZoom = []
+        edtLatitude = options.edtLatitude
+        edtLongitude = options.edtLongitude
         if (options.isUnique && options.coordinates.length > 1) {
             swal.fire('Error', 'IsUnique and Multiple coordinates can\'t be set at same time', 'error')
             return
@@ -67,23 +71,33 @@ namespace SweetMeSoft {
     }
 
     function initLocation(options: OptionsMap) {
-        let defaultLocation: GeoPosition = {latitude: 0.0, longitude: 0.0, color: '#03b1fc', draggable: false}
         if (navigator.geolocation && options.showCurrentLocation) {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
-                    defaultLocation = {
+                    initializeMap(options, {
                         latitude: position.coords.latitude,
                         longitude: position.coords.longitude,
+                        color: '#03b1fc',
                         draggable: false
-                    }
+                    })
                 },
                 () => {
-                    defaultLocation = {latitude: 4.72, longitude: -74.07}
+                    initializeMap(options, {
+                        latitude: 0,
+                        longitude: 0,
+                        color: '#03b1fc',
+                        draggable: false
+                    })
                 }
             )
+        } else {
+            initializeMap(options, {
+                latitude: 0,
+                longitude: 0,
+                color: '#03b1fc',
+                draggable: false
+            })
         }
-
-        initializeMap(options, defaultLocation)
     }
 
     function addMarkers(options: OptionsMap) {
@@ -167,7 +181,6 @@ namespace SweetMeSoft {
         })
         infoWindow = new google.maps.InfoWindow()
         addMarkers(options)
-        updateLocation()
 
         if (location.latitude != 0 && location.longitude != 0) {
             let currentMarker = new google.maps.marker.AdvancedMarkerElement({
@@ -175,12 +188,13 @@ namespace SweetMeSoft {
                 map: map,
                 content: new google.maps.marker.PinElement({
                     background: location.color,
-                })
+                }).element
             })
 
             markersInZoom.push(currentMarker)
         }
 
+        updateLocation()
         if (options.isClickableMap) {
             google.maps.event.addListener(map, 'click', function (event) {
                 if (options.isUnique) {
@@ -265,8 +279,12 @@ namespace SweetMeSoft {
         });
 
         if (showCoordinates) {
-            $("#lat").text(markersInZoom[0].position.lat)
-            $("#lng").text(markersInZoom[0].position.lng)
+            if (markersInZoom[0] != null) {
+                $("#lat").text(markersInZoom[0].position.lat)
+                $("#lng").text(markersInZoom[0].position.lng)
+                edtLatitude.val(markersInZoom[0].position.lat.toString())
+                edtLongitude.val(markersInZoom[0].position.lng.toString())
+            }
         }
     }
 }
