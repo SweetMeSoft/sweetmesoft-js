@@ -1,6 +1,6 @@
 {
 	"name": "sweetmesoft-js",
-	"version": "1.0.97",
+	"version": "1.0.98",
 	"description": "",
 	"main": "index.js",
 	"scripts": {
@@ -27,5 +27,5 @@
 		"@types/jquery": "^3.5.16",
 		"cropperjs": "^1.5.13",
 		"typescript": "^5.3.3"
-	}	
+	}
 }
