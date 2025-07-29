@@ -113,6 +113,17 @@ namespace SweetMeSoft {
          * @default false
          */
         isCountries?: boolean;
+
+        /**
+         * JWT token for authentication
+         * @default ''
+         */
+        jwt?: string;
+        /**
+         * Language/culture code for localization
+         * @default 'en-US'
+         */
+        lang?: string;
     }
 
     /**
@@ -485,6 +496,17 @@ namespace SweetMeSoft {
         errorMessage?: string;
         showError?: boolean;
         showSuccess?: boolean;
+        contentType?: string;
+        /**
+         * JWT token for authentication
+         * @default ''
+         */
+        jwt?: string;
+        /**
+         * Language/culture code for localization
+         * @default 'en-US'
+         */
+        lang?: string;
     }
 
     export interface OptionsConsecutive {
@@ -722,7 +744,9 @@ namespace SweetMeSoft {
         internal: 'id',
         urlValues: '',
         value: 0,
-        isCountries: false
+        isCountries: false,
+        jwt: '',
+        lang: 'en-US'
     };
 
     export const defaultCropper = {
@@ -798,7 +822,9 @@ namespace SweetMeSoft {
         successMessage: '',
         successTitle: 'Great!',
         showError: true,
-        showSuccess: true
+        showSuccess: true,
+        jwt: '',
+        lang: 'en-US'
     };
 
     export const defaultsChart: OptionsChart = {

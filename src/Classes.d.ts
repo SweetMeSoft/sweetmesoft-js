@@ -93,6 +93,16 @@
          * @default false
          */
         isCountries?: boolean;
+        /**
+         * JWT token for authentication
+         * @default ''
+         */
+        jwt?: string;
+        /**
+         * Language/culture code for localization
+         * @default 'en-US'
+         */
+        lang?: string;
     }
     /**
      * Basic options to generate a Square cropper.
@@ -413,6 +423,17 @@
         errorMessage?: string;
         showError?: boolean;
         showSuccess?: boolean;
+        contentType?: string;
+        /**
+         * JWT token for authentication
+         * @default ''
+         */
+        jwt?: string;
+        /**
+         * Language/culture code for localization
+         * @default 'en-US'
+         */
+        lang?: string;
     }
     export interface OptionsConsecutive {
         documentId: number;
@@ -631,6 +652,8 @@
         urlValues: string;
         value: number;
         isCountries: boolean;
+        jwt: string;
+        lang: string;
     };
     export const defaultCropper: {
         circleCrop: boolean;

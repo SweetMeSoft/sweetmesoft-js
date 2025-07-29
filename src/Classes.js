@@ -22,7 +22,9 @@
         internal: 'id',
         urlValues: '',
         value: 0,
-        isCountries: false
+        isCountries: false,
+        jwt: '',
+        lang: 'en-US'
     };
     SweetMeSoft.defaultCropper = {
         circleCrop: false,
@@ -93,7 +95,9 @@
         successMessage: '',
         successTitle: 'Great!',
         showError: true,
-        showSuccess: true
+        showSuccess: true,
+        jwt: '',
+        lang: 'en-US'
     };
     SweetMeSoft.defaultsChart = {
         url: "",
