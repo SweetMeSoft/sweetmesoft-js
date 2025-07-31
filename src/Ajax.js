@@ -174,6 +174,60 @@
         });
     }
     SweetMeSoft.post = post;
+    /**
+     *
+     * @param options
+     */
+    async function put(options) {
+        SweetMeSoft.on();
+        options = (SweetMeSoft.setDefaults(options, SweetMeSoft.defaultsRequest));
+        return $.ajax({
+            url: options.url,
+            data: options.data,
+            type: 'PUT',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('timezone', Intl.DateTimeFormat().resolvedOptions().timeZone);
+                xhr.setRequestHeader('Accept-Language', options.lang);
+                if (options.jwt && options.jwt !== '') {
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + options.jwt);
+                }
+            }
+        }).then((response) => {
+            handleAjaxSuccess(options, response);
+            return true;
+        }).catch((jqXhr) => {
+            handleAjaxError(options, jqXhr);
+            return false;
+        });
+    }
+    SweetMeSoft.put = put;
+    /**
+     *
+     * @param options
+     */
+    async function del(options) {
+        SweetMeSoft.on();
+        options = (SweetMeSoft.setDefaults(options, SweetMeSoft.defaultsRequest));
+        return $.ajax({
+            url: options.url,
+            data: options.data,
+            type: 'DELETE',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('timezone', Intl.DateTimeFormat().resolvedOptions().timeZone);
+                xhr.setRequestHeader('Accept-Language', options.lang);
+                if (options.jwt && options.jwt !== '') {
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + options.jwt);
+                }
+            }
+        }).then((response) => {
+            handleAjaxSuccess(options, response);
+            return true;
+        }).catch((jqXhr) => {
+            handleAjaxError(options, jqXhr);
+            return false;
+        });
+    }
+    SweetMeSoft.del = del;
     async function downloadFile(options) {
         SweetMeSoft.on();
         options = (SweetMeSoft.setDefaults(options, SweetMeSoft.defaultsRequest));

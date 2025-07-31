@@ -179,6 +179,60 @@ namespace SweetMeSoft {
         });
     }
 
+    /**
+     *
+     * @param options
+     */
+    export async function put(options: OptionsRequest): Promise<boolean> {
+        on();
+        options = <OptionsRequest>(setDefaults(options, defaultsRequest));
+        return $.ajax({
+            url: options.url,
+            data: options.data,
+            type: 'PUT',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('timezone', Intl.DateTimeFormat().resolvedOptions().timeZone);
+                xhr.setRequestHeader('Accept-Language', options.lang);
+                if (options.jwt && options.jwt !== '') {
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + options.jwt);
+                }
+            }
+        }).then((response) => {
+            handleAjaxSuccess(options, response);
+            return true;
+        }).catch((jqXhr) => {
+            handleAjaxError(options, jqXhr)
+            return false;
+        });
+    }
+
+    /**
+     *
+     * @param options
+     */
+    export async function del(options: OptionsRequest): Promise<boolean> {
+        on();
+        options = <OptionsRequest>(setDefaults(options, defaultsRequest));
+        return $.ajax({
+            url: options.url,
+            data: options.data,
+            type: 'DELETE',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('timezone', Intl.DateTimeFormat().resolvedOptions().timeZone);
+                xhr.setRequestHeader('Accept-Language', options.lang);
+                if (options.jwt && options.jwt !== '') {
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + options.jwt);
+                }
+            }
+        }).then((response) => {
+            handleAjaxSuccess(options, response);
+            return true;
+        }).catch((jqXhr) => {
+            handleAjaxError(options, jqXhr)
+            return false;
+        });
+    }
+
     export async function downloadFile(options: OptionsRequest): Promise<boolean> {
         on();
         options = <OptionsRequest>(setDefaults(options, defaultsRequest));

@@ -28,6 +28,16 @@
      * @param options
      */
     function post(options: OptionsRequest): Promise<boolean>;
+    /**
+     *
+     * @param options
+     */
+    function put(options: OptionsRequest): Promise<boolean>;
+    /**
+     *
+     * @param options
+     */
+    function del(options: OptionsRequest): Promise<boolean>;
     function downloadFile(options: OptionsRequest): Promise<boolean>;
     function uploadFile(options: OptionsRequest): Promise<boolean>;
 }
