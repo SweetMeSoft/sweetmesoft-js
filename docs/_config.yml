@@ -1,0 +1,19 @@
+title: SweetMeSoft JS Documentation
+description: A complete JavaScript/TypeScript library for modern web development
+url: https://sweetmesoft.github.io
+baseurl: /sweetmesoft-js
+
+markdown: kramdown
+highlighter: rouge
+
+theme: minima
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+exclude:
+  - node_modules
+  - package.json
+  - package-lock.json
+  - README.md

@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SweetMeSoft JS - Interfaces Documentation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <style>
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 280px;
+            background-color: #f8f9fa;
+            border-right: 1px solid #dee2e6;
+            overflow-y: auto;
+            padding-top: 20px;
+        }
+        .main-content {
+            margin-left: 280px;
+            padding: 20px;
+        }
+        .interface-card {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            padding: 25px;
+        }
+        .interface-title {
+            color: #0d6efd;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .property {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+            border-left: 4px solid #0d6efd;
+        }
+        .property-name {
+            font-weight: bold;
+            color: #6f42c1;
+            font-family: 'Courier New', monospace;
+        }
+        .property-type {
+            color: #dc3545;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+        }
+        .nav-link {
+            color: #495057;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+        }
+        .nav-link:hover {
+            background-color: #e9ecef;
+            color: #0d6efd;
+        }
+        .nav-link.active {
+            background-color: #0d6efd;
+            color: white;
+        }
+        .badge-mandatory {
+            background-color: #dc3545;
+        }
+        .badge-optional {
+            background-color: #6c757d;
+        }
+        .default-value {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="px-3">
+            <h4 class="text-primary">SweetMeSoft JS</h4>
+            <p class="text-muted small">Interfaces</p>
+            <a href="index.html" class="btn btn-outline-primary btn-sm mb-3">← Back to Main</a>
+            <hr>
+            <nav class="nav flex-column">
+                <a class="nav-link active" href="#options-select">OptionsSelect</a>
+                <a class="nav-link" href="#options-request">OptionsRequest</a>
+                <a class="nav-link" href="#options-chart">OptionsChart</a>
+                <a class="nav-link" href="#options-map">OptionsMap</a>
+                <a class="nav-link" href="#options-modal">OptionsModal</a>
+                <a class="nav-link" href="#options-cropper">OptionsCropper</a>
+                <a class="nav-link" href="#options-table">OptionsTable</a>
+                <a class="nav-link" href="#other-interfaces">Other Interfaces</a>
+            </nav>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <h1>TypeScript Interfaces</h1>
+        <p class="lead">Complete reference for all TypeScript interfaces used in SweetMeSoft JS library.</p>
+
+        <section id="options-select">
+            <div class="interface-card">
+                <h2 class="interface-title">OptionsSelect</h2>
+                <p>Basic options to generate a Select. This method uses Bootstrap Select.</p>
+                <p><strong>Reference:</strong> <a href="https://developer.snapappointments.com/bootstrap-select/" target="_blank">Bootstrap Select Documentation</a></p>
+                
+                <h5>Properties:</h5>
+                
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">url</span>
+                        <span class="badge badge-mandatory">mandatory</span>
+                    </div>
+                    <div class="property-type">string</div>
+                    <p class="mt-2 mb-0">URL to get the data</p>
+                </div>
+
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">data</span>
+                        <span class="badge badge-optional">optional</span>
+                    </div>
+                    <div class="property-type">string | Object | FormData</div>
+                    <div class="default-value">default: {}</div>
+                    <p class="mt-2 mb-0">Parameters to send to the URL</p>
+                </div>
+
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">dropDowns</span>
+                        <span class="badge badge-mandatory">mandatory</span>
+                    </div>
+                    <div class="property-type">JQuery[]</div>
+                    <p class="mt-2 mb-0">jQuery objects where the select will be generated</p>
+                    <p class="text-muted small">Example: [$('#select')]</p>
+                </div>
+
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">autoSelect</span>
+                        <span class="badge badge-optional">optional</span>
+                    </div>
+                    <div class="property-type">boolean</div>
+                    <div class="default-value">default: true</div>
+                    <p class="mt-2 mb-0">If true and there is only one option, it will be selected automatically</p>
+                </div>
+
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">callback</span>
+                        <span class="badge badge-optional">optional</span>
+                    </div>
+                    <div class="property-type">(list: any) => void</div>
+                    <p class="mt-2 mb-0">Callback called when the options are loaded in the selects</p>
+                </div>
+
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">enable</span>
+                        <span class="badge badge-optional">optional</span>
+                    </div>
+                    <div class="property-type">boolean</div>
+                    <div class="default-value">default: true</div>
+                    <p class="mt-2 mb-0">If true and the select is disabled, it will be enabled automatically</p>
+                </div>
+
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">text</span>
+                        <span class="badge badge-optional">optional</span>
+                    </div>
+                    <div class="property-type">string</div>
+                    <div class="default-value">default: 'name'</div>
+                    <p class="mt-2 mb-0">Object property to show in the main text</p>
+                </div>
+
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">internal</span>
+                        <span class="badge badge-optional">optional</span>
+                    </div>
+                    <div class="property-type">string</div>
+                    <div class="default-value">default: 'id'</div>
+                    <p class="mt-2 mb-0">Object property to add in the value for each option</p>
+                </div>
+
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">jwt</span>
+                        <span class="badge badge-optional">optional</span>
+                    </div>
+                    <div class="property-type">string</div>
+                    <div class="default-value">default: ''</div>
+                    <p class="mt-2 mb-0">JWT token for authentication</p>
+                </div>
+
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">lang</span>
+                        <span class="badge badge-optional">optional</span>
+                    </div>
+                    <div class="property-type">string</div>
+                    <div class="default-value">default: 'en-US'</div>
+                    <p class="mt-2 mb-0">Language/culture code for localization</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="options-request">
+            <div class="interface-card">
+                <h2 class="interface-title">OptionsRequest</h2>
+                <p>Configuration options for AJAX requests with authentication and localization support.</p>
+                
+                <h5>Properties:</h5>
+                
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">url</span>
+                        <span class="badge badge-mandatory">mandatory</span>
+                    </div>
+                    <div class="property-type">string</div>
+                    <p class="mt-2 mb-0">The endpoint URL for the request</p>
+                </div>
+
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">data</span>
+                        <span class="badge badge-optional">optional</span>
+                    </div>
+                    <div class="property-type">string | Object</div>
+                    <p class="mt-2 mb-0">Data to send with the request</p>
+                </div>
+
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">successCallback</span>
+                        <span class="badge badge-optional">optional</span>
+                    </div>
+                    <div class="property-type">(response: any) => void</div>
+                    <p class="mt-2 mb-0">Function to call on successful response</p>
+                </div>
+
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">errorCallback</span>
+                        <span class="badge badge-optional">optional</span>
+                    </div>
+                    <div class="property-type">(response: any) => void</div>
+                    <p class="mt-2 mb-0">Function to call on error response</p>
+                </div>
+
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">jwt</span>
+                        <span class="badge badge-optional">optional</span>
+                    </div>
+                    <div class="property-type">string</div>
+                    <div class="default-value">default: ''</div>
+                    <p class="mt-2 mb-0">JWT token for authentication</p>
+                </div>
+
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">lang</span>
+                        <span class="badge badge-optional">optional</span>
+                    </div>
+                    <div class="property-type">string</div>
+                    <div class="default-value">default: 'en-US'</div>
+                    <p class="mt-2 mb-0">Language/culture code for localization</p>
+                </div>
+
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">showSuccess</span>
+                        <span class="badge badge-optional">optional</span>
+                    </div>
+                    <div class="property-type">boolean</div>
+                    <div class="default-value">default: true</div>
+                    <p class="mt-2 mb-0">Whether to show success messages</p>
+                </div>
+
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">showError</span>
+                        <span class="badge badge-optional">optional</span>
+                    </div>
+                    <div class="property-type">boolean</div>
+                    <div class="default-value">default: true</div>
+                    <p class="mt-2 mb-0">Whether to show error messages</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="options-chart">
+            <div class="interface-card">
+                <h2 class="interface-title">OptionsChart</h2>
+                <p>Configuration options for generating charts using Chart.js.</p>
+                
+                <h5>Properties:</h5>
+                
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">chart</span>
+                        <span class="badge badge-mandatory">mandatory</span>
+                    </div>
+                    <div class="property-type">JQuery</div>
+                    <p class="mt-2 mb-0">Canvas element where the chart will be painted</p>
+                </div>
+
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">url</span>
+                        <span class="badge badge-mandatory">mandatory</span>
+                    </div>
+                    <div class="property-type">string</div>
+                    <p class="mt-2 mb-0">Endpoint where the chart data will be fetched</p>
+                </div>
+
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">data</span>
+                        <span class="badge badge-optional">optional</span>
+                    </div>
+                    <div class="property-type">string | Object</div>
+                    <div class="default-value">default: null</div>
+                    <p class="mt-2 mb-0">Parameters for the GET request</p>
+                </div>
+
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">interval</span>
+                        <span class="badge badge-optional">optional</span>
+                    </div>
+                    <div class="property-type">'daily' | 'monthly'</div>
+                    <p class="mt-2 mb-0">Chart interval type - daily shows 1-31 on X axis, monthly shows Jan-Dec</p>
+                </div>
+
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">subFilter</span>
+                        <span class="badge badge-optional">optional</span>
+                    </div>
+                    <div class="property-type">string</div>
+                    <p class="mt-2 mb-0">Field name of data response used to split info in same interval</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="options-map">
+            <div class="interface-card">
+                <h2 class="interface-title">OptionsMap</h2>
+                <p>Configuration options for Google Maps integration.</p>
+                
+                <h5>Properties:</h5>
+                
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">edtLatitude</span>
+                        <span class="badge badge-mandatory">mandatory</span>
+                    </div>
+                    <div class="property-type">JQuery</div>
+                    <p class="mt-2 mb-0">Input element for latitude value</p>
+                </div>
+
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">edtLongitude</span>
+                        <span class="badge badge-mandatory">mandatory</span>
+                    </div>
+                    <div class="property-type">JQuery</div>
+                    <p class="mt-2 mb-0">Input element for longitude value</p>
+                </div>
+
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">showCurrentLocation</span>
+                        <span class="badge badge-optional">optional</span>
+                    </div>
+                    <div class="property-type">boolean</div>
+                    <div class="default-value">default: true</div>
+                    <p class="mt-2 mb-0">Show the current location in the map</p>
+                </div>
+
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">modal</span>
+                        <span class="badge badge-optional">optional</span>
+                    </div>
+                    <div class="property-type">boolean</div>
+                    <div class="default-value">default: true</div>
+                    <p class="mt-2 mb-0">If the map should be displayed in a modal</p>
+                </div>
+
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">showAutocomplete</span>
+                        <span class="badge badge-optional">optional</span>
+                    </div>
+                    <div class="property-type">boolean</div>
+                    <div class="default-value">default: false</div>
+                    <p class="mt-2 mb-0">Show an autocomplete field above the map</p>
+                </div>
+
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">showCoordinates</span>
+                        <span class="badge badge-optional">optional</span>
+                    </div>
+                    <div class="property-type">boolean</div>
+                    <div class="default-value">default: false</div>
+                    <p class="mt-2 mb-0">Show a label with latitude and longitude at bottom of the map</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="options-modal">
+            <div class="interface-card">
+                <h2 class="interface-title">OptionsModal</h2>
+                <p>Basic options to generate a modal using Bootstrap Modal.</p>
+                <p><strong>Reference:</strong> <a href="https://getbootstrap.com/docs/5.3/components/modal/" target="_blank">Bootstrap Modal Documentation</a></p>
+                
+                <h5>Properties:</h5>
+                
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">title</span>
+                        <span class="badge badge-mandatory">mandatory</span>
+                    </div>
+                    <div class="property-type">string</div>
+                    <p class="mt-2 mb-0">Title of the modal</p>
+                </div>
+
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">type</span>
+                        <span class="badge badge-mandatory">mandatory</span>
+                    </div>
+                    <div class="property-type">'view' | 'html'</div>
+                    <p class="mt-2 mb-0">Where the modal will get the render view</p>
+                    <p class="text-muted small">view: load from service URL | html: load static HTML</p>
+                </div>
+
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">loadCallback</span>
+                        <span class="badge badge-optional">optional</span>
+                    </div>
+                    <div class="property-type">Function</div>
+                    <div class="default-value">default: undefined</div>
+                    <p class="mt-2 mb-0">Event fired when the view is loaded in DOM</p>
+                </div>
+
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">primaryCallback</span>
+                        <span class="badge badge-optional">optional</span>
+                    </div>
+                    <div class="property-type">() => Promise&lt;boolean&gt;</div>
+                    <div class="default-value">default: undefined</div>
+                    <p class="mt-2 mb-0">Event fired when the primary button is clicked</p>
+                </div>
+
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">size</span>
+                        <span class="badge badge-optional">optional</span>
+                    </div>
+                    <div class="property-type">'small' | 'big'</div>
+                    <div class="default-value">default: 'small'</div>
+                    <p class="mt-2 mb-0">Width size for modal. Small is default bootstrap width, big is 80% screen width</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="options-cropper">
+            <div class="interface-card">
+                <h2 class="interface-title">OptionsCropper</h2>
+                <p>Basic options to generate a square cropper using Cropper.js loaded in a SweetAlert2 modal.</p>
+                <p><strong>References:</strong> 
+                    <a href="https://fengyuanchen.github.io/cropperjs/" target="_blank">Cropper.js</a> | 
+                    <a href="https://sweetalert2.github.io/" target="_blank">SweetAlert2</a>
+                </p>
+                
+                <h5>Properties:</h5>
+                
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">uploadControl</span>
+                        <span class="badge badge-mandatory">mandatory</span>
+                    </div>
+                    <div class="property-type">JQuery</div>
+                    <p class="mt-2 mb-0">jQuery object where the user will upload the image</p>
+                </div>
+
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">imgControl</span>
+                        <span class="badge badge-mandatory">mandatory</span>
+                    </div>
+                    <div class="property-type">JQuery</div>
+                    <p class="mt-2 mb-0">jQuery object where the cropped image will be painted</p>
+                </div>
+
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">aspectRatio</span>
+                        <span class="badge badge-optional">optional</span>
+                    </div>
+                    <div class="property-type">'square' | '2/3' | '3/2' | '4/3' | '3/4' | '16/9' | '9/16' | '20/9' | '9/20'</div>
+                    <div class="default-value">default: 'square'</div>
+                    <p class="mt-2 mb-0">Aspect ratio for the cropper</p>
+                </div>
+
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">callback</span>
+                        <span class="badge badge-optional">optional</span>
+                    </div>
+                    <div class="property-type">(blob: any) => void</div>
+                    <p class="mt-2 mb-0">Callback function executed when the image is cropped</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="options-table">
+            <div class="interface-card">
+                <h2 class="interface-title">OptionsTable</h2>
+                <p>Basic options to generate a table using DataTables.</p>
+                <p><strong>Reference:</strong> <a href="https://datatables.net/" target="_blank">DataTables Documentation</a></p>
+                
+                <h5>Key Properties:</h5>
+                
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">table</span>
+                        <span class="badge badge-mandatory">mandatory</span>
+                    </div>
+                    <div class="property-type">JQuery</div>
+                    <p class="mt-2 mb-0">Table element to generate DataTable</p>
+                </div>
+
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">type</span>
+                        <span class="badge badge-optional">optional</span>
+                    </div>
+                    <div class="property-type">'url' | 'list'</div>
+                    <p class="mt-2 mb-0">Way to get information - from URL or from provided list</p>
+                </div>
+
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">url</span>
+                        <span class="badge badge-optional">optional</span>
+                    </div>
+                    <div class="property-type">string</div>
+                    <p class="mt-2 mb-0">URL to get the data (mandatory if type is 'url')</p>
+                </div>
+
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">data</span>
+                        <span class="badge badge-optional">optional</span>
+                    </div>
+                    <div class="property-type">any[]</div>
+                    <p class="mt-2 mb-0">List of objects to create the table (mandatory if type is 'list')</p>
+                </div>
+
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">rowsPerPage</span>
+                        <span class="badge badge-optional">optional</span>
+                    </div>
+                    <div class="property-type">number</div>
+                    <div class="default-value">default: 10</div>
+                    <p class="mt-2 mb-0">Number of rows per page</p>
+                </div>
+
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">canOrder</span>
+                        <span class="badge badge-optional">optional</span>
+                    </div>
+                    <div class="property-type">boolean</div>
+                    <div class="default-value">default: true</div>
+                    <p class="mt-2 mb-0">Enable or disable ordering in table</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="other-interfaces">
+            <div class="interface-card">
+                <h2 class="interface-title">Other Interfaces</h2>
+                
+                <h4>OptionsPostObject</h4>
+                <p>Configuration for posting objects with validation and callbacks.</p>
+                
+                <h4>ItemDropDown</h4>
+                <p>Configuration for dropdown menu items.</p>
+                
+                <h4>Item</h4>
+                <p>Generic item structure with id, divId, html, and item properties.</p>
+                
+                <h4>OptionsConsecutive</h4>
+                <p>Configuration for consecutive document numbering.</p>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script>
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                    
+                    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

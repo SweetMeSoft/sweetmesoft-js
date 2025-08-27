@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SweetMeSoft JS - Documentation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <style>
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 280px;
+            background-color: #f8f9fa;
+            border-right: 1px solid #dee2e6;
+            overflow-y: auto;
+            padding-top: 20px;
+        }
+        .main-content {
+            margin-left: 280px;
+            padding: 20px;
+        }
+        .method-card {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+        .method-title {
+            color: #0d6efd;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+        }
+        .parameter {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 5px 0;
+        }
+        .parameter-name {
+            font-weight: bold;
+            color: #6f42c1;
+        }
+        .parameter-type {
+            color: #dc3545;
+            font-family: 'Courier New', monospace;
+        }
+        .nav-link {
+            color: #495057;
+            padding: 8px 16px;
+        }
+        .nav-link:hover {
+            background-color: #e9ecef;
+            color: #0d6efd;
+        }
+        .nav-link.active {
+            background-color: #0d6efd;
+            color: white;
+        }
+        .badge-mandatory {
+            background-color: #dc3545;
+        }
+        .badge-optional {
+            background-color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="px-3">
+            <h4 class="text-primary">SweetMeSoft JS</h4>
+            <p class="text-muted small">v1.0.99</p>
+            <hr>
+            <nav class="nav flex-column">
+                <a class="nav-link active" href="#overview">Overview</a>
+                <a class="nav-link" href="#ajax">Ajax Methods</a>
+                <a class="nav-link" href="#charts">Charts</a>
+                <a class="nav-link" href="#maps">Maps</a>
+                <a class="nav-link" href="#tools">Tools</a>
+                <a class="nav-link" href="#jquery-addons">jQuery Extensions</a>
+                <a class="nav-link" href="interfaces.html">Interfaces Reference</a>
+                <a class="nav-link" href="examples.html">Examples</a>
+            </nav>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <section id="overview">
+            <h1>SweetMeSoft JS Documentation</h1>
+            <p class="lead">A complete JavaScript/TypeScript library that provides utilities and components for modern web development, including AJAX functionality, charts, maps, tables, and user interface tools.</p>
+            
+            <div class="alert alert-info">
+                <h5>Quick Start</h5>
+                <pre><code class="language-bash">npm install sweetmesoft-js</code></pre>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">API Reference</h5>
+                            <p class="card-text">Complete documentation of all methods and functions.</p>
+                            <a href="#ajax" class="btn btn-primary">View API Docs</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                             <h5 class="card-title">TypeScript Interfaces</h5>
+                             <p class="card-text">Detailed reference for all TypeScript interfaces and types.</p>
+                             <a href="interfaces.html" class="btn btn-outline-primary">View Interfaces</a>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+
+             <div class="row mt-3">
+                 <div class="col-md-12">
+                     <div class="card">
+                         <div class="card-body text-center">
+                             <h5 class="card-title">Practical Examples</h5>
+                             <p class="card-text">Real-world examples and code snippets showing how to use SweetMeSoft JS effectively.</p>
+                             <a href="examples.html" class="btn btn-success">View Examples</a>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+
+            <h3>Features</h3>
+            <ul>
+                <li>Complete AJAX wrapper with JWT authentication and localization support</li>
+                <li>Chart.js integration for dynamic data visualization</li>
+                <li>Google Maps API integration</li>
+                <li>jQuery extensions for enhanced DOM manipulation</li>
+                <li>Bootstrap components integration</li>
+                <li>TypeScript support with full type definitions</li>
+            </ul>
+        </section>
+
+        <section id="ajax" class="mt-5">
+            <h2>Ajax Methods</h2>
+            <p>The Ajax module provides simplified HTTP request methods with automatic error handling, JWT authentication, and localization support.</p>
+
+            <div class="method-card">
+                <h4 class="method-title">getOptions(options: OptionsSelect): Promise&lt;boolean&gt;</h4>
+                <p>Populates select/dropdown elements with options fetched from a URL</p>
+                <h6>Parameters:</h6>
+                <div class="parameter">
+                    <span class="parameter-name">options</span> 
+                    <span class="parameter-type">OptionsSelect</span>
+                    <span class="badge badge-mandatory ms-2">mandatory</span>
+                    <p class="mt-2 mb-0">Configuration object containing:</p>
+                    <ul class="mt-1">
+                        <li><strong>url:</strong> API endpoint to fetch options data from</li>
+                        <li><strong>dropDowns:</strong> Array of jQuery select elements to populate</li>
+                        <li><strong>firstText:</strong> Text to show as first/placeholder option</li>
+                        <li><strong>text:</strong> Property name to use as option text</li>
+                        <li><strong>internal:</strong> Property name to use as option value</li>
+                        <li><strong>jwt:</strong> JWT token for authentication</li>
+                        <li><strong>lang:</strong> Language/culture code (default: 'en-US')</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="method-card">
+                <h4 class="method-title">get(options: OptionsRequest): Promise&lt;boolean&gt;</h4>
+                <p>Performs GET requests with automatic error handling and loading indicators</p>
+                <h6>Parameters:</h6>
+                <div class="parameter">
+                    <span class="parameter-name">options</span> 
+                    <span class="parameter-type">OptionsRequest</span>
+                    <span class="badge badge-mandatory ms-2">mandatory</span>
+                </div>
+            </div>
+
+            <div class="method-card">
+                <h4 class="method-title">post(options: OptionsRequest): Promise&lt;boolean&gt;</h4>
+                <p>Performs POST requests with automatic header configuration</p>
+                <h6>Parameters:</h6>
+                <div class="parameter">
+                    <span class="parameter-name">options</span> 
+                    <span class="parameter-type">OptionsRequest</span>
+                    <span class="badge badge-mandatory ms-2">mandatory</span>
+                </div>
+            </div>
+
+            <div class="method-card">
+                <h4 class="method-title">put(options: OptionsRequest): Promise&lt;boolean&gt;</h4>
+                <p>Performs PUT requests with automatic header configuration</p>
+                <h6>Parameters:</h6>
+                <div class="parameter">
+                    <span class="parameter-name">options</span> 
+                    <span class="parameter-type">OptionsRequest</span>
+                    <span class="badge badge-mandatory ms-2">mandatory</span>
+                </div>
+            </div>
+
+            <div class="method-card">
+                <h4 class="method-title">del(options: OptionsRequest): Promise&lt;boolean&gt;</h4>
+                <p>Performs DELETE requests with automatic header configuration</p>
+                <h6>Parameters:</h6>
+                <div class="parameter">
+                    <span class="parameter-name">options</span> 
+                    <span class="parameter-type">OptionsRequest</span>
+                    <span class="badge badge-mandatory ms-2">mandatory</span>
+                </div>
+            </div>
+
+            <div class="method-card">
+                <h4 class="method-title">downloadFile(options: OptionsRequest): Promise&lt;boolean&gt;</h4>
+                <p>Downloads files from the server</p>
+                <h6>Parameters:</h6>
+                <div class="parameter">
+                    <span class="parameter-name">options</span> 
+                    <span class="parameter-type">OptionsRequest</span>
+                    <span class="badge badge-mandatory ms-2">mandatory</span>
+                </div>
+            </div>
+
+            <div class="method-card">
+                <h4 class="method-title">uploadFile(options: OptionsRequest): Promise&lt;boolean&gt;</h4>
+                <p>Uploads files to the server</p>
+                <h6>Parameters:</h6>
+                <div class="parameter">
+                    <span class="parameter-name">options</span> 
+                    <span class="parameter-type">OptionsRequest</span>
+                    <span class="badge badge-mandatory ms-2">mandatory</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="charts" class="mt-5">
+            <h2>Charts</h2>
+            <p>Chart generation using Chart.js with dynamic data from APIs.</p>
+
+            <div class="method-card">
+                <h4 class="method-title">generateChart(options: OptionsChart): Promise&lt;boolean&gt;</h4>
+                <p>Creates dynamic charts with data obtained from APIs</p>
+                <h6>Parameters:</h6>
+                <div class="parameter">
+                    <span class="parameter-name">options</span> 
+                    <span class="parameter-type">OptionsChart</span>
+                    <span class="badge badge-mandatory ms-2">mandatory</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="maps" class="mt-5">
+            <h2>Maps</h2>
+            <p>Google Maps API integration for interactive maps.</p>
+
+            <div class="method-card">
+                <h4 class="method-title">generateMap(options: OptionsMap): void</h4>
+                <p>Creates interactive maps with markers, geolocation, and address autocomplete</p>
+                <h6>Parameters:</h6>
+                <div class="parameter">
+                    <span class="parameter-name">options</span> 
+                    <span class="parameter-type">OptionsMap</span>
+                    <span class="badge badge-mandatory ms-2">mandatory</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="tools" class="mt-5">
+            <h2>Tools</h2>
+            <p>General utilities for development.</p>
+
+            <div class="method-card">
+                <h4 class="method-title">on(): void</h4>
+                <p>Shows loading overlay</p>
+            </div>
+
+            <div class="method-card">
+                <h4 class="method-title">off(): void</h4>
+                <p>Hides loading overlay</p>
+            </div>
+
+            <div class="method-card">
+                <h4 class="method-title">capitalizeFirstLetter(string: string): string</h4>
+                <p>Capitalizes the first letter of a string</p>
+                <h6>Parameters:</h6>
+                <div class="parameter">
+                    <span class="parameter-name">string</span> 
+                    <span class="parameter-type">string</span>
+                    <span class="badge badge-mandatory ms-2">mandatory</span>
+                </div>
+            </div>
+
+            <div class="method-card">
+                <h4 class="method-title">getFormatedDate(date: Date, format: string, withTime?: boolean): string</h4>
+                <p>Formats dates with custom patterns</p>
+                <h6>Parameters:</h6>
+                <div class="parameter">
+                    <span class="parameter-name">date</span> 
+                    <span class="parameter-type">Date</span>
+                    <span class="badge badge-mandatory ms-2">mandatory</span>
+                </div>
+                <div class="parameter">
+                    <span class="parameter-name">format</span> 
+                    <span class="parameter-type">string</span>
+                    <span class="badge badge-mandatory ms-2">mandatory</span>
+                </div>
+                <div class="parameter">
+                    <span class="parameter-name">withTime</span> 
+                    <span class="parameter-type">boolean</span>
+                    <span class="badge badge-optional ms-2">optional</span>
+                </div>
+            </div>
+
+            <div class="method-card">
+                <h4 class="method-title">isValidDate(date: any): boolean</h4>
+                <p>Validates if an object is a valid date</p>
+                <h6>Parameters:</h6>
+                <div class="parameter">
+                    <span class="parameter-name">date</span> 
+                    <span class="parameter-type">any</span>
+                    <span class="badge badge-mandatory ms-2">mandatory</span>
+                </div>
+            </div>
+
+            <div class="method-card">
+                <h4 class="method-title">getUrlParameter(sParam: any): string</h4>
+                <p>Gets URL parameters</p>
+                <h6>Parameters:</h6>
+                <div class="parameter">
+                    <span class="parameter-name">sParam</span> 
+                    <span class="parameter-type">any</span>
+                    <span class="badge badge-mandatory ms-2">mandatory</span>
+                </div>
+            </div>
+
+            <div class="method-card">
+                <h4 class="method-title">generateCropper(options: OptionsCropper): void</h4>
+                <p>Creates an image cropper with Cropper.js</p>
+                <h6>Parameters:</h6>
+                <div class="parameter">
+                    <span class="parameter-name">options</span> 
+                    <span class="parameter-type">OptionsCropper</span>
+                    <span class="badge badge-mandatory ms-2">mandatory</span>
+                </div>
+            </div>
+
+            <div class="method-card">
+                <h4 class="method-title">generateModal(options: OptionsModal): void</h4>
+                <p>Creates Bootstrap modals</p>
+                <h6>Parameters:</h6>
+                <div class="parameter">
+                    <span class="parameter-name">options</span> 
+                    <span class="parameter-type">OptionsModal</span>
+                    <span class="badge badge-mandatory ms-2">mandatory</span>
+                </div>
+            </div>
+
+            <div class="method-card">
+                <h4 class="method-title">generateTable(options: OptionsTable): void</h4>
+                <p>Creates DataTables with advanced features</p>
+                <h6>Parameters:</h6>
+                <div class="parameter">
+                    <span class="parameter-name">options</span> 
+                    <span class="parameter-type">OptionsTable</span>
+                    <span class="badge badge-mandatory ms-2">mandatory</span>
+                </div>
+            </div>
+
+            <div class="method-card">
+                <h4 class="method-title">getSelectedRows(table: JQuery): any[]</h4>
+                <p>Gets selected rows from a DataTable</p>
+                <h6>Parameters:</h6>
+                <div class="parameter">
+                    <span class="parameter-name">table</span> 
+                    <span class="parameter-type">JQuery</span>
+                    <span class="badge badge-mandatory ms-2">mandatory</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="jquery-addons" class="mt-5">
+            <h2>jQuery Extensions</h2>
+            <p>Additional methods added to jQuery and String prototypes.</p>
+
+            <div class="method-card">
+                <h4 class="method-title">$(element).enable(): JQuery</h4>
+                <p>Enables DOM elements</p>
+            </div>
+
+            <div class="method-card">
+                <h4 class="method-title">$(element).disable(): JQuery</h4>
+                <p>Disables DOM elements</p>
+            </div>
+
+            <div class="method-card">
+                <h4 class="method-title">$(element).check(): JQuery</h4>
+                <p>Checks checkboxes</p>
+            </div>
+
+            <div class="method-card">
+                <h4 class="method-title">$(element).checkValidity(): JQuery</h4>
+                <p>Validates form elements</p>
+            </div>
+
+            <div class="method-card">
+                <h4 class="method-title">$(element).initializeSelect(): JQuery</h4>
+                <p>Initializes Bootstrap Select components</p>
+            </div>
+
+            <div class="method-card">
+                <h4 class="method-title">$(element).toBlob(): JQuery</h4>
+                <p>Converts images to Blob format</p>
+            </div>
+
+            <div class="method-card">
+                <h4 class="method-title">string.isNullOrEmpty(): boolean</h4>
+                <p>String extension that checks if the string is null or empty</p>
+            </div>
+        </section>
+
+        <section id="examples" class="mt-5">
+            <h2>Examples</h2>
+            
+            <h4>Basic AJAX Request</h4>
+            <pre><code class="language-javascript">// GET request with JWT authentication
+SweetMeSoft.get({
+    url: '/api/users',
+    jwt: 'your-jwt-token',
+    lang: 'en-US',
+    successCallback: (data) => {
+        console.log('Users:', data);
+    }
+});
+
+// POST request
+SweetMeSoft.post({
+    url: '/api/users',
+    data: { name: 'John Doe', email: 'john@example.com' },
+    jwt: 'your-jwt-token',
+    successCallback: (response) => {
+        console.log('User created:', response);
+    }
+});</code></pre>
+
+            <h4>Populate Select Elements</h4>
+            <pre><code class="language-javascript">SweetMeSoft.getOptions({
+    url: '/api/countries',
+    dropDowns: [$('#countrySelect')],
+    text: 'name',
+    internal: 'id',
+    firstText: 'Select a country',
+    jwt: 'your-jwt-token'
+});</code></pre>
+
+            <h4>Generate Chart</h4>
+            <pre><code class="language-javascript">SweetMeSoft.generateChart({
+    chart: $('#salesChart'),
+    url: '/api/sales-data',
+    interval: 'monthly'
+});</code></pre>
+
+            <h4>jQuery Extensions</h4>
+            <pre><code class="language-javascript">// Initialize Bootstrap Select
+$('#mySelect').initializeSelect();
+
+// Check if string is empty
+if (userInput.isNullOrEmpty()) {
+    alert('Please enter a value');
+}
+
+// Enable/disable elements
+$('#submitButton').disable();
+$('#submitButton').enable();</code></pre>
+        </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                    
+                    // Update active nav link
+                    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Update active nav link on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

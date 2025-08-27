@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SweetMeSoft JS - Examples</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <style>
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 280px;
+            background-color: #f8f9fa;
+            border-right: 1px solid #dee2e6;
+            overflow-y: auto;
+            padding-top: 20px;
+        }
+        .main-content {
+            margin-left: 280px;
+            padding: 20px;
+        }
+        .example-card {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        .example-header {
+            background-color: #f8f9fa;
+            padding: 15px 20px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .example-body {
+            padding: 20px;
+        }
+        .nav-link {
+            color: #495057;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+        }
+        .nav-link:hover {
+            background-color: #e9ecef;
+            color: #0d6efd;
+        }
+        .nav-link.active {
+            background-color: #0d6efd;
+            color: white;
+        }
+        pre {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .copy-btn:hover {
+            background: #5a6268;
+        }
+        .code-container {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="px-3">
+            <h4 class="text-primary">SweetMeSoft JS</h4>
+            <p class="text-muted small">Examples</p>
+            <a href="index.html" class="btn btn-outline-primary btn-sm mb-3">← Back to Main</a>
+            <hr>
+            <nav class="nav flex-column">
+                <a class="nav-link active" href="#basic-ajax">Basic AJAX</a>
+                <a class="nav-link" href="#authentication">Authentication</a>
+                <a class="nav-link" href="#select-population">Select Population</a>
+                <a class="nav-link" href="#file-operations">File Operations</a>
+                <a class="nav-link" href="#charts">Charts</a>
+                <a class="nav-link" href="#maps">Maps</a>
+                <a class="nav-link" href="#modals">Modals</a>
+                <a class="nav-link" href="#tables">Tables</a>
+                <a class="nav-link" href="#jquery-extensions">jQuery Extensions</a>
+                <a class="nav-link" href="#utilities">Utilities</a>
+            </nav>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <h1>SweetMeSoft JS Examples</h1>
+        <p class="lead">Practical examples showing how to use SweetMeSoft JS in real-world scenarios.</p>
+
+        <section id="basic-ajax">
+            <div class="example-card">
+                <div class="example-header">
+                    <h3>Basic AJAX Operations</h3>
+                    <p class="mb-0">Simple GET and POST requests with error handling</p>
+                </div>
+                <div class="example-body">
+                    <h5>GET Request</h5>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code class="language-javascript">// Basic GET request
+SweetMeSoft.get({
+    url: '/api/users',
+    successCallback: (data) => {
+        console.log('Users loaded:', data);
+        displayUsers(data);
+    },
+    errorCallback: (error) => {
+        console.error('Failed to load users:', error);
+    }
+});</code></pre>
+                    </div>
+
+                    <h5>POST Request</h5>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code class="language-javascript">// Create new user
+SweetMeSoft.post({
+    url: '/api/users',
+    data: {
+        name: 'John Doe',
+        email: 'john@example.com',
+        role: 'user'
+    },
+    successCallback: (response) => {
+        console.log('User created:', response);
+        // Refresh user list
+        loadUsers();
+    }
+});</code></pre>
+                    </div>
+
+                    <h5>PUT Request (Update)</h5>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code class="language-javascript">// Update existing user
+SweetMeSoft.put({
+    url: '/api/users/123',
+    data: {
+        name: 'John Smith',
+        email: 'john.smith@example.com'
+    },
+    successCallback: (response) => {
+        console.log('User updated:', response);
+    }
+});</code></pre>
+                    </div>
+
+                    <h5>DELETE Request</h5>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code class="language-javascript">// Delete user
+SweetMeSoft.del({
+    url: '/api/users/123',
+    successCallback: (response) => {
+        console.log('User deleted:', response);
+        // Remove from UI
+        $('#user-123').remove();
+    }
+});</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="authentication">
+            <div class="example-card">
+                <div class="example-header">
+                    <h3>Authentication with JWT</h3>
+                    <p class="mb-0">Using JWT tokens for authenticated requests</p>
+                </div>
+                <div class="example-body">
+                    <h5>Login and Store Token</h5>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code class="language-javascript">// Login function
+function login(username, password) {
+    SweetMeSoft.post({
+        url: '/api/auth/login',
+        data: { username, password },
+        successCallback: (response) => {
+            // Store JWT token
+            localStorage.setItem('jwt_token', response.token);
+            console.log('Login successful');
+            
+            // Redirect to dashboard
+            window.location.href = '/dashboard';
+        },
+        errorCallback: (error) => {
+            alert('Login failed: ' + error.message);
+        }
+    });
+}</code></pre>
+                    </div>
+
+                    <h5>Authenticated Requests</h5>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code class="language-javascript">// Get JWT token from storage
+const token = localStorage.getItem('jwt_token');
+
+// Make authenticated request
+SweetMeSoft.get({
+    url: '/api/protected/profile',
+    jwt: token,
+    lang: 'en-US',
+    successCallback: (profile) => {
+        console.log('Profile loaded:', profile);
+        displayProfile(profile);
+    },
+    errorCallback: (error) => {
+        if (error.status === 401) {
+            // Token expired, redirect to login
+            localStorage.removeItem('jwt_token');
+            window.location.href = '/login';
+        }
+    }
+});</code></pre>
+                    </div>
+
+                    <h5>Utility Function for Authenticated Requests</h5>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code class="language-javascript">// Helper function for authenticated requests
+function authenticatedRequest(method, url, data = null) {
+    const token = localStorage.getItem('jwt_token');
+    
+    if (!token) {
+        window.location.href = '/login';
+        return;
+    }
+    
+    const options = {
+        url: url,
+        jwt: token,
+        lang: localStorage.getItem('user_language') || 'en-US',
+        errorCallback: (error) => {
+            if (error.status === 401) {
+                localStorage.removeItem('jwt_token');
+                window.location.href = '/login';
+            }
+        }
+    };
+    
+    if (data) {
+        options.data = data;
+    }
+    
+    return SweetMeSoft[method.toLowerCase()](options);
+}
+
+// Usage
+authenticatedRequest('GET', '/api/dashboard-data')
+    .then(() => console.log('Dashboard loaded'));</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="select-population">
+            <div class="example-card">
+                <div class="example-header">
+                    <h3>Select Population</h3>
+                    <p class="mb-0">Populating dropdown elements with dynamic data</p>
+                </div>
+                <div class="example-body">
+                    <h5>Basic Select Population</h5>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code class="language-javascript">// Populate country select
+SweetMeSoft.getOptions({
+    url: '/api/countries',
+    dropDowns: [$('#countrySelect')],
+    text: 'name',
+    internal: 'id',
+    firstText: 'Select a country',
+    jwt: localStorage.getItem('jwt_token'),
+    callback: (countries) => {
+        console.log('Countries loaded:', countries.length);
+    }
+});</code></pre>
+                    </div>
+
+                    <h5>Cascading Selects</h5>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code class="language-javascript">// Country change handler
+$('#countrySelect').on('change', function() {
+    const countryId = $(this).val();
+    
+    if (countryId) {
+        // Load states for selected country
+        SweetMeSoft.getOptions({
+            url: '/api/states',
+            data: { country_id: countryId },
+            dropDowns: [$('#stateSelect')],
+            text: 'name',
+            internal: 'id',
+            firstText: 'Select a state',
+            jwt: localStorage.getItem('jwt_token'),
+            callback: (states) => {
+                // Clear city select
+                $('#citySelect').empty().append('<option value="">Select a city</option>');
+                $('#citySelect').selectpicker('refresh');
+            }
+        });
+    }
+});
+
+// State change handler
+$('#stateSelect').on('change', function() {
+    const stateId = $(this).val();
+    
+    if (stateId) {
+        // Load cities for selected state
+        SweetMeSoft.getOptions({
+            url: '/api/cities',
+            data: { state_id: stateId },
+            dropDowns: [$('#citySelect')],
+            text: 'name',
+            internal: 'id',
+            firstText: 'Select a city',
+            jwt: localStorage.getItem('jwt_token')
+        });
+    }
+});</code></pre>
+                    </div>
+
+                    <h5>Select with Country Flags</h5>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code class="language-javascript">// Countries with flags
+SweetMeSoft.getOptions({
+    url: '/api/countries',
+    dropDowns: [$('#countrySelectWithFlags')],
+    text: 'name',
+    internal: 'code',
+    firstText: 'Select your country',
+    isCountries: true, // This will show country flags
+    jwt: localStorage.getItem('jwt_token')
+});</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="file-operations">
+            <div class="example-card">
+                <div class="example-header">
+                    <h3>File Operations</h3>
+                    <p class="mb-0">Upload and download files with progress tracking</p>
+                </div>
+                <div class="example-body">
+                    <h5>File Upload</h5>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code class="language-javascript">// File upload with progress
+function uploadFiles() {
+    SweetMeSoft.uploadFile({
+        url: '/api/upload',
+        uploadControl: $('#fileInput'),
+        data: {
+            category: 'documents',
+            user_id: getCurrentUserId()
+        },
+        jwt: localStorage.getItem('jwt_token'),
+        successCallback: (response) => {
+            console.log('Files uploaded:', response);
+            // Update file list
+            loadFileList();
+            // Clear input
+            $('#fileInput').val('');
+        },
+        errorCallback: (error) => {
+            console.error('Upload failed:', error);
+        }
+    });
+}</code></pre>
+                    </div>
+
+                    <h5>File Download</h5>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code class="language-javascript">// Download file
+function downloadFile(fileId, filename) {
+    SweetMeSoft.downloadFile({
+        url: '/api/download/' + fileId,
+        filename: filename,
+        jwt: localStorage.getItem('jwt_token'),
+        successCallback: (response) => {
+            console.log('File downloaded successfully');
+        },
+        errorCallback: (error) => {
+            console.error('Download failed:', error);
+        }
+    });
+}
+
+// Usage
+$('.download-btn').on('click', function() {
+    const fileId = $(this).data('file-id');
+    const filename = $(this).data('filename');
+    downloadFile(fileId, filename);
+});</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="charts">
+            <div class="example-card">
+                <div class="example-header">
+                    <h3>Charts</h3>
+                    <p class="mb-0">Creating dynamic charts with Chart.js</p>
+                </div>
+                <div class="example-body">
+                    <h5>Monthly Sales Chart</h5>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code class="language-javascript">// Generate monthly sales chart
+SweetMeSoft.generateChart({
+    chart: $('#salesChart'),
+    url: '/api/sales/monthly',
+    data: {
+        year: new Date().getFullYear(),
+        department: 'all'
+    },
+    interval: 'monthly'
+});</code></pre>
+                    </div>
+
+                    <h5>Daily Activity Chart</h5>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code class="language-javascript">// Generate daily activity chart for current month
+SweetMeSoft.generateChart({
+    chart: $('#activityChart'),
+    url: '/api/activity/daily',
+    data: {
+        month: new Date().getMonth() + 1,
+        year: new Date().getFullYear()
+    },
+    interval: 'daily'
+});</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="maps">
+            <div class="example-card">
+                <div class="example-header">
+                    <h3>Maps</h3>
+                    <p class="mb-0">Interactive Google Maps integration</p>
+                </div>
+                <div class="example-body">
+                    <h5>Location Picker Modal</h5>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code class="language-javascript">// Open map modal for location selection
+function openLocationPicker() {
+    SweetMeSoft.generateMap({
+        edtLatitude: $('#latitude'),
+        edtLongitude: $('#longitude'),
+        showCurrentLocation: true,
+        modal: true,
+        showAutocomplete: true,
+        showCoordinates: true,
+        isUnique: true,
+        isClickableMap: true
+    });
+}
+
+// Bind to button
+$('#selectLocationBtn').on('click', openLocationPicker);</code></pre>
+                    </div>
+
+                    <h5>Embedded Map with Multiple Markers</h5>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code class="language-javascript">// Display map with multiple locations
+function showStoreLocations() {
+    const storeLocations = [
+        { latitude: 40.7128, longitude: -74.0060 }, // New York
+        { latitude: 34.0522, longitude: -118.2437 }, // Los Angeles
+        { latitude: 41.8781, longitude: -87.6298 }  // Chicago
+    ];
+    
+    SweetMeSoft.generateMap({
+        edtLatitude: $('#mapLatitude'),
+        edtLongitude: $('#mapLongitude'),
+        coordinates: storeLocations,
+        modal: false,
+        divId: 'storeMap',
+        showCurrentLocation: false,
+        isUnique: false
+    });
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="modals">
+            <div class="example-card">
+                <div class="example-header">
+                    <h3>Modals</h3>
+                    <p class="mb-0">Creating dynamic Bootstrap modals</p>
+                </div>
+                <div class="example-body">
+                    <h5>HTML Content Modal</h5>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code class="language-javascript">// Show modal with HTML content
+function showUserDetails(userId) {
+    const userDetailsHtml = `
+        <div class="user-details">
+            <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input type="text" class="form-control" id="userName">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" id="userEmail">
+            </div>
+        </div>
+    `;
+    
+    SweetMeSoft.generateModal({
+        title: 'Edit User Details',
+        type: 'html',
+        html: userDetailsHtml,
+        size: 'small',
+        primaryText: 'Save Changes',
+        cancelText: 'Cancel',
+        loadCallback: () => {
+            // Load user data when modal opens
+            loadUserData(userId);
+        },
+        primaryCallback: async () => {
+            // Save user data
+            const userData = {
+                name: $('#userName').val(),
+                email: $('#userEmail').val()
+            };
+            
+            return await saveUserData(userId, userData);
+        }
+    });
+}</code></pre>
+                    </div>
+
+                    <h5>View-based Modal</h5>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code class="language-javascript">// Show modal with content from server
+function showReportModal(reportId) {
+    SweetMeSoft.generateModal({
+        title: 'Monthly Report',
+        type: 'view',
+        viewUrl: '/api/reports/view',
+        viewData: { report_id: reportId },
+        size: 'big',
+        height: '80%',
+        primaryText: 'Download PDF',
+        primaryCallback: async () => {
+            // Download report as PDF
+            SweetMeSoft.downloadFile({
+                url: '/api/reports/pdf/' + reportId,
+                filename: 'monthly-report.pdf',
+                jwt: localStorage.getItem('jwt_token')
+            });
+            return true;
+        }
+    });
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tables">
+            <div class="example-card">
+                <div class="example-header">
+                    <h3>DataTables</h3>
+                    <p class="mb-0">Advanced table functionality with DataTables</p>
+                </div>
+                <div class="example-body">
+                    <h5>Basic Table from URL</h5>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code class="language-javascript">// Create table from API data
+SweetMeSoft.generateTable({
+    table: $('#usersTable'),
+    type: 'url',
+    url: '/api/users/datatable',
+    urlParams: {
+        department: 'sales',
+        active: true
+    },
+    rowsPerPage: 25,
+    defaultOrderColumn: 'created_at',
+    defaultOrderType: 'desc',
+    showCheckbox: true,
+    buttons: [
+        {
+            text: 'Edit',
+            className: 'btn btn-sm btn-primary',
+            callback: (rowData) => {
+                editUser(rowData.id);
+            }
+        },
+        {
+            text: 'Delete',
+            className: 'btn btn-sm btn-danger',
+            callback: (rowData) => {
+                deleteUser(rowData.id);
+            },
+            show: (rowData) => {
+                // Only show delete button for non-admin users
+                return rowData.role !== 'admin';
+            }
+        }
+    ],
+    onDblClick: (rowData) => {
+        // Double-click to view details
+        showUserDetails(rowData.id);
+    }
+});</code></pre>
+                    </div>
+
+                    <h5>Table with Custom Columns</h5>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code class="language-javascript">// Table with custom formatting
+SweetMeSoft.generateTable({
+    table: $('#ordersTable'),
+    type: 'url',
+    url: '/api/orders',
+    customColumns: [
+        {
+            columnName: 'status',
+            callback: (data, type, row) => {
+                const statusColors = {
+                    'pending': 'warning',
+                    'completed': 'success',
+                    'cancelled': 'danger'
+                };
+                return `<span class="badge bg-${statusColors[data]}">${data}</span>`;
+            }
+        },
+        {
+            columnName: 'total',
+            callback: (data, type, row) => {
+                return '$' + parseFloat(data).toFixed(2);
+            }
+        }
+    ],
+    filterColumns: ['status', 'customer_name'],
+    hiddenColumns: ['internal_notes']
+});</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="jquery-extensions">
+            <div class="example-card">
+                <div class="example-header">
+                    <h3>jQuery Extensions</h3>
+                    <p class="mb-0">Using the extended jQuery methods</p>
+                </div>
+                <div class="example-body">
+                    <h5>Form Validation and Control</h5>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code class="language-javascript">// Form validation example
+function validateForm() {
+    let isValid = true;
+    
+    // Check required fields
+    $('.required').each(function() {
+        const value = $(this).val();
+        
+        if (value.isNullOrEmpty()) {
+            $(this).addClass('is-invalid');
+            isValid = false;
+        } else {
+            $(this).removeClass('is-invalid');
+        }
+    });
+    
+    // Validate email format
+    if (!$('#email').checkValidity()) {
+        $('#email').addClass('is-invalid');
+        isValid = false;
+    }
+    
+    // Enable/disable submit button
+    if (isValid) {
+        $('#submitBtn').enable();
+    } else {
+        $('#submitBtn').disable();
+    }
+    
+    return isValid;
+}
+
+// Real-time validation
+$('.form-control').on('input', validateForm);</code></pre>
+                    </div>
+
+                    <h5>Dynamic Select Initialization</h5>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code class="language-javascript">// Initialize all select elements
+function initializeSelects() {
+    $('.selectpicker').each(function() {
+        $(this).initializeSelect();
+    });
+}
+
+// Initialize on document ready
+$(document).ready(function() {
+    initializeSelects();
+    
+    // Re-initialize after dynamic content load
+    $(document).on('DOMNodeInserted', function(e) {
+        if ($(e.target).hasClass('selectpicker')) {
+            $(e.target).initializeSelect();
+        }
+    });
+});</code></pre>
+                    </div>
+
+                    <h5>Checkbox Management</h5>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code class="language-javascript">// Select all functionality
+$('#selectAll').on('change', function() {
+    if ($(this).is(':checked')) {
+        $('.item-checkbox').check();
+    } else {
+        $('.item-checkbox').uncheck();
+    }
+});
+
+// Update select all when individual items change
+$('.item-checkbox').on('change', function() {
+    const totalItems = $('.item-checkbox').length;
+    const checkedItems = $('.item-checkbox:checked').length;
+    
+    if (checkedItems === totalItems) {
+        $('#selectAll').check();
+    } else {
+        $('#selectAll').uncheck();
+    }
+});</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="utilities">
+            <div class="example-card">
+                <div class="example-header">
+                    <h3>Utility Functions</h3>
+                    <p class="mb-0">Using the built-in utility functions</p>
+                </div>
+                <div class="example-body">
+                    <h5>Date Formatting</h5>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code class="language-javascript">// Format dates for display
+function formatDates() {
+    const now = new Date();
+    
+    // Different date formats
+    const shortDate = SweetMeSoft.getFormatedDate(now, 'MM/dd/yyyy');
+    const longDate = SweetMeSoft.getFormatedDate(now, 'dd/MM/yyyy');
+    const withTime = SweetMeSoft.getFormatedDate(now, 'yyyy-MM-dd HH:mm:ss', true);
+    
+    console.log('Short date:', shortDate);
+    console.log('Long date:', longDate);
+    console.log('With time:', withTime);
+    
+    // Update UI elements
+    $('#currentDate').text(shortDate);
+    $('#lastUpdated').text(withTime);
+}
+
+// Validate date inputs
+function validateDateInput(dateString) {
+    const date = new Date(dateString);
+    
+    if (SweetMeSoft.isValidDate(date)) {
+        return SweetMeSoft.getFormatedDate(date, 'yyyy-MM-dd');
+    } else {
+        throw new Error('Invalid date format');
+    }
+}</code></pre>
+                    </div>
+
+                    <h5>String Utilities</h5>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code class="language-javascript">// String manipulation utilities
+function processUserInput() {
+    const firstName = $('#firstName').val();
+    const lastName = $('#lastName').val();
+    
+    // Validate inputs
+    if (firstName.isNullOrEmpty()) {
+        alert('First name is required');
+        return false;
+    }
+    
+    if (lastName.isNullOrEmpty()) {
+        alert('Last name is required');
+        return false;
+    }
+    
+    // Format names
+    const formattedFirstName = SweetMeSoft.capitalizeFirstLetter(firstName.toLowerCase());
+    const formattedLastName = SweetMeSoft.capitalizeFirstLetter(lastName.toLowerCase());
+    
+    // Update display
+    $('#displayName').text(formattedFirstName + ' ' + formattedLastName);
+    
+    return true;
+}</code></pre>
+                    </div>
+
+                    <h5>URL Parameters</h5>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code class="language-javascript">// Handle URL parameters
+function handleUrlParameters() {
+    // Get specific parameters
+    const userId = SweetMeSoft.getUrlParameter('user_id');
+    const tab = SweetMeSoft.getUrlParameter('tab');
+    const filter = SweetMeSoft.getUrlParameter('filter');
+    
+    // Apply parameters to UI
+    if (userId) {
+        loadUserData(userId);
+    }
+    
+    if (tab) {
+        $(`#${tab}Tab`).tab('show');
+    }
+    
+    if (filter) {
+        $('#filterSelect').val(filter).trigger('change');
+    }
+}
+
+// Call on page load
+$(document).ready(handleUrlParameters);</code></pre>
+                    </div>
+
+                    <h5>Loading States</h5>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code class="language-javascript">// Manual loading state management
+function performLongOperation() {
+    // Show loading overlay
+    SweetMeSoft.on();
+    
+    // Simulate long operation
+    setTimeout(() => {
+        // Perform actual work here
+        console.log('Operation completed');
+        
+        // Hide loading overlay
+        SweetMeSoft.off();
+    }, 3000);
+}
+
+// Multiple operations with proper overlay management
+function performMultipleOperations() {
+    SweetMeSoft.on(); // First operation
+    
+    operation1()
+        .then(() => {
+            SweetMeSoft.on(); // Second operation (overlay stays visible)
+            return operation2();
+        })
+        .then(() => {
+            SweetMeSoft.off(); // First off
+            SweetMeSoft.off(); // Second off (overlay hides)
+        })
+        .catch(() => {
+            SweetMeSoft.off();
+            SweetMeSoft.off();
+        });
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script>
+        // Navigation functionality
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                    
+                    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Update active nav link on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Copy code functionality
+        function copyCode(button) {
+            const codeBlock = button.nextElementSibling.querySelector('code');
+            const text = codeBlock.textContent;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.textContent;
+                button.textContent = 'Copied!';
+                button.style.backgroundColor = '#28a745';
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.backgroundColor = '#6c757d';
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
