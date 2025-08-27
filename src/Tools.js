@@ -186,6 +186,7 @@
                 url: options.url,
                 data: options.urlParams,
                 showSuccess: false,
+                jwt: options.jwt,
                 successCallback: data => createTable(options, data)
             });
         }

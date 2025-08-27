@@ -1,114 +1,141 @@
 # SweetMeSoft JS
 
-Una librería JavaScript/TypeScript completa que proporciona utilidades y componentes para el desarrollo web moderno, incluyendo funcionalidades AJAX, gráficos, mapas, tablas y herramientas de interfaz de usuario.
+A complete JavaScript/TypeScript library that provides utilities and components for modern web development, including AJAX functionality, charts, maps, tables, and user interface tools.
 
-## 📋 Descripción
+## Description
 
-SweetMeSoft JS es una librería que simplifica el desarrollo web proporcionando una colección de herramientas y componentes reutilizables. Está construida en TypeScript y diseñada para trabajar con jQuery y otras librerías populares como Bootstrap, Chart.js, Google Maps y SweetAlert2.
+SweetMeSoft JS is a library that simplifies web development by providing a collection of reusable tools and components. It is built in TypeScript and designed to work with jQuery and other popular libraries such as Bootstrap, Chart.js, Google Maps, and SweetAlert2.
 
-## 🚀 Instalación
+## Installation
 
 ### NPM
 ```bash
 npm install sweetmesoft-js
 ```
 
-### Desde el repositorio
+### From repository
 ```bash
 git clone https://github.com/SweetMeSoft/sweetmesoft-js.git
 cd sweetmesoft-js
 npm install
 ```
 
-## 📁 Estructura de Archivos
+## File Structure
 
 ### `Ajax.ts`
-Contiene funciones para realizar peticiones HTTP de manera simplificada:
-- **`getOptions()`**: Puebla elementos select/dropdown con opciones obtenidas desde una URL
-- **`get()`**: Realiza peticiones GET con manejo automático de errores y loading
-- **`post()`**: Realiza peticiones POST con configuración automática de headers
-- **`downloadFile()`**: Descarga archivos desde el servidor
+Contains functions for simplified HTTP requests:
+- **`getOptions()`**: Populates select/dropdown elements with options fetched from a URL
+- **`get()`**: Performs GET requests with automatic error handling and loading
+- **`post()`**: Performs POST requests with automatic header configuration
+- **`put()`**: Performs PUT requests with automatic header configuration
+- **`del()`**: Performs DELETE requests with automatic header configuration
+- **`downloadFile()`**: Downloads files from the server
+- **`uploadFile()`**: Uploads files to the server
 
 ### `Charts.ts`
-Proporciona funcionalidades para generar gráficos usando Chart.js:
-- **`generateChart()`**: Crea gráficos dinámicos con datos obtenidos desde APIs
-- Soporte para gráficos diarios y mensuales
-- Configuración automática de datasets y labels
+Provides functionality for generating charts using Chart.js:
+- **`generateChart()`**: Creates dynamic charts with data obtained from APIs
+- Support for daily and monthly charts
+- Automatic configuration of datasets and labels
 
 ### `Classes.ts`
-Define todas las interfaces y tipos TypeScript utilizados en la librería:
-- **`OptionsSelect`**: Configuración para elementos select
-- **`OptionsCropper`**: Configuración para recorte de imágenes
-- **`OptionsModal`**: Configuración para modales
-- **`OptionsTable`**: Configuración para tablas DataTables
-- **`OptionsChart`**: Configuración para gráficos
-- **`OptionsMap`**: Configuración para mapas de Google
-- **`OptionsRequest`**: Configuración para peticiones AJAX
+Defines all TypeScript interfaces and types used in the library:
+- **`OptionsSelect`**: Configuration for select elements
+- **`OptionsCropper`**: Configuration for image cropping
+- **`OptionsModal`**: Configuration for modals
+- **`OptionsTable`**: Configuration for DataTables
+- **`OptionsChart`**: Configuration for charts
+- **`OptionsMap`**: Configuration for Google Maps
+- **`OptionsRequest`**: Configuration for AJAX requests
 
 ### `Common.ts`
-Contiene constantes y variables globales utilizadas en toda la librería:
-- Arrays de meses abreviados y días
-- Variables de control de estado
+Contains constants and global variables used throughout the library:
+- Arrays of abbreviated months and days
+- State control variables
 
 ### `JQueryAddOns.ts`
-Extiende jQuery con métodos adicionales:
-- **`disable()`/`enable()`**: Habilita/deshabilita elementos
-- **`check()`/`uncheck()`**: Marca/desmarca checkboxes
-- **`initializeSelect()`**: Inicializa Bootstrap Select
-- **`toBlob()`**: Convierte imágenes a Blob
-- **`isNullOrEmpty()`**: Extensión para String que verifica si está vacío
+Extends jQuery with additional methods:
+- **`disable()`/`enable()`**: Enables/disables elements
+- **`check()`/`uncheck()`**: Checks/unchecks checkboxes
+- **`initializeSelect()`**: Initializes Bootstrap Select
+- **`toBlob()`**: Converts images to Blob
+- **`isNullOrEmpty()`**: String extension that checks if it's empty
 
 ### `Maps.ts`
-Integración con Google Maps API:
-- **`generateMap()`**: Crea mapas interactivos con marcadores
-- Soporte para geolocalización
-- Autocompletado de direcciones
-- Mapas en modales o contenedores específicos
-- Manejo de múltiples marcadores
+Integration with Google Maps API:
+- **`generateMap()`**: Creates interactive maps with markers
+- Geolocation support
+- Address autocomplete
+- Maps in modals or specific containers
+- Multiple marker handling
 
 ### `Tools.ts`
-Utilidades generales para el desarrollo:
-- **`on()`/`off()`**: Control de overlays de carga
-- **`capitalizeFirstLetter()`**: Capitaliza la primera letra de un string
-- **`getFormatedDate()`**: Formatea fechas con patrones personalizados
-- **`isValidDate()`**: Valida si un objeto es una fecha válida
-- **`getUrlParameter()`**: Obtiene parámetros de la URL
-- **`generateCropper()`**: Crea un recortador de imágenes con Cropper.js
+General utilities for development:
+- **`on()`/`off()`**: Loading overlay control
+- **`capitalizeFirstLetter()`**: Capitalizes the first letter of a string
+- **`getFormatedDate()`**: Formats dates with custom patterns
+- **`isValidDate()`**: Validates if an object is a valid date
+- **`getUrlParameter()`**: Gets URL parameters
+- **`generateCropper()`**: Creates an image cropper with Cropper.js
 
-## 🛠️ Tecnologías Utilizadas
+## Technologies Used
 
-- **TypeScript**: Lenguaje principal de desarrollo
-- **jQuery**: Manipulación del DOM y AJAX
-- **Bootstrap**: Framework CSS y componentes UI
-- **Bootstrap Select**: Componente de select mejorado
-- **Chart.js**: Librería para gráficos
-- **Google Maps API**: Integración de mapas
-- **SweetAlert2**: Modales y alertas elegantes
-- **Cropper.js**: Recorte de imágenes
-- **DataTables**: Tablas interactivas
+- **TypeScript**: Primary development language
+- **jQuery**: DOM manipulation and AJAX
+- **Bootstrap**: CSS framework and UI components
+- **Bootstrap Select**: Enhanced select component
+- **Chart.js**: Chart library
+- **Google Maps API**: Map integration
+- **SweetAlert2**: Elegant modals and alerts
+- **Cropper.js**: Image cropping
+- **DataTables**: Interactive tables
 
-## 📖 Uso Básico
+## Basic Usage
 
-### Peticiones AJAX
+### AJAX Requests
 ```typescript
 // GET request
 SweetMeSoft.get({
     url: '/api/data',
+    jwt: 'your-jwt-token',
+    lang: 'en-US',
     successCallback: (data) => {
-        console.log('Datos recibidos:', data);
+        console.log('Data received:', data);
     }
 });
 
-// Poblar un select
+// POST request
+SweetMeSoft.post({
+    url: '/api/save',
+    data: {name: 'John', email: 'john@example.com'},
+    jwt: 'your-jwt-token',
+    lang: 'en-US'
+});
+
+// PUT request
+SweetMeSoft.put({
+    url: '/api/users/123',
+    data: {name: 'Updated Name'},
+    jwt: 'your-jwt-token'
+});
+
+// DELETE request
+SweetMeSoft.del({
+    url: '/api/users/123',
+    jwt: 'your-jwt-token'
+});
+
+// Populate a select
 SweetMeSoft.getOptions({
     url: '/api/options',
     dropDowns: [$('#mySelect')],
     text: 'name',
-    internal: 'id'
+    internal: 'id',
+    jwt: 'your-jwt-token'
 });
 ```
 
-### Gráficos
+### Charts
 ```typescript
 SweetMeSoft.generateChart({
     chart: $('#myChart'),
@@ -117,7 +144,7 @@ SweetMeSoft.generateChart({
 });
 ```
 
-### Mapas
+### Maps
 ```typescript
 SweetMeSoft.generateMap({
     edtLatitude: $('#latitude'),
@@ -127,44 +154,44 @@ SweetMeSoft.generateMap({
 });
 ```
 
-### Extensiones jQuery
+### jQuery Extensions
 ```typescript
-// Inicializar un select
+// Initialize a select
 $('#mySelect').initializeSelect();
 
-// Verificar si un string está vacío
+// Check if a string is empty
 if (myString.isNullOrEmpty()) {
-    console.log('String está vacío');
+    console.log('String is empty');
 }
 ```
 
-## 🔧 Configuración
+## Configuration
 
-La librería utiliza TypeScript con la siguiente configuración:
+The library uses TypeScript with the following configuration:
 - Target: ES2019
 - Module: ES6
-- Declaraciones incluidas
-- Compilación automática habilitada
+- Declarations included
+- Automatic compilation enabled
 
-## 📦 Despliegue
+## Deployment
 
-### Desarrollo Local
-1. Clona el repositorio
-2. Instala las dependencias: `npm install`
-3. Compila TypeScript: `tsc`
-4. Los archivos compilados estarán en la carpeta `src/`
+### Local Development
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Compile TypeScript: `tsc`
+4. Compiled files will be in the `src/` folder
 
-### Publicación en NPM
-El paquete está disponible en NPM como `sweetmesoft-js` y se actualiza regularmente.
+### NPM Publication
+The package is available on NPM as `sweetmesoft-js` and is updated regularly.
 
-### Integración en Proyectos
+### Project Integration
 ```html
-<!-- Incluir las dependencias -->
+<!-- Include dependencies -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<!-- Incluir SweetMeSoft JS -->
+<!-- Include SweetMeSoft JS -->
 <script src="node_modules/sweetmesoft-js/src/Ajax.js"></script>
 <script src="node_modules/sweetmesoft-js/src/Charts.js"></script>
 <script src="node_modules/sweetmesoft-js/src/Maps.js"></script>
@@ -172,29 +199,29 @@ El paquete está disponible en NPM como `sweetmesoft-js` y se actualiza regularm
 <script src="node_modules/sweetmesoft-js/src/JQueryAddOns.js"></script>
 ```
 
-## 🤝 Contribución
+## Contributing
 
-Las contribuciones son bienvenidas. Por favor:
-1. Fork el proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
+Contributions are welcome. Please:
+1. Fork the project
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-## 📄 Licencia
+## License
 
-Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
+This project is under the MIT License. See the `LICENSE` file for more details.
 
-## 👨‍💻 Autor
+## Author
 
 **Erick Velasco** - [erickvelasco11@gmail.com](mailto:erickvelasco11@gmail.com)
 
-## 🔗 Enlaces
+## Links
 
-- [Repositorio en GitHub](https://github.com/SweetMeSoft/sweetmesoft-js)
-- [Paquete en NPM](https://www.npmjs.com/package/sweetmesoft-js)
-- [Reportar Issues](https://github.com/SweetMeSoft/sweetmesoft-js/issues)
+- [GitHub Repository](https://github.com/SweetMeSoft/sweetmesoft-js)
+- [NPM Package](https://www.npmjs.com/package/sweetmesoft-js)
+- [Report Issues](https://github.com/SweetMeSoft/sweetmesoft-js/issues)
 
 ---
 
-*Desarrollado con ❤️ por SweetMeSoft*
+*Developed with love by SweetMeSoft*

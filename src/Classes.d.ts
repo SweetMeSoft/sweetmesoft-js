@@ -310,6 +310,11 @@
          */
         autoWidth?: boolean;
         /**
+         * JWT token to send in request
+         * @default ''
+         */
+        jwt?: string;
+        /**
          * Allow you define the buttons to show at last column of table
          * @default []
          */
