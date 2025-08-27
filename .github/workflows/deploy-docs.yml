@@ -3,8 +3,10 @@ name: Deploy Documentation to GitHub Pages
 on:
   push:
     branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
+    paths:
+      - 'docs/**'
+      - 'src/**/*.d.ts'
+      - '.github/workflows/deploy-docs.yml'
 
 permissions:
   contents: read
@@ -13,10 +15,11 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   deploy:
+    if: github.event_name == 'push'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -32,6 +35,8 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: './docs'
+          name: github-pages
+          retention-days: 1
           
       - name: Deploy to GitHub Pages
         id: deployment
