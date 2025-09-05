@@ -135,6 +135,7 @@ namespace SweetMeSoft {
             url: options.url,
             data: options.data,
             traditional: true,
+            contentType: options.contentType,
             type: 'GET',
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('timezone', Intl.DateTimeFormat().resolvedOptions().timeZone);
@@ -162,6 +163,7 @@ namespace SweetMeSoft {
         return $.ajax({
             url: options.url,
             data: options.data,
+            contentType: options.contentType,
             type: 'POST',
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('timezone', Intl.DateTimeFormat().resolvedOptions().timeZone);
@@ -189,6 +191,7 @@ namespace SweetMeSoft {
         return $.ajax({
             url: options.url,
             data: options.data,
+            contentType: options.contentType,
             type: 'PUT',
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('timezone', Intl.DateTimeFormat().resolvedOptions().timeZone);
@@ -216,6 +219,7 @@ namespace SweetMeSoft {
         return $.ajax({
             url: options.url,
             data: options.data,
+            contentType: options.contentType,
             type: 'DELETE',
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('timezone', Intl.DateTimeFormat().resolvedOptions().timeZone);

@@ -5,8 +5,21 @@ namespace SweetMeSoft {
     }
 
     /**
-     * Basic options to generate a Select
-     * This method uses Bootstrap Select. You can see more info at https://developer.snapappointments.com/bootstrap-select/
+     * Configuration options for generating select/dropdown elements with dynamic data
+     * 
+     * This interface uses Bootstrap Select for enhanced functionality.
+     * @see https://developer.snapappointments.com/bootstrap-select/
+     * 
+     * @example
+     * ```typescript
+     * const selectOptions: OptionsSelect = {
+     *   url: '/api/countries',
+     *   dropDowns: [$('#countrySelect')],
+     *   text: 'name',
+     *   internal: 'id',
+     *   jwt: 'your-jwt-token'
+     * };
+     * ```
      */
     export interface OptionsSelect {
         /**
@@ -124,12 +137,29 @@ namespace SweetMeSoft {
          * @default 'en-US'
          */
         lang?: string;
+        /**
+         * Content type for the request
+         * @default 'application/json'
+         */
+        contentType?: string;
     }
 
     /**
-     * Basic options to generate a Square cropper.
-     * This method uses cropperjs. You can see more info at https://fengyuanchen.github.io/cropperjs/
-     * Also, the Cropper is loaded in a Swal modal. You can see more info at https://sweetalert2.github.io/
+     * Configuration options for image cropping functionality
+     * 
+     * This interface uses Cropper.js for image manipulation within SweetAlert2 modals.
+     * @see https://fengyuanchen.github.io/cropperjs/
+     * @see https://sweetalert2.github.io/
+     * 
+     * @example
+     * ```typescript
+     * const cropperOptions: OptionsCropper = {
+     *   uploadControl: $('#fileInput'),
+     *   imgControl: $('#previewImage'),
+     *   aspectRatio: '16/9',
+     *   callback: (blob) => console.log('Cropped image:', blob)
+     * };
+     * ```
      */
     export interface OptionsCropper {
         /**
@@ -165,9 +195,26 @@ namespace SweetMeSoft {
     }
 
     /**
-     * Basic options to generate a modal.
-     * This method uses bootstrap modal. You can see more info at https://getbootstrap.com/docs/5.3/components/modal/
-     * You need to add the modal to the html in the body tag with the id 'modal'
+     * Configuration options for creating Bootstrap modals
+     * 
+     * This interface creates responsive modals using Bootstrap's modal component.
+     * Requires a modal element with id 'modal' in the HTML body.
+     * @see https://getbootstrap.com/docs/5.3/components/modal/
+     * 
+     * @example
+     * ```typescript
+     * const modalOptions: OptionsModal = {
+     *   title: 'User Details',
+     *   type: 'html',
+     *   html: '<form>...</form>',
+     *   size: 'big',
+     *   primaryText: 'Save',
+     *   primaryCallback: async () => {
+     *     // Save logic here
+     *     return true;
+     *   }
+     * };
+     * ```
      */
     export interface OptionsModal {
         /**
@@ -253,8 +300,26 @@ namespace SweetMeSoft {
     }
 
     /**
-     * Basic options to generate a table
-     * This method uses DataTables. You can see more info at https://datatables.net/
+     * Configuration options for creating interactive data tables
+     * 
+     * This interface uses DataTables for advanced table functionality including
+     * sorting, filtering, pagination, and custom formatting.
+     * @see https://datatables.net/
+     * 
+     * @example
+     * ```typescript
+     * const tableOptions: OptionsTable = {
+     *   table: $('#usersTable'),
+     *   type: 'url',
+     *   url: '/api/users',
+     *   rowsPerPage: 25,
+     *   showCheckbox: true,
+     *   buttons: [{
+     *     type: 'update',
+     *     callback: (rowData) => editUser(rowData.id)
+     *   }]
+     * };
+     * ```
      */
     export interface OptionsTable {
 
@@ -490,6 +555,23 @@ namespace SweetMeSoft {
         popover?: boolean;
     }
 
+    /**
+     * Configuration options for HTTP requests with authentication and localization
+     * 
+     * This interface provides a unified way to make HTTP requests with automatic
+     * JWT authentication, language headers, and error handling.
+     * 
+     * @example
+     * ```typescript
+     * const requestOptions: OptionsRequest = {
+     *   url: '/api/users',
+     *   data: { name: 'John', email: 'john@example.com' },
+     *   jwt: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
+     *   lang: 'en-US',
+     *   successCallback: (response) => console.log('Success:', response)
+     * };
+     * ```
+     */
     export interface OptionsRequest {
         url: string;
         filename?: string;
@@ -590,6 +672,22 @@ namespace SweetMeSoft {
         item: any;
     }
 
+    /**
+     * Configuration options for generating charts using Chart.js
+     * 
+     * This interface creates dynamic charts with data fetched from APIs,
+     * supporting both daily and monthly intervals.
+     * 
+     * @example
+     * ```typescript
+     * const chartOptions: OptionsChart = {
+     *   chart: $('#salesChart'),
+     *   url: '/api/sales/monthly',
+     *   interval: 'monthly',
+     *   data: { year: 2024, department: 'sales' }
+     * };
+     * ```
+     */
     export interface OptionsChart {
         /**
          * canvas where the chart will be painted
@@ -623,6 +721,28 @@ namespace SweetMeSoft {
         subFilter?: string;
     }
 
+    /**
+     * Configuration options for Google Maps integration
+     * 
+     * This interface creates interactive maps with markers, geolocation,
+     * and address autocomplete functionality.
+     * 
+     * @example
+     * ```typescript
+     * const mapOptions: OptionsMap = {
+     *   edtLatitude: $('#latitude'),
+     *   edtLongitude: $('#longitude'),
+     *   showCurrentLocation: true,
+     *   modal: true,
+     *   showAutocomplete: true,
+     *   coordinates: [{
+     *     latitude: 40.7128,
+     *     longitude: -74.0060,
+     *     title: 'New York City'
+     *   }]
+     * };
+     * ```
+     */
     export interface OptionsMap {
         /**
          * Current latitude
@@ -830,7 +950,8 @@ namespace SweetMeSoft {
         showError: true,
         showSuccess: true,
         jwt: '',
-        lang: 'en-US'
+        lang: 'en-US',
+        contentType: 'application/json'
     };
 
     export const defaultsChart: OptionsChart = {

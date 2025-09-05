@@ -128,7 +128,7 @@ SweetMeSoft.get({
                     <h5>POST Request</h5>
                     <div class="code-container">
                         <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-                        <pre><code class="language-javascript">// Create new user
+                        <pre><code class="language-javascript">// Create new user with JSON data
 SweetMeSoft.post({
     url: '/api/users',
     data: {
@@ -136,10 +136,21 @@ SweetMeSoft.post({
         email: 'john@example.com',
         role: 'user'
     },
+    contentType: 'application/json',
     successCallback: (response) => {
         console.log('User created:', response);
         // Refresh user list
         loadUsers();
+    }
+});
+
+// POST request with form data
+SweetMeSoft.post({
+    url: '/api/form-submit',
+    data: 'name=John&email=john@example.com&role=user',
+    contentType: 'application/x-www-form-urlencoded',
+    successCallback: (response) => {
+        console.log('Form submitted:', response);
     }
 });</code></pre>
                     </div>
@@ -147,15 +158,26 @@ SweetMeSoft.post({
                     <h5>PUT Request (Update)</h5>
                     <div class="code-container">
                         <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-                        <pre><code class="language-javascript">// Update existing user
+                        <pre><code class="language-javascript">// Update existing user with JSON
 SweetMeSoft.put({
     url: '/api/users/123',
     data: {
         name: 'John Smith',
         email: 'john.smith@example.com'
     },
+    contentType: 'application/json',
     successCallback: (response) => {
         console.log('User updated:', response);
+    }
+});
+
+// PUT request with XML data
+SweetMeSoft.put({
+    url: '/api/users/123/xml',
+    data: '<user><name>John Smith</name><email>john.smith@example.com</email></user>',
+    contentType: 'application/xml',
+    successCallback: (response) => {
+        console.log('User updated via XML:', response);
     }
 });</code></pre>
                     </div>

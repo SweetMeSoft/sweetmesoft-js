@@ -107,8 +107,19 @@
         <section id="options-select">
             <div class="interface-card">
                 <h2 class="interface-title">OptionsSelect</h2>
-                <p>Basic options to generate a Select. This method uses Bootstrap Select.</p>
+                <p>Configuration options for generating select/dropdown elements with dynamic data. This interface uses Bootstrap Select for enhanced functionality.</p>
                 <p><strong>Reference:</strong> <a href="https://developer.snapappointments.com/bootstrap-select/" target="_blank">Bootstrap Select Documentation</a></p>
+                
+                <h5>Example Usage:</h5>
+                <pre><code class="language-typescript">const selectOptions: OptionsSelect = {
+  url: '/api/countries',
+  dropDowns: [$('#countrySelect')],
+  text: 'name',
+  internal: 'id',
+  jwt: 'your-jwt-token',
+  lang: 'en-US',
+  callback: (data) => console.log('Options loaded:', data)
+};</code></pre>
                 
                 <h5>Properties:</h5>
                 
@@ -209,13 +220,34 @@
                     <div class="default-value">default: 'en-US'</div>
                     <p class="mt-2 mb-0">Language/culture code for localization</p>
                 </div>
+
+                <div class="property">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="property-name">contentType</span>
+                        <span class="badge badge-optional">optional</span>
+                    </div>
+                    <div class="property-type">string</div>
+                    <div class="default-value">default: 'application/json'</div>
+                    <p class="mt-2 mb-0">Content type for the request</p>
+                </div>
             </div>
         </section>
 
         <section id="options-request">
             <div class="interface-card">
                 <h2 class="interface-title">OptionsRequest</h2>
-                <p>Configuration options for AJAX requests with authentication and localization support.</p>
+                <p>Configuration options for HTTP requests with authentication and localization. This interface provides a unified way to make HTTP requests with automatic JWT authentication, language headers, and error handling.</p>
+                
+                <h5>Example Usage:</h5>
+                <pre><code class="language-typescript">const requestOptions: OptionsRequest = {
+  url: '/api/users',
+  data: { name: 'John', email: 'john@example.com' },
+  jwt: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
+  lang: 'en-US',
+  contentType: 'application/json',
+  successCallback: (response) => console.log('Success:', response),
+  errorCallback: (error) => console.error('Error:', error)
+};</code></pre>
                 
                 <h5>Properties:</h5>
                 
@@ -300,7 +332,16 @@
         <section id="options-chart">
             <div class="interface-card">
                 <h2 class="interface-title">OptionsChart</h2>
-                <p>Configuration options for generating charts using Chart.js.</p>
+                <p>Configuration options for generating charts using Chart.js. This interface creates dynamic charts with data fetched from APIs, supporting both daily and monthly intervals.</p>
+                
+                <h5>Example Usage:</h5>
+                <pre><code class="language-typescript">const chartOptions: OptionsChart = {
+  chart: $('#salesChart'),
+  url: '/api/sales/monthly',
+  interval: 'monthly',
+  data: { year: 2024, department: 'sales' },
+  subFilter: 'category'
+};</code></pre>
                 
                 <h5>Properties:</h5>
                 
@@ -355,7 +396,22 @@
         <section id="options-map">
             <div class="interface-card">
                 <h2 class="interface-title">OptionsMap</h2>
-                <p>Configuration options for Google Maps integration.</p>
+                <p>Configuration options for Google Maps integration. This interface creates interactive maps with markers, geolocation, and address autocomplete functionality.</p>
+                
+                <h5>Example Usage:</h5>
+                <pre><code class="language-typescript">const mapOptions: OptionsMap = {
+  edtLatitude: $('#latitude'),
+  edtLongitude: $('#longitude'),
+  showCurrentLocation: true,
+  modal: true,
+  showAutocomplete: true,
+  coordinates: [{
+    latitude: 40.7128,
+    longitude: -74.0060,
+    title: 'New York City',
+    color: 'red'
+  }]
+};</code></pre>
                 
                 <h5>Properties:</h5>
                 
@@ -422,8 +478,22 @@
         <section id="options-modal">
             <div class="interface-card">
                 <h2 class="interface-title">OptionsModal</h2>
-                <p>Basic options to generate a modal using Bootstrap Modal.</p>
+                <p>Configuration options for creating Bootstrap modals. This interface creates responsive modals using Bootstrap's modal component. Requires a modal element with id 'modal' in the HTML body.</p>
                 <p><strong>Reference:</strong> <a href="https://getbootstrap.com/docs/5.3/components/modal/" target="_blank">Bootstrap Modal Documentation</a></p>
+                
+                <h5>Example Usage:</h5>
+                <pre><code class="language-typescript">const modalOptions: OptionsModal = {
+  title: 'User Details',
+  type: 'html',
+  html: '<form class="p-3">...</form>',
+  size: 'big',
+  primaryText: 'Save',
+  cancelText: 'Cancel',
+  primaryCallback: async () => {
+    // Save logic here
+    return true;
+  }
+};</code></pre>
                 
                 <h5>Properties:</h5>
                 
@@ -481,11 +551,22 @@
         <section id="options-cropper">
             <div class="interface-card">
                 <h2 class="interface-title">OptionsCropper</h2>
-                <p>Basic options to generate a square cropper using Cropper.js loaded in a SweetAlert2 modal.</p>
+                <p>Configuration options for image cropping functionality. This interface uses Cropper.js for image manipulation within SweetAlert2 modals.</p>
                 <p><strong>References:</strong> 
                     <a href="https://fengyuanchen.github.io/cropperjs/" target="_blank">Cropper.js</a> | 
                     <a href="https://sweetalert2.github.io/" target="_blank">SweetAlert2</a>
                 </p>
+                
+                <h5>Example Usage:</h5>
+                <pre><code class="language-typescript">const cropperOptions: OptionsCropper = {
+  uploadControl: $('#fileInput'),
+  imgControl: $('#previewImage'),
+  aspectRatio: '16/9',
+  callback: (blob) => {
+    console.log('Cropped image:', blob);
+    // Upload or process the cropped image
+  }
+};</code></pre>
                 
                 <h5>Properties:</h5>
                 
@@ -531,8 +612,26 @@
         <section id="options-table">
             <div class="interface-card">
                 <h2 class="interface-title">OptionsTable</h2>
-                <p>Basic options to generate a table using DataTables.</p>
+                <p>Configuration options for creating interactive data tables. This interface uses DataTables for advanced table functionality including sorting, filtering, pagination, and custom formatting.</p>
                 <p><strong>Reference:</strong> <a href="https://datatables.net/" target="_blank">DataTables Documentation</a></p>
+                
+                <h5>Example Usage:</h5>
+                <pre><code class="language-typescript">const tableOptions: OptionsTable = {
+  table: $('#usersTable'),
+  type: 'url',
+  url: '/api/users',
+  rowsPerPage: 25,
+  showCheckbox: true,
+  jwt: 'your-jwt-token',
+  buttons: [{
+    type: 'update',
+    callback: (rowData) => editUser(rowData.id)
+  }, {
+    type: 'delete',
+    callback: (rowData) => deleteUser(rowData.id)
+  }],
+  onDblClick: (rowData) => viewUserDetails(rowData.id)
+};</code></pre>
                 
                 <h5>Key Properties:</h5>
                 
@@ -596,19 +695,124 @@
 
         <section id="other-interfaces">
             <div class="interface-card">
-                <h2 class="interface-title">Other Interfaces</h2>
+                <h2 class="interface-title">Additional Interfaces</h2>
                 
                 <h4>OptionsPostObject</h4>
                 <p>Configuration for posting objects with validation and callbacks.</p>
+                <div class="property">
+                    <span class="parameter-name">url</span> 
+                    <span class="parameter-type">string</span>
+                    <span class="badge badge-mandatory ms-2">mandatory</span>
+                    <p class="mt-2 mb-0">Complete URL address for service to call</p>
+                </div>
+                <div class="property">
+                    <span class="parameter-name">object</span> 
+                    <span class="parameter-type">Object</span>
+                    <span class="badge badge-optional ms-2">optional</span>
+                    <p class="mt-2 mb-0">Object to save</p>
+                </div>
+                <div class="property">
+                    <span class="parameter-name">callback</span> 
+                    <span class="parameter-type">(response: any) => void</span>
+                    <span class="badge badge-optional ms-2">optional</span>
+                    <p class="mt-2 mb-0">Method to call in case of success</p>
+                </div>
                 
-                <h4>ItemDropDown</h4>
-                <p>Configuration for dropdown menu items.</p>
+                <h4 class="mt-4">TableButton</h4>
+                <p>Configuration for table action buttons.</p>
+                <div class="property">
+                    <span class="parameter-name">type</span> 
+                    <span class="parameter-type">'update' | 'delete' | 'custom' | 'download'</span>
+                    <span class="badge badge-mandatory ms-2">mandatory</span>
+                    <p class="mt-2 mb-0">Type of button with predefined styling</p>
+                </div>
+                <div class="property">
+                    <span class="parameter-name">callback</span> 
+                    <span class="parameter-type">(rowData: any) => void</span>
+                    <span class="badge badge-optional ms-2">optional</span>
+                    <p class="mt-2 mb-0">Event fired when the button is clicked</p>
+                </div>
+                <div class="property">
+                    <span class="parameter-name">showButton</span> 
+                    <span class="parameter-type">(rowData: any) => boolean</span>
+                    <span class="badge badge-optional ms-2">optional</span>
+                    <p class="mt-2 mb-0">Function to conditionally show or hide the button</p>
+                </div>
                 
-                <h4>Item</h4>
-                <p>Generic item structure with id, divId, html, and item properties.</p>
+                <h4 class="mt-4">CustomColumn</h4>
+                <p>Configuration for custom table column formatting.</p>
+                <div class="property">
+                    <span class="parameter-name">originalTitle</span> 
+                    <span class="parameter-type">string</span>
+                    <span class="badge badge-mandatory ms-2">mandatory</span>
+                    <p class="mt-2 mb-0">Original title of the column</p>
+                </div>
+                <div class="property">
+                    <span class="parameter-name">format</span> 
+                    <span class="parameter-type">'text' | 'currency' | 'percentage' | 'right' | 'image' | 'date' | 'datetime' | 'boolean' | 'link'</span>
+                    <span class="badge badge-optional ms-2">optional</span>
+                    <p class="mt-2 mb-0">Format for the data in the column</p>
+                </div>
                 
-                <h4>OptionsConsecutive</h4>
-                <p>Configuration for consecutive document numbering.</p>
+                <h4 class="mt-4">GeoPosition</h4>
+                <p>Geographic position data for map markers.</p>
+                <div class="property">
+                    <span class="parameter-name">latitude</span> 
+                    <span class="parameter-type">number</span>
+                    <span class="badge badge-mandatory ms-2">mandatory</span>
+                    <p class="mt-2 mb-0">Latitude coordinate</p>
+                </div>
+                <div class="property">
+                    <span class="parameter-name">longitude</span> 
+                    <span class="parameter-type">number</span>
+                    <span class="badge badge-mandatory ms-2">mandatory</span>
+                    <p class="mt-2 mb-0">Longitude coordinate</p>
+                </div>
+                <div class="property">
+                    <span class="parameter-name">title</span> 
+                    <span class="parameter-type">string</span>
+                    <span class="badge badge-optional ms-2">optional</span>
+                    <p class="mt-2 mb-0">Title for the marker</p>
+                </div>
+                <div class="property">
+                    <span class="parameter-name">color</span> 
+                    <span class="parameter-type">string</span>
+                    <span class="badge badge-optional ms-2">optional</span>
+                    <p class="mt-2 mb-0">Color of the marker</p>
+                </div>
+                
+                <h4 class="mt-4">ChartDataset</h4>
+                <p>Dataset configuration for chart generation.</p>
+                <div class="property">
+                    <span class="parameter-name">data</span> 
+                    <span class="parameter-type">any[]</span>
+                    <span class="badge badge-mandatory ms-2">mandatory</span>
+                    <p class="mt-2 mb-0">Data array for the chart</p>
+                </div>
+                <div class="property">
+                    <span class="parameter-name">kindChart</span> 
+                    <span class="parameter-type">'bar' | 'line' | 'pie' | 'doughnut' | 'polarArea' | 'radar'</span>
+                    <span class="badge badge-optional ms-2">optional</span>
+                    <div class="default-value">default: 'line'</div>
+                    <p class="mt-2 mb-0">Type of chart to display</p>
+                </div>
+                
+                <h4 class="mt-4">DateTimePickerOptions</h4>
+                <p>Configuration for date/time picker components.</p>
+                <div class="property">
+                    <span class="parameter-name">minDate</span> 
+                    <span class="parameter-type">Date</span>
+                    <span class="badge badge-optional ms-2">optional</span>
+                    <div class="default-value">default: null</div>
+                    <p class="mt-2 mb-0">Minimum selectable date</p>
+                </div>
+                <div class="property">
+                    <span class="parameter-name">maxDate</span> 
+                    <span class="parameter-type">Date</span>
+                    <span class="badge badge-optional ms-2">optional</span>
+                    <div class="default-value">default: null</div>
+                    <p class="mt-2 mb-0">Maximum selectable date</p>
+                </div>
             </div>
         </section>
     </div>

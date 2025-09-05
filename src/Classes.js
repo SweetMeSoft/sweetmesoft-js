@@ -97,7 +97,8 @@
         showError: true,
         showSuccess: true,
         jwt: '',
-        lang: 'en-US'
+        lang: 'en-US',
+        contentType: 'application/json'
     };
     SweetMeSoft.defaultsChart = {
         url: "",

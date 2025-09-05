@@ -1,0 +1,1 @@
+All changes must be made in .ts files. NEVER change .d.ts or .js files because they are auto-generated.
