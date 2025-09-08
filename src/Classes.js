@@ -67,6 +67,8 @@
         height: 'auto',
         canOrder: true,
         showCheckbox: false,
+        contentType: 'multipart/form-data',
+        jwt: '',
         rowStyle: (row, rowData, index) => {
         },
         onDblClick: (rowData) => {
@@ -98,7 +100,7 @@
         showSuccess: true,
         jwt: '',
         lang: 'en-US',
-        contentType: 'application/json'
+        contentType: 'multipart/form-data'
     };
     SweetMeSoft.defaultsChart = {
         url: "",

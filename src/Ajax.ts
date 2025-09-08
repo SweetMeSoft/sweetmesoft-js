@@ -24,6 +24,7 @@ namespace SweetMeSoft {
             url: options.url,
             data: options.data,
             showSuccess: false,
+            contentType: options.contentType,
             jwt: options.jwt,
             lang: options.lang,
             successCallback: data => {
@@ -133,7 +134,7 @@ namespace SweetMeSoft {
         options = <OptionsRequest>(setDefaults(options, defaultsRequest));
         return $.ajax({
             url: options.url,
-            data: options.data,
+            data: options.contentType == 'application/json' ? JSON.stringify(options.data) : options.data,
             traditional: true,
             contentType: options.contentType,
             type: 'GET',
@@ -162,7 +163,7 @@ namespace SweetMeSoft {
         options = <OptionsRequest>(setDefaults(options, defaultsRequest));
         return $.ajax({
             url: options.url,
-            data: options.data,
+            data: options.contentType == 'application/json' ? JSON.stringify(options.data) : options.data,
             contentType: options.contentType,
             type: 'POST',
             beforeSend: function (xhr) {
@@ -190,7 +191,7 @@ namespace SweetMeSoft {
         options = <OptionsRequest>(setDefaults(options, defaultsRequest));
         return $.ajax({
             url: options.url,
-            data: options.data,
+            data: options.contentType == 'application/json' ? JSON.stringify(options.data) : options.data,
             contentType: options.contentType,
             type: 'PUT',
             beforeSend: function (xhr) {
@@ -218,7 +219,7 @@ namespace SweetMeSoft {
         options = <OptionsRequest>(setDefaults(options, defaultsRequest));
         return $.ajax({
             url: options.url,
-            data: options.data,
+            data: options.contentType == 'application/json' ? JSON.stringify(options.data) : options.data,
             contentType: options.contentType,
             type: 'DELETE',
             beforeSend: function (xhr) {
