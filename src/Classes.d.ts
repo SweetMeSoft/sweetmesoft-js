@@ -118,9 +118,9 @@
         lang?: string;
         /**
          * Content type for the request
-         * @default 'multipart/form-data'
+         * @default undefined
          */
-        contentType?: 'application/json' | 'multipart/form-data';
+        contentType?: 'application/json' | 'application/x-www-form-urlencoded' | 'multipart/form-data' | 'text/plain' | '' | undefined;
     }
     /**
      * Configuration options for image cropping functionality
@@ -381,9 +381,9 @@
         jwt?: string;
         /**
          * Content type to send in request
-         * @default 'multipart/form-data'
+         * @default undefined
          */
-        contentType?: 'application/json' | 'multipart/form-data';
+        contentType?: 'application/json' | 'application/x-www-form-urlencoded' | 'multipart/form-data' | 'text/plain' | '' | undefined;
         /**
          * Allow you define the buttons to show at last column of table
          * @default []
@@ -515,7 +515,7 @@
         errorMessage?: string;
         showError?: boolean;
         showSuccess?: boolean;
-        contentType?: 'application/json' | 'multipart/form-data';
+        contentType?: 'application/json' | 'application/x-www-form-urlencoded' | 'multipart/form-data' | 'text/plain' | '' | undefined;
         /**
          * JWT token for authentication
          * @default ''
@@ -825,7 +825,7 @@
         height: string;
         canOrder: boolean;
         showCheckbox: boolean;
-        contentType: string;
+        contentType: any;
         jwt: string;
         rowStyle: (row: Node, rowData: any, index: number) => void;
         onDblClick: (rowData: any) => void;

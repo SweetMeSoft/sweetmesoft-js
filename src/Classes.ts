@@ -139,9 +139,9 @@ namespace SweetMeSoft {
         lang?: string;
         /**
          * Content type for the request
-         * @default 'multipart/form-data'
+         * @default undefined
          */
-        contentType?: 'application/json' | 'multipart/form-data';
+        contentType?: 'application/json'| 'application/x-www-form-urlencoded' | 'multipart/form-data' | 'text/plain' | '' | undefined;
     }
 
     /**
@@ -442,9 +442,9 @@ namespace SweetMeSoft {
 
         /**
          * Content type to send in request
-         * @default 'multipart/form-data'
+         * @default undefined
          */
-        contentType?: 'application/json' | 'multipart/form-data';
+        contentType?: 'application/json' | 'application/x-www-form-urlencoded' | 'multipart/form-data' | 'text/plain' | '' | undefined;
 
         /**
          * Allow you define the buttons to show at last column of table
@@ -590,7 +590,7 @@ namespace SweetMeSoft {
         errorMessage?: string;
         showError?: boolean;
         showSuccess?: boolean;
-        contentType?: 'application/json' | 'multipart/form-data';
+        contentType?: 'application/json' | 'application/x-www-form-urlencoded' | 'multipart/form-data' | 'text/plain' | '' | undefined;
         /**
          * JWT token for authentication
          * @default ''
@@ -924,7 +924,7 @@ namespace SweetMeSoft {
         height: 'auto',
         canOrder: true,
         showCheckbox: false,
-        contentType: 'multipart/form-data',
+        contentType: undefined,
         jwt: '',
         rowStyle: (row: Node, rowData: any, index: number) => {
         },
@@ -959,7 +959,7 @@ namespace SweetMeSoft {
         showSuccess: true,
         jwt: '',
         lang: 'en-US',
-        contentType: 'multipart/form-data'
+        contentType: undefined
     };
 
     export const defaultsChart: OptionsChart = {

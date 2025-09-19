@@ -67,7 +67,7 @@
         height: 'auto',
         canOrder: true,
         showCheckbox: false,
-        contentType: 'multipart/form-data',
+        contentType: undefined,
         jwt: '',
         rowStyle: (row, rowData, index) => {
         },
@@ -100,7 +100,7 @@
         showSuccess: true,
         jwt: '',
         lang: 'en-US',
-        contentType: 'multipart/form-data'
+        contentType: undefined
     };
     SweetMeSoft.defaultsChart = {
         url: "",

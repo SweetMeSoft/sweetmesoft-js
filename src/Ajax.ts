@@ -134,9 +134,7 @@ namespace SweetMeSoft {
         options = <OptionsRequest>(setDefaults(options, defaultsRequest));
         return $.ajax({
             url: options.url,
-            data: options.contentType == 'application/json' ? JSON.stringify(options.data) : options.data,
-            traditional: true,
-            contentType: options.contentType,
+            data: options.data,
             type: 'GET',
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('timezone', Intl.DateTimeFormat().resolvedOptions().timeZone);
@@ -335,7 +333,7 @@ namespace SweetMeSoft {
         if (options.showError) {
             if (options.errorMessage === undefined || options.errorMessage === null || options.errorMessage === '') {
                 console.error(jqXhr.responseJSON != undefined ? jqXhr.responseJSON.detail : jqXhr.responseText)
-                swal.fire('Error', jqXhr.responseJSON != undefined ? jqXhr.responseJSON.title : jqXhr.responseText, 'error');
+                swal.fire('Error', jqXhr.responseJSON != undefined ? jqXhr.responseJSON.detail : jqXhr.responseText, 'error');
             } else {
                 console.error(options.errorMessage)
                 swal.fire('Error', options.errorMessage, 'error');
