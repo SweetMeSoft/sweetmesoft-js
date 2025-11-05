@@ -114,11 +114,10 @@
         modal: true,
         showAutocomplete: false,
         coordinates: [],
-        edtLatitude: undefined,
-        edtLongitude: undefined,
         isUnique: false,
         isClickableMap: false,
-        showCoordinates: false
+        showCoordinates: false,
+        onMapClick: (geoPosition) => { },
     };
     SweetMeSoft.defaultDateTimePickerOptions = {
         minDate: null,

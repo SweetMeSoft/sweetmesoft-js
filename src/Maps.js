@@ -5,14 +5,10 @@
     let markersOutZoom = [];
     let infoWindow;
     let showCoordinates;
-    let edtLatitude;
-    let edtLongitude;
     function generateMap(options) {
         options = (SweetMeSoft.setDefaults(options, SweetMeSoft.defaultMap));
         markersInZoom = [];
         markersOutZoom = [];
-        edtLatitude = options.edtLatitude;
-        edtLongitude = options.edtLongitude;
         if (options.isUnique && options.coordinates.length > 1) {
             swal.fire('Error', 'IsUnique and Multiple coordinates can\'t be set at same time', 'error');
             return;
@@ -41,8 +37,10 @@
                     initLocation(options);
                 },
                 primaryCallback: () => {
-                    options.edtLatitude.val($("#lat").text());
-                    options.edtLongitude.val($("#lng").text());
+                    options.onMapClick({
+                        latitude: parseFloat($("#lat").text()),
+                        longitude: parseFloat($("#lng").text())
+                    });
                     return checkFields();
                 }
             });
@@ -95,10 +93,10 @@
     }
     function addMarkers(options) {
         for (let location of options.coordinates) {
-            addMarker(location);
+            addMarker(location, options.onMapClick);
         }
     }
-    function addMarker(location) {
+    function addMarker(location, onMapClick) {
         location.buttonText = location.buttonText == null || location.buttonText == '' ? 'Click here' : location.buttonText;
         const pinBackground = new google.maps.marker.PinElement({
             background: location.color == '' ? '#FBBC04' : location.color,
@@ -113,7 +111,7 @@
         });
         if (location.draggable) {
             google.maps.event.addListener(marker, 'dragend', function () {
-                updateLocation();
+                updateLocation(onMapClick);
             });
         }
         if (marker.title != '') {
@@ -176,13 +174,13 @@
             });
             markersInZoom.push(currentMarker);
         }
-        updateLocation();
+        updateLocation(options.onMapClick);
         if (options.isClickableMap) {
             google.maps.event.addListener(map, 'click', function (event) {
                 if (options.isUnique) {
                     if (markersInZoom.length == 0) {
                         const latLng = event.latLng;
-                        addMarker({ latitude: latLng.lat(), longitude: latLng.lng() });
+                        addMarker({ latitude: latLng.lat(), longitude: latLng.lng() }, options.onMapClick);
                     }
                     else {
                         const marker = markersInZoom[0];
@@ -191,9 +189,9 @@
                 }
                 else {
                     const latLng = event.latLng;
-                    addMarker({ latitude: latLng.lat(), longitude: latLng.lng() });
+                    addMarker({ latitude: latLng.lat(), longitude: latLng.lng() }, options.onMapClick);
                 }
-                updateLocation();
+                updateLocation(options.onMapClick);
             });
         }
         if (options.showAutocomplete) {
@@ -213,7 +211,7 @@
                 console.log('Longitude:', longitude);
                 if (options.isUnique) {
                     if (markersInZoom.length == 0) {
-                        addMarker({ latitude: latitude, longitude: longitude });
+                        addMarker({ latitude: latitude, longitude: longitude }, options.onMapClick);
                     }
                     else {
                         const marker = markersInZoom[0];
@@ -221,23 +219,23 @@
                     }
                 }
                 else {
-                    addMarker({ latitude: latitude, longitude: longitude });
+                    addMarker({ latitude: latitude, longitude: longitude }, options.onMapClick);
                 }
-                updateLocation();
+                updateLocation(options.onMapClick);
             }
             else {
                 console.log('No details available for input: ' + input.value);
             }
         });
         input.addEventListener('focus', () => {
-            const modal = document.querySelector('.modal-body'); // Or any other selector for your modal
+            const modal = document.querySelector('.modal-body');
             const pacContainer = document.querySelector('.pac-container');
             if (pacContainer && modal) {
                 modal.appendChild(pacContainer);
             }
         });
     }
-    function updateLocation() {
+    function updateLocation(onMapClick) {
         const bounds = new google.maps.LatLngBounds();
         markersInZoom.forEach(marker => {
             bounds.extend(marker.position);
@@ -254,8 +252,10 @@
             if (markersInZoom[0] != null) {
                 $("#lat").text(markersInZoom[0].position.lat);
                 $("#lng").text(markersInZoom[0].position.lng);
-                edtLatitude.val(markersInZoom[0].position.lat.toString());
-                edtLongitude.val(markersInZoom[0].position.lng.toString());
+                onMapClick({
+                    latitude: parseFloat(markersInZoom[0].position.lat.toString()),
+                    longitude: parseFloat(markersInZoom[0].position.lng.toString())
+                });
             }
         }
     }

@@ -4,15 +4,11 @@ namespace SweetMeSoft {
     let markersOutZoom: google.maps.marker.AdvancedMarkerElement[] = []
     let infoWindow: google.maps.InfoWindow
     let showCoordinates: boolean
-    let edtLatitude: JQuery
-    let edtLongitude: JQuery
 
     export function generateMap(options: OptionsMap) {
         options = ((setDefaults(options, defaultMap)) as OptionsMap)
         markersInZoom = []
         markersOutZoom = []
-        edtLatitude = options.edtLatitude
-        edtLongitude = options.edtLongitude
         if (options.isUnique && options.coordinates.length > 1) {
             swal.fire('Error', 'IsUnique and Multiple coordinates can\'t be set at same time', 'error')
             return
@@ -44,8 +40,10 @@ namespace SweetMeSoft {
                     initLocation(options)
                 },
                 primaryCallback: () => {
-                    options.edtLatitude.val($("#lat").text())
-                    options.edtLongitude.val($("#lng").text())
+                    options.onMapClick({
+                        latitude: parseFloat($("#lat").text()),
+                        longitude: parseFloat($("#lng").text())
+                    })
                     return checkFields()
                 }
             })
@@ -102,18 +100,18 @@ namespace SweetMeSoft {
 
     function addMarkers(options: OptionsMap) {
         for (let location of options.coordinates) {
-            addMarker(location)
+            addMarker(location, options.onMapClick)
         }
     }
 
-    function addMarker(location: GeoPosition) {
+    function addMarker(location: GeoPosition, onMapClick: (geoPosition: GeoPosition) => void) {
         location.buttonText = location.buttonText == null || location.buttonText == '' ? 'Click here' : location.buttonText
         const pinBackground = new google.maps.marker.PinElement({
             background: location.color == '' ? '#FBBC04' : location.color,
             borderColor: location.color == '' ? '#FBBC04' : location.color,
         })
         const marker = new google.maps.marker.AdvancedMarkerElement({
-            position: {lat: location.latitude, lng: location.longitude},
+            position: { lat: location.latitude, lng: location.longitude },
             map: map,
             content: pinBackground.element,
             title: location.title,
@@ -122,12 +120,12 @@ namespace SweetMeSoft {
 
         if (location.draggable) {
             google.maps.event.addListener(marker, 'dragend', function () {
-                updateLocation()
+                updateLocation(onMapClick)
             })
         }
 
         if (marker.title != '') {
-            marker.addListener('click', ({domEvent, latLng}) => {
+            marker.addListener('click', ({ domEvent, latLng }) => {
                 infoWindow.close();
                 const buttonHtml = location.onClick
                     ? '<button id="btnInfoWindowMap" class="btn btn-sm btn-primary">' + location.buttonText + '</button>'
@@ -147,7 +145,7 @@ namespace SweetMeSoft {
             })
         }
 
-        if(location.addHalo) {
+        if (location.addHalo) {
             const halo = document.createElement("div");
             halo.className = "radar-effect";
             const overlay = new google.maps.OverlayView();
@@ -184,7 +182,7 @@ namespace SweetMeSoft {
 
         if (location.latitude != 0 && location.longitude != 0) {
             let currentMarker = new google.maps.marker.AdvancedMarkerElement({
-                position: {lat: location.latitude, lng: location.longitude},
+                position: { lat: location.latitude, lng: location.longitude },
                 map: map,
                 content: new google.maps.marker.PinElement({
                     background: location.color,
@@ -194,23 +192,23 @@ namespace SweetMeSoft {
             markersInZoom.push(currentMarker)
         }
 
-        updateLocation()
+        updateLocation(options.onMapClick)
         if (options.isClickableMap) {
             google.maps.event.addListener(map, 'click', function (event) {
                 if (options.isUnique) {
                     if (markersInZoom.length == 0) {
                         const latLng = event.latLng as google.maps.LatLng
-                        addMarker({latitude: latLng.lat(), longitude: latLng.lng()})
+                        addMarker({ latitude: latLng.lat(), longitude: latLng.lng() }, options.onMapClick)
                     } else {
                         const marker = markersInZoom[0]
                         marker.position = event.latLng
                     }
                 } else {
                     const latLng = event.latLng as google.maps.LatLng
-                    addMarker({latitude: latLng.lat(), longitude: latLng.lng()})
+                    addMarker({ latitude: latLng.lat(), longitude: latLng.lng() }, options.onMapClick)
                 }
 
-                updateLocation()
+                updateLocation(options.onMapClick)
             })
         }
 
@@ -238,23 +236,23 @@ namespace SweetMeSoft {
 
                 if (options.isUnique) {
                     if (markersInZoom.length == 0) {
-                        addMarker({latitude: latitude, longitude: longitude})
+                        addMarker({ latitude: latitude, longitude: longitude }, options.onMapClick)
                     } else {
                         const marker = markersInZoom[0]
-                        marker.position = {lat: latitude, lng: longitude}
+                        marker.position = { lat: latitude, lng: longitude }
                     }
                 } else {
-                    addMarker({latitude: latitude, longitude: longitude})
+                    addMarker({ latitude: latitude, longitude: longitude }, options.onMapClick)
                 }
 
-                updateLocation()
+                updateLocation(options.onMapClick)
             } else {
                 console.log('No details available for input: ' + input.value)
             }
         })
 
         input.addEventListener('focus', () => {
-            const modal = document.querySelector('.modal-body') // Or any other selector for your modal
+            const modal = document.querySelector('.modal-body')
             const pacContainer = document.querySelector('.pac-container')
 
             if (pacContainer && modal) {
@@ -263,7 +261,7 @@ namespace SweetMeSoft {
         })
     }
 
-    function updateLocation() {
+    function updateLocation(onMapClick: (geoPosition: GeoPosition) => void) {
         const bounds = new google.maps.LatLngBounds();
         markersInZoom.forEach(marker => {
             bounds.extend(marker.position);
@@ -282,8 +280,10 @@ namespace SweetMeSoft {
             if (markersInZoom[0] != null) {
                 $("#lat").text(markersInZoom[0].position.lat)
                 $("#lng").text(markersInZoom[0].position.lng)
-                edtLatitude.val(markersInZoom[0].position.lat.toString())
-                edtLongitude.val(markersInZoom[0].position.lng.toString())
+                onMapClick({
+                    latitude: parseFloat(markersInZoom[0].position.lat.toString()),
+                    longitude: parseFloat(markersInZoom[0].position.lng.toString())
+                })
             }
         }
     }

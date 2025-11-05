@@ -141,7 +141,7 @@ namespace SweetMeSoft {
          * Content type for the request
          * @default undefined
          */
-        contentType?: 'application/json'| 'application/x-www-form-urlencoded' | 'multipart/form-data' | 'text/plain' | '' | undefined;
+        contentType?: 'application/json' | 'application/x-www-form-urlencoded' | 'multipart/form-data' | 'text/plain' | '' | undefined;
     }
 
     /**
@@ -751,14 +751,6 @@ namespace SweetMeSoft {
      */
     export interface OptionsMap {
         /**
-         * Current latitude
-         */
-        edtLatitude: JQuery;
-        /**
-         * Current longitude
-         */
-        edtLongitude: JQuery;
-        /**
          * Show the current location in the map
          * @default true
          */
@@ -797,9 +789,13 @@ namespace SweetMeSoft {
          * divId where the map will be shown. If modal is @true this property will be ignored. If modal is @false this property is mandatory
          */
         divId?: string;
+        /**
+         * Callback function when the map is clicked
+         */
+        onMapClick?: (geoPosition: GeoPosition) => void;
     }
 
-    export interface GeoPosition{
+    export interface GeoPosition {
         latitude: number;
         longitude: number;
         color?: string;
@@ -975,11 +971,10 @@ namespace SweetMeSoft {
         modal: true,
         showAutocomplete: false,
         coordinates: [],
-        edtLatitude: undefined,
-        edtLongitude: undefined,
         isUnique: false,
         isClickableMap: false,
-        showCoordinates: false
+        showCoordinates: false,
+        onMapClick: (geoPosition: GeoPosition) => { },
     }
 
     export const defaultDateTimePickerOptions: DateTimePickerOptions = {

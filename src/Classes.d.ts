@@ -662,14 +662,6 @@
      */
     export interface OptionsMap {
         /**
-         * Current latitude
-         */
-        edtLatitude: JQuery;
-        /**
-         * Current longitude
-         */
-        edtLongitude: JQuery;
-        /**
          * Show the current location in the map
          * @default true
          */
@@ -708,6 +700,10 @@
          * divId where the map will be shown. If modal is @true this property will be ignored. If modal is @false this property is mandatory
          */
         divId?: string;
+        /**
+         * Callback function when the map is clicked
+         */
+        onMapClick?: (geoPosition: GeoPosition) => void;
     }
     export interface GeoPosition {
         latitude: number;
