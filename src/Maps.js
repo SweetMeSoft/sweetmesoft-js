@@ -1,4 +1,5 @@
-﻿var SweetMeSoft;
+﻿"use strict";
+var SweetMeSoft;
 (function (SweetMeSoft) {
     let map;
     let markersInZoom = [];

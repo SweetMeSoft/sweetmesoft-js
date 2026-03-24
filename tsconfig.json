@@ -9,7 +9,7 @@
 		"noImplicitAny": false,
 		"noImplicitThis": false,
 		"skipLibCheck": true,
-		"strict": false,
+		"strict": true,
 		"strictNullChecks": false,
 		"target": "es2019"
 	},

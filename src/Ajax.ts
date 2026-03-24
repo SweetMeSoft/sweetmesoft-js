@@ -351,7 +351,7 @@ namespace SweetMeSoft {
                 title: options.successTitle,
                 text: options.successMessage != '' ? options.successMessage : 'Request made successfully',
                 icon: 'success',
-                onAfterClose: () => {
+                didClose: () => {
                     if (options.successCallback != undefined) {
                         options.successCallback(response);
                     }

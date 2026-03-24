@@ -1,4 +1,5 @@
-﻿var SweetMeSoft;
+﻿"use strict";
+var SweetMeSoft;
 (function (SweetMeSoft) {
     function on() {
         const overlay = document.getElementById('overlay');
@@ -90,7 +91,7 @@
                 html: '<img id="imgUploadedImage" alt="" src="" style="width: 100%; height: 100%;"/>',
                 showCancelButton: true,
                 cancelButtonText: 'Cancel',
-                onOpen: () => {
+                didOpen: () => {
                     const upl = $('#imgUploadedImage');
                     upl.attr('src', URL.createObjectURL(event.target.files[0]));
                     cropper = new Cropper(upl[0], {

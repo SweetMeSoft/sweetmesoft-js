@@ -100,7 +100,7 @@ namespace SweetMeSoft {
                 html: '<img id="imgUploadedImage" alt="" src="" style="width: 100%; height: 100%;"/>',
                 showCancelButton: true,
                 cancelButtonText: 'Cancel',
-                onOpen: () => {
+                didOpen: () => {
                     const upl = $('#imgUploadedImage');
                     upl.attr('src', URL.createObjectURL((event.target as HTMLInputElement).files[0]));
                     cropper = new Cropper((upl[0] as HTMLImageElement), {
@@ -124,7 +124,7 @@ namespace SweetMeSoft {
     export function generateModal(options: OptionsModal) {
         options = ((setDefaults(options, defaultsModal)) as OptionsModal);
 
-        const modal = new bootstrap.Modal(document.getElementById('modal'), {backdrop: true})
+        const modal = new bootstrap.Modal(document.getElementById('modal'), { backdrop: true })
         const body = $('#divModalBody');
         const title = $('#txtModalTitle');
         const modalDialog = $('.modal-dialog');
@@ -208,7 +208,7 @@ namespace SweetMeSoft {
     }
 
     export function getSelectedRows(table: JQuery): any[] {
-        return table.DataTable().rows({selected: true}).data().toArray()
+        return table.DataTable().rows({ selected: true }).data().toArray()
     }
 
     function createTable(options: OptionsTable, data) {
@@ -367,16 +367,16 @@ namespace SweetMeSoft {
                         if (showButton) {
                             switch (button.type) {
                                 case 'update':
-                                    htmlButtons += '<a id="btn' + tableId + indexButton + '" class="btn btn-primary btn-table'+popoverClass+'"><i class="bi-pencil-fill icn-table" style="color: white;"></i></a>';
+                                    htmlButtons += '<a id="btn' + tableId + indexButton + '" class="btn btn-primary btn-table' + popoverClass + '"><i class="bi-pencil-fill icn-table" style="color: white;"></i></a>';
                                     break;
                                 case 'delete':
-                                    htmlButtons += '<a id="btn' + tableId + indexButton + '" class="btn btn-danger btn-table'+popoverClass+'"><i class="bi-trash3-fill icn-table" style="color: white;"></i></a>';
+                                    htmlButtons += '<a id="btn' + tableId + indexButton + '" class="btn btn-danger btn-table' + popoverClass + '"><i class="bi-trash3-fill icn-table" style="color: white;"></i></a>';
                                     break;
                                 case 'download':
-                                    htmlButtons += '<a id="btn' + tableId + indexButton + '" class="btn btn-primary btn-table'+popoverClass+'"><i class="bi-download icn-table" style="color: white;"></i></a>';
+                                    htmlButtons += '<a id="btn' + tableId + indexButton + '" class="btn btn-primary btn-table' + popoverClass + '"><i class="bi-download icn-table" style="color: white;"></i></a>';
                                     break;
                                 case 'custom':
-                                    htmlButtons += '<a id="btn' + tableId + indexButton + '" class="btn btn-table'+popoverClass+'" style="background-color: ' + button.color + '"><i class="bi-' + button.icon + ' icn-table" style="color: white;"></i></a>';
+                                    htmlButtons += '<a id="btn' + tableId + indexButton + '" class="btn btn-table' + popoverClass + '" style="background-color: ' + button.color + '"><i class="bi-' + button.icon + ' icn-table" style="color: white;"></i></a>';
                                     break;
                             }
 
@@ -405,7 +405,7 @@ namespace SweetMeSoft {
 
         const indexColumn = columns.findIndex(model => model.data.toString().toLowerCase() == options.defaultOrderColumn.toLowerCase());
         const lang = window.navigator.languages[0].substring(0, 2);
-        let table = options.table.DataTable({
+        let table = options.table.DataTable(<any>{
             data: data,
             columns: columns,
             scrollX: true,
@@ -416,7 +416,7 @@ namespace SweetMeSoft {
             paging: options.showFooter,
             info: options.showFooter,
             autoWidth: options.autoWidth,
-            rowCallback: (row, data, index)=> {
+            rowCallback: (row, data, index) => {
                 options.rowStyle(row, data, index)
             },
             select: options.showCheckbox ? {

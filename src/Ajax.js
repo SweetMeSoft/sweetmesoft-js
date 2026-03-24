@@ -1,4 +1,5 @@
-﻿var SweetMeSoft;
+﻿"use strict";
+var SweetMeSoft;
 (function (SweetMeSoft) {
     /**
      * Populates select/dropdown elements with options fetched from a URL
@@ -346,7 +347,7 @@
                 title: options.successTitle,
                 text: options.successMessage != '' ? options.successMessage : 'Request made successfully',
                 icon: 'success',
-                onAfterClose: () => {
+                didClose: () => {
                     if (options.successCallback != undefined) {
                         options.successCallback(response);
                     }

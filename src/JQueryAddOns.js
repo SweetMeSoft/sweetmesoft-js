@@ -1,4 +1,5 @@
-﻿jQuery.fn.extend({
+﻿"use strict";
+jQuery.fn.extend({
     disable: function () {
         return this.each(function () {
             this.disabled = true;

@@ -1,4 +1,5 @@
-﻿var SweetMeSoft;
+﻿"use strict";
+var SweetMeSoft;
 (function (SweetMeSoft) {
     function setDefaults(options, defaults) {
         return Object.assign({}, defaults, options);

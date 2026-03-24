@@ -798,6 +798,7 @@ namespace SweetMeSoft {
     export interface GeoPosition {
         latitude: number;
         longitude: number;
+        id?: string;
         color?: string;
         title?: string;
         draggable?: boolean;
